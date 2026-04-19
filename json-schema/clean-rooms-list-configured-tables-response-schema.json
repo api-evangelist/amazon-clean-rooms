@@ -1,0 +1,20 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-clean-rooms/refs/heads/main/json-schema/clean-rooms-list-configured-tables-response-schema.json",
+  "title": "ListConfiguredTablesResponse",
+  "description": "Response for listing configured tables.",
+  "type": "object",
+  "properties": {
+    "nextToken": {
+      "type": "string",
+      "description": "The token value retrieved from a previous paginated request."
+    },
+    "configuredTableList": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/ConfiguredTable"
+      },
+      "description": "The list of configured tables."
+    }
+  }
+}

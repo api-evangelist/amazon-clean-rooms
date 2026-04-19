@@ -1,0 +1,26 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-clean-rooms/refs/heads/main/json-schema/clean-rooms-create-membership-request-schema.json",
+  "title": "CreateMembershipRequest",
+  "description": "Request body for creating a membership.",
+  "type": "object",
+  "properties": {
+    "collaborationIdentifier": {
+      "type": "string",
+      "description": "The unique ID for the associated collaboration.",
+      "example": "collab-abc12345"
+    },
+    "queryLogStatus": {
+      "type": "string",
+      "enum": [
+        "ENABLED",
+        "DISABLED"
+      ],
+      "description": "An indicator as to whether query logging has been enabled or disabled."
+    }
+  },
+  "required": [
+    "collaborationIdentifier",
+    "queryLogStatus"
+  ]
+}

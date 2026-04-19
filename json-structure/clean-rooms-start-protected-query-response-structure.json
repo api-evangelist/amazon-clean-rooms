@@ -1,0 +1,12 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-clean-rooms/refs/heads/main/json-structure/clean-rooms-start-protected-query-response-structure.json",
+  "name": "StartProtectedQueryResponse",
+  "description": "Response for starting a protected query.",
+  "type": "object",
+  "properties": {
+    "protectedQuery": {
+      "$ref": "#/components/schemas/ProtectedQuery"
+    }
+  }
+}

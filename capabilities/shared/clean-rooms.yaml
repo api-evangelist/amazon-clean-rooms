@@ -1,0 +1,328 @@
+naftiko: "1.0.0-alpha1"
+
+info:
+  label: "Amazon Clean Rooms"
+  description: "Amazon Clean Rooms API for creating secure data collaboration workspaces, managing memberships, configured tables, and executing privacy-preserving protected queries."
+  tags:
+    - Amazon Web Services
+    - Clean Rooms
+    - Data Collaboration
+    - Privacy
+    - Analytics
+  created: "2026-04-19"
+  modified: "2026-04-19"
+
+binds:
+  - namespace: env
+    keys:
+      AWS_ACCESS_KEY_ID: AWS_ACCESS_KEY_ID
+      AWS_SECRET_ACCESS_KEY: AWS_SECRET_ACCESS_KEY
+      AWS_REGION: AWS_REGION
+
+capability:
+  consumes:
+    - type: http
+      namespace: cleanrooms
+      baseUri: https://cleanrooms.us-east-1.amazonaws.com
+      description: "Amazon Clean Rooms API for secure multi-party data collaboration."
+      authentication:
+        type: apikey
+        key: Authorization
+        value: "{{AWS_ACCESS_KEY_ID}}"
+        placement: header
+      resources:
+        - name: collaborations
+          path: /collaborations
+          description: "Clean Rooms collaboration workspaces"
+          operations:
+            - name: list-collaborations
+              method: GET
+              description: "List all collaborations the caller is part of"
+              inputParameters:
+                - name: nextToken
+                  in: query
+                  type: string
+                  required: false
+                  description: "Pagination token"
+                - name: maxResults
+                  in: query
+                  type: integer
+                  required: false
+                  description: "Maximum results to return"
+                - name: memberStatus
+                  in: query
+                  type: string
+                  required: false
+                  description: "Filter by member status"
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+            - name: create-collaboration
+              method: POST
+              description: "Create a new Clean Rooms collaboration"
+              inputParameters: []
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+              body:
+                type: json
+                data:
+                  name: "{{tools.name}}"
+                  description: "{{tools.description}}"
+                  queryLogStatus: "{{tools.query_log_status}}"
+
+        - name: collaboration
+          path: /collaborations/{collaborationIdentifier}
+          description: "Individual collaboration resource"
+          operations:
+            - name: get-collaboration
+              method: GET
+              description: "Get details of a specific collaboration"
+              inputParameters:
+                - name: collaborationIdentifier
+                  in: path
+                  type: string
+                  required: true
+                  description: "The collaboration identifier"
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+            - name: delete-collaboration
+              method: DELETE
+              description: "Delete a collaboration"
+              inputParameters:
+                - name: collaborationIdentifier
+                  in: path
+                  type: string
+                  required: true
+                  description: "The collaboration identifier"
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+
+        - name: memberships
+          path: /memberships
+          description: "Collaboration membership resources"
+          operations:
+            - name: list-memberships
+              method: GET
+              description: "List all memberships in the caller's account"
+              inputParameters:
+                - name: nextToken
+                  in: query
+                  type: string
+                  required: false
+                  description: "Pagination token"
+                - name: status
+                  in: query
+                  type: string
+                  required: false
+                  description: "Filter by membership status"
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+            - name: create-membership
+              method: POST
+              description: "Create a membership to join a collaboration"
+              inputParameters: []
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+              body:
+                type: json
+                data:
+                  collaborationIdentifier: "{{tools.collaboration_id}}"
+                  queryLogStatus: "{{tools.query_log_status}}"
+
+        - name: protected-queries
+          path: /memberships/{membershipIdentifier}/protectedQueries
+          description: "Protected query execution resources"
+          operations:
+            - name: list-protected-queries
+              method: GET
+              description: "List protected queries for a membership"
+              inputParameters:
+                - name: membershipIdentifier
+                  in: path
+                  type: string
+                  required: true
+                  description: "The membership identifier"
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+            - name: start-protected-query
+              method: POST
+              description: "Start a protected SQL query within a collaboration"
+              inputParameters:
+                - name: membershipIdentifier
+                  in: path
+                  type: string
+                  required: true
+                  description: "The membership identifier"
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+              body:
+                type: json
+                data:
+                  type: "SQL"
+                  sqlParameters:
+                    queryString: "{{tools.query_string}}"
+
+        - name: configured-tables
+          path: /configuredTables
+          description: "Configured table resources"
+          operations:
+            - name: list-configured-tables
+              method: GET
+              description: "List configured tables in the caller's account"
+              inputParameters:
+                - name: nextToken
+                  in: query
+                  type: string
+                  required: false
+                  description: "Pagination token"
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+            - name: create-configured-table
+              method: POST
+              description: "Create a configured table for use in collaborations"
+              inputParameters: []
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+              body:
+                type: json
+                data:
+                  name: "{{tools.name}}"
+                  analysisMethod: "DIRECT_QUERY"
+
+  exposes:
+    - type: rest
+      port: 8100
+      namespace: cleanrooms-rest
+      resources:
+        - path: /v1/collaborations
+          name: collaborations
+          description: "List and create collaborations"
+          operations:
+            - method: GET
+              name: list-collaborations
+              description: "List all collaborations"
+              call: "cleanrooms.list-collaborations"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+            - method: POST
+              name: create-collaboration
+              description: "Create a new collaboration"
+              call: "cleanrooms.create-collaboration"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+
+    - type: mcp
+      port: 9100
+      namespace: cleanrooms-mcp
+      transport: http
+      tools:
+        - name: list-collaborations
+          description: "List all Clean Rooms collaborations the caller participates in"
+          hints:
+            readOnly: true
+            idempotent: true
+          call: "cleanrooms.list-collaborations"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: create-collaboration
+          description: "Create a new Clean Rooms collaboration workspace"
+          hints:
+            readOnly: false
+            idempotent: false
+          call: "cleanrooms.create-collaboration"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: get-collaboration
+          description: "Get details of a specific collaboration"
+          hints:
+            readOnly: true
+            idempotent: true
+          call: "cleanrooms.get-collaboration"
+          with:
+            collaborationIdentifier: "tools.collaboration_id"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: list-memberships
+          description: "List all Clean Rooms memberships in the caller's account"
+          hints:
+            readOnly: true
+            idempotent: true
+          call: "cleanrooms.list-memberships"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: start-protected-query
+          description: "Execute a protected SQL query within a Clean Rooms collaboration without exposing raw data"
+          hints:
+            readOnly: false
+            idempotent: false
+          call: "cleanrooms.start-protected-query"
+          with:
+            membershipIdentifier: "tools.membership_id"
+            queryString: "tools.query_string"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: list-protected-queries
+          description: "List protected queries run within a collaboration membership"
+          hints:
+            readOnly: true
+            idempotent: true
+          call: "cleanrooms.list-protected-queries"
+          with:
+            membershipIdentifier: "tools.membership_id"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: list-configured-tables
+          description: "List configured tables available for use in collaborations"
+          hints:
+            readOnly: true
+            idempotent: true
+          call: "cleanrooms.list-configured-tables"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: create-configured-table
+          description: "Create a configured table from an AWS Glue table for use in collaborations"
+          hints:
+            readOnly: false
+            idempotent: false
+          call: "cleanrooms.create-configured-table"
+          outputParameters:
+            - type: object
+              mapping: "$."

@@ -1,0 +1,9 @@
+{
+  "id": "collab-abc12345",
+  "arn": "arn:aws:cleanrooms:us-east-1:123456789012:collaboration/collab-abc12345",
+  "collaborationArn": "arn:aws:cleanrooms:us-east-1:123456789012:collaboration/collab-abc12345",
+  "collaborationId": "collab-abc12345",
+  "collaborationCreatorAccountId": "collab-abc12345",
+  "collaborationName": "Example Collaboration",
+  "status": "ACTIVE"
+}

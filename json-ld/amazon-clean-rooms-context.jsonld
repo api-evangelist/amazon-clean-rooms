@@ -1,0 +1,163 @@
+{
+  "@context": {
+    "@version": 1.1,
+    "cleanrooms": "https://aws.amazon.com/clean-rooms/schema/",
+    "schema": "https://schema.org/",
+    "dcterms": "http://purl.org/dc/terms/",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "Collaboration": "cleanrooms:Collaboration",
+    "id": {
+      "@id": "cleanrooms:id",
+      "@type": "xsd:string"
+    },
+    "arn": {
+      "@id": "cleanrooms:arn",
+      "@type": "xsd:string"
+    },
+    "name": "schema:name",
+    "description": "schema:description",
+    "creatorAccountId": {
+      "@id": "cleanrooms:creator_account_id",
+      "@type": "xsd:string"
+    },
+    "creatorDisplayName": {
+      "@id": "cleanrooms:creator_display_name",
+      "@type": "xsd:string"
+    },
+    "createTime": {
+      "@id": "cleanrooms:create_time",
+      "@type": "xsd:dateTime"
+    },
+    "updateTime": {
+      "@id": "cleanrooms:update_time",
+      "@type": "xsd:dateTime"
+    },
+    "queryLogStatus": {
+      "@id": "cleanrooms:query_log_status",
+      "@type": "xsd:string"
+    },
+    "Membership": "cleanrooms:Membership",
+    "collaborationArn": {
+      "@id": "cleanrooms:collaboration_arn",
+      "@type": "xsd:string"
+    },
+    "collaborationId": {
+      "@id": "cleanrooms:collaboration_id",
+      "@type": "xsd:string"
+    },
+    "collaborationCreatorAccountId": {
+      "@id": "cleanrooms:collaboration_creator_account_id",
+      "@type": "xsd:string"
+    },
+    "collaborationName": {
+      "@id": "cleanrooms:collaboration_name",
+      "@type": "xsd:string"
+    },
+    "status": {
+      "@id": "cleanrooms:status",
+      "@type": "xsd:string"
+    },
+    "ProtectedQuery": "cleanrooms:ProtectedQuery",
+    "membershipId": {
+      "@id": "cleanrooms:membership_id",
+      "@type": "xsd:string"
+    },
+    "membershipArn": {
+      "@id": "cleanrooms:membership_arn",
+      "@type": "xsd:string"
+    },
+    "ConfiguredTable": "cleanrooms:ConfiguredTable",
+    "analysisMethod": {
+      "@id": "cleanrooms:analysis_method",
+      "@type": "xsd:string"
+    },
+    "ListCollaborationsResponse": "cleanrooms:ListCollaborationsResponse",
+    "nextToken": {
+      "@id": "cleanrooms:next_token",
+      "@type": "xsd:string"
+    },
+    "collaborationList": {
+      "@id": "cleanrooms:collaboration_list",
+      "@container": "@set",
+      "@type": "xsd:string"
+    },
+    "CreateCollaborationRequest": "cleanrooms:CreateCollaborationRequest",
+    "members": {
+      "@id": "cleanrooms:members",
+      "@container": "@set",
+      "@type": "xsd:string"
+    },
+    "creatorMemberAbilities": {
+      "@id": "cleanrooms:creator_member_abilities",
+      "@container": "@set",
+      "@type": "xsd:string"
+    },
+    "CreateCollaborationResponse": "cleanrooms:CreateCollaborationResponse",
+    "collaboration": {
+      "@id": "cleanrooms:collaboration",
+      "@type": "xsd:string"
+    },
+    "GetCollaborationResponse": "cleanrooms:GetCollaborationResponse",
+    "ListMembershipsResponse": "cleanrooms:ListMembershipsResponse",
+    "membershipList": {
+      "@id": "cleanrooms:membership_list",
+      "@container": "@set",
+      "@type": "xsd:string"
+    },
+    "CreateMembershipRequest": "cleanrooms:CreateMembershipRequest",
+    "collaborationIdentifier": {
+      "@id": "cleanrooms:collaboration_identifier",
+      "@type": "xsd:string"
+    },
+    "CreateMembershipResponse": "cleanrooms:CreateMembershipResponse",
+    "membership": {
+      "@id": "cleanrooms:membership",
+      "@type": "xsd:string"
+    },
+    "ListProtectedQueriesResponse": "cleanrooms:ListProtectedQueriesResponse",
+    "protectedQueries": {
+      "@id": "cleanrooms:protected_queries",
+      "@container": "@set",
+      "@type": "xsd:string"
+    },
+    "StartProtectedQueryRequest": "cleanrooms:StartProtectedQueryRequest",
+    "type": {
+      "@id": "cleanrooms:type",
+      "@type": "xsd:string"
+    },
+    "sqlParameters": {
+      "@id": "cleanrooms:sql_parameters",
+      "@type": "xsd:string"
+    },
+    "resultConfiguration": {
+      "@id": "cleanrooms:result_configuration",
+      "@type": "xsd:string"
+    },
+    "StartProtectedQueryResponse": "cleanrooms:StartProtectedQueryResponse",
+    "protectedQuery": {
+      "@id": "cleanrooms:protected_query",
+      "@type": "xsd:string"
+    },
+    "ListConfiguredTablesResponse": "cleanrooms:ListConfiguredTablesResponse",
+    "configuredTableList": {
+      "@id": "cleanrooms:configured_table_list",
+      "@container": "@set",
+      "@type": "xsd:string"
+    },
+    "CreateConfiguredTableRequest": "cleanrooms:CreateConfiguredTableRequest",
+    "tableReference": {
+      "@id": "cleanrooms:table_reference",
+      "@type": "xsd:string"
+    },
+    "allowedColumns": {
+      "@id": "cleanrooms:allowed_columns",
+      "@container": "@set",
+      "@type": "xsd:string"
+    },
+    "CreateConfiguredTableResponse": "cleanrooms:CreateConfiguredTableResponse",
+    "configuredTable": {
+      "@id": "cleanrooms:configured_table",
+      "@type": "xsd:string"
+    }
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-clean-rooms/refs/heads/main/json-schema/clean-rooms-create-collaboration-response-schema.json",
+  "title": "CreateCollaborationResponse",
+  "description": "Response for creating a collaboration.",
+  "type": "object",
+  "properties": {
+    "collaboration": {
+      "$ref": "#/components/schemas/Collaboration"
+    }
+  }
+}

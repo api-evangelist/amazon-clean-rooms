@@ -1,0 +1,12 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-clean-rooms/refs/heads/main/json-structure/clean-rooms-create-configured-table-response-structure.json",
+  "name": "CreateConfiguredTableResponse",
+  "description": "Response for creating a configured table.",
+  "type": "object",
+  "properties": {
+    "configuredTable": {
+      "$ref": "#/components/schemas/ConfiguredTable"
+    }
+  }
+}

@@ -1,0 +1,7 @@
+{
+  "id": "collab-abc12345",
+  "membershipId": "collab-abc12345",
+  "membershipArn": "arn:aws:cleanrooms:us-east-1:123456789012:collaboration/collab-abc12345",
+  "createTime": "2025-03-15T14:30:00Z",
+  "status": "SUBMITTED"
+}

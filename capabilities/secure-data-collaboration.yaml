@@ -1,0 +1,237 @@
+naftiko: "1.0.0-alpha1"
+
+info:
+  label: "Amazon Clean Rooms Secure Data Collaboration"
+  description: "Workflow for establishing and operating secure multi-party data clean rooms on AWS, enabling data analysts and marketing teams to run collaborative analytics without sharing raw data."
+  tags:
+    - Amazon Web Services
+    - Clean Rooms
+    - Data Collaboration
+    - Privacy
+    - Analytics
+    - Marketing
+  created: "2026-04-19"
+  modified: "2026-04-19"
+
+binds:
+  - namespace: env
+    keys:
+      AWS_ACCESS_KEY_ID: AWS_ACCESS_KEY_ID
+      AWS_SECRET_ACCESS_KEY: AWS_SECRET_ACCESS_KEY
+      AWS_REGION: AWS_REGION
+
+capability:
+  consumes:
+    - import: cleanrooms
+      location: ./shared/clean-rooms.yaml
+
+  exposes:
+    - type: rest
+      port: 8080
+      namespace: secure-collaboration-api
+      description: "Unified REST API for secure multi-party data collaboration using AWS Clean Rooms."
+      resources:
+        - path: /v1/collaborations
+          name: collaborations
+          description: "Manage Clean Rooms collaboration workspaces"
+          operations:
+            - method: GET
+              name: list-collaborations
+              description: "List all collaborations"
+              call: "cleanrooms.list-collaborations"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+            - method: POST
+              name: create-collaboration
+              description: "Create a new collaboration"
+              call: "cleanrooms.create-collaboration"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+
+        - path: /v1/collaborations/{collaborationId}
+          name: collaboration
+          description: "Get or delete a specific collaboration"
+          operations:
+            - method: GET
+              name: get-collaboration
+              description: "Get collaboration details"
+              call: "cleanrooms.get-collaboration"
+              with:
+                collaborationIdentifier: "rest.collaborationId"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+
+        - path: /v1/memberships
+          name: memberships
+          description: "Manage collaboration memberships"
+          operations:
+            - method: GET
+              name: list-memberships
+              description: "List memberships"
+              call: "cleanrooms.list-memberships"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+            - method: POST
+              name: create-membership
+              description: "Join a collaboration"
+              call: "cleanrooms.create-membership"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+
+        - path: /v1/memberships/{membershipId}/queries
+          name: protected-queries
+          description: "Execute and list protected queries"
+          operations:
+            - method: GET
+              name: list-protected-queries
+              description: "List protected queries"
+              call: "cleanrooms.list-protected-queries"
+              with:
+                membershipIdentifier: "rest.membershipId"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+            - method: POST
+              name: start-protected-query
+              description: "Run a protected query"
+              call: "cleanrooms.start-protected-query"
+              with:
+                membershipIdentifier: "rest.membershipId"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+
+        - path: /v1/configured-tables
+          name: configured-tables
+          description: "Manage configured tables"
+          operations:
+            - method: GET
+              name: list-configured-tables
+              description: "List configured tables"
+              call: "cleanrooms.list-configured-tables"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+            - method: POST
+              name: create-configured-table
+              description: "Create a configured table"
+              call: "cleanrooms.create-configured-table"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+
+    - type: mcp
+      port: 9090
+      namespace: secure-collaboration-mcp
+      transport: http
+      description: "MCP server for AI-assisted secure data collaboration using AWS Clean Rooms."
+      tools:
+        - name: list-collaborations
+          description: "List all Clean Rooms collaborations the caller participates in"
+          hints:
+            readOnly: true
+            idempotent: true
+          call: "cleanrooms.list-collaborations"
+          outputParameters:
+            - type: object
+              mapping: "$."
+
+        - name: create-collaboration
+          description: "Create a new secure data collaboration workspace in AWS Clean Rooms"
+          hints:
+            readOnly: false
+            idempotent: false
+          call: "cleanrooms.create-collaboration"
+          with:
+            name: "tools.name"
+            description: "tools.description"
+          outputParameters:
+            - type: object
+              mapping: "$."
+
+        - name: get-collaboration
+          description: "Get details of a specific Clean Rooms collaboration by ID"
+          hints:
+            readOnly: true
+            idempotent: true
+          call: "cleanrooms.get-collaboration"
+          with:
+            collaborationIdentifier: "tools.collaboration_id"
+          outputParameters:
+            - type: object
+              mapping: "$."
+
+        - name: list-memberships
+          description: "List all Clean Rooms memberships in the caller's account"
+          hints:
+            readOnly: true
+            idempotent: true
+          call: "cleanrooms.list-memberships"
+          outputParameters:
+            - type: object
+              mapping: "$."
+
+        - name: create-membership
+          description: "Join a Clean Rooms collaboration as a member"
+          hints:
+            readOnly: false
+            idempotent: false
+          call: "cleanrooms.create-membership"
+          with:
+            collaborationIdentifier: "tools.collaboration_id"
+          outputParameters:
+            - type: object
+              mapping: "$."
+
+        - name: start-protected-query
+          description: "Execute a protected SQL query within a Clean Rooms collaboration without exposing partner raw data"
+          hints:
+            readOnly: false
+            idempotent: false
+          call: "cleanrooms.start-protected-query"
+          with:
+            membershipIdentifier: "tools.membership_id"
+            queryString: "tools.query_string"
+          outputParameters:
+            - type: object
+              mapping: "$."
+
+        - name: list-protected-queries
+          description: "List all protected queries run within a collaboration membership"
+          hints:
+            readOnly: true
+            idempotent: true
+          call: "cleanrooms.list-protected-queries"
+          with:
+            membershipIdentifier: "tools.membership_id"
+          outputParameters:
+            - type: object
+              mapping: "$."
+
+        - name: list-configured-tables
+          description: "List configured tables available for use in collaborations"
+          hints:
+            readOnly: true
+            idempotent: true
+          call: "cleanrooms.list-configured-tables"
+          outputParameters:
+            - type: object
+              mapping: "$."
+
+        - name: create-configured-table
+          description: "Create a configured table from an AWS Glue table with defined analysis rules for collaboration use"
+          hints:
+            readOnly: false
+            idempotent: false
+          call: "cleanrooms.create-configured-table"
+          with:
+            name: "tools.name"
+            analysisMethod: "DIRECT_QUERY"
+          outputParameters:
+            - type: object
+              mapping: "$."

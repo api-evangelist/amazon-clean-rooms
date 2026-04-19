@@ -1,0 +1,44 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-clean-rooms/refs/heads/main/json-schema/clean-rooms-configured-table-schema.json",
+  "title": "ConfiguredTable",
+  "description": "Represents a configured table in Clean Rooms.",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "The unique ID of the configured table.",
+      "example": "table-abc12345"
+    },
+    "arn": {
+      "type": "string",
+      "description": "The ARN of the configured table."
+    },
+    "name": {
+      "type": "string",
+      "description": "A human-readable name for the configured table.",
+      "example": "Customer Segments Table"
+    },
+    "description": {
+      "type": "string",
+      "description": "A description of the configured table."
+    },
+    "createTime": {
+      "type": "string",
+      "format": "date-time",
+      "description": "The time when the configured table was created."
+    },
+    "updateTime": {
+      "type": "string",
+      "format": "date-time",
+      "description": "The time when the configured table was last updated."
+    },
+    "analysisMethod": {
+      "type": "string",
+      "enum": [
+        "DIRECT_QUERY"
+      ],
+      "description": "The analysis method for the configured table."
+    }
+  }
+}

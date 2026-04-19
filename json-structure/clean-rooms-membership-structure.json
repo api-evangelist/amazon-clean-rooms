@@ -1,0 +1,43 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-clean-rooms/refs/heads/main/json-structure/clean-rooms-membership-structure.json",
+  "name": "Membership",
+  "description": "Represents a member's participation in a Clean Rooms collaboration.",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "The unique ID of the membership.",
+      "example": "member-abc12345"
+    },
+    "arn": {
+      "type": "string",
+      "description": "The ARN of the membership."
+    },
+    "collaborationArn": {
+      "type": "string",
+      "description": "The ARN of the collaboration."
+    },
+    "collaborationId": {
+      "type": "string",
+      "description": "The ID of the collaboration."
+    },
+    "collaborationCreatorAccountId": {
+      "type": "string",
+      "description": "The account ID of the collaboration creator."
+    },
+    "collaborationName": {
+      "type": "string",
+      "description": "The name of the collaboration."
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "ACTIVE",
+        "COLLABORATION_DELETED",
+        "REMOVED"
+      ],
+      "description": "The status of the membership."
+    }
+  }
+}

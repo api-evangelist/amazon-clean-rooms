@@ -1,0 +1,11 @@
+{
+  "id": "collab-abc12345",
+  "arn": "arn:aws:cleanrooms:us-east-1:123456789012:collaboration/collab-abc12345",
+  "name": "Example Collaboration",
+  "description": "example-value",
+  "creatorAccountId": "collab-abc12345",
+  "creatorDisplayName": "Example Collaboration",
+  "createTime": "2025-03-15T14:30:00Z",
+  "updateTime": "2025-03-15T14:30:00Z",
+  "queryLogStatus": "ENABLED"
+}

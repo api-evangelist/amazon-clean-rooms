@@ -1,0 +1,55 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-clean-rooms/refs/heads/main/json-structure/clean-rooms-collaboration-structure.json",
+  "name": "Collaboration",
+  "description": "Represents an AWS Clean Rooms collaboration workspace.",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "The unique ID of the collaboration.",
+      "example": "collab-abc12345"
+    },
+    "arn": {
+      "type": "string",
+      "description": "The ARN of the collaboration.",
+      "example": "arn:aws:cleanrooms:us-east-1:123456789012:collaboration/collab-abc12345"
+    },
+    "name": {
+      "type": "string",
+      "description": "A human-readable identifier for the collaboration.",
+      "example": "Marketing Analytics Collaboration"
+    },
+    "description": {
+      "type": "string",
+      "description": "A description of the collaboration.",
+      "example": "Collaborative analytics for marketing measurement"
+    },
+    "creatorAccountId": {
+      "type": "string",
+      "description": "The account ID of the creator.",
+      "example": "123456789012"
+    },
+    "creatorDisplayName": {
+      "type": "string",
+      "description": "The display name of the collaboration creator.",
+      "example": "Acme Corp"
+    },
+    "createTime": {
+      "type": "datetime",
+      "description": "The time when the collaboration was created."
+    },
+    "updateTime": {
+      "type": "datetime",
+      "description": "The time when the collaboration was last updated."
+    },
+    "queryLogStatus": {
+      "type": "string",
+      "enum": [
+        "ENABLED",
+        "DISABLED"
+      ],
+      "description": "Whether query logs are enabled."
+    }
+  }
+}

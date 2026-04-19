@@ -1,0 +1,12 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-clean-rooms/refs/heads/main/json-structure/clean-rooms-create-membership-response-structure.json",
+  "name": "CreateMembershipResponse",
+  "description": "Response for creating a membership.",
+  "type": "object",
+  "properties": {
+    "membership": {
+      "$ref": "#/components/schemas/Membership"
+    }
+  }
+}

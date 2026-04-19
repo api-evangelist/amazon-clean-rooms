@@ -1,0 +1,40 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-clean-rooms/refs/heads/main/json-schema/clean-rooms-protected-query-schema.json",
+  "title": "ProtectedQuery",
+  "description": "Represents a protected query executed within a Clean Rooms collaboration.",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "The unique ID of the protected query.",
+      "example": "query-abc12345"
+    },
+    "membershipId": {
+      "type": "string",
+      "description": "The ID of the membership."
+    },
+    "membershipArn": {
+      "type": "string",
+      "description": "The ARN of the membership."
+    },
+    "createTime": {
+      "type": "string",
+      "format": "date-time",
+      "description": "The time when the query was created."
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "SUBMITTED",
+        "STARTED",
+        "CANCELLED",
+        "CANCELLING",
+        "FAILED",
+        "SUCCESS",
+        "TIMED_OUT"
+      ],
+      "description": "The status of the protected query."
+    }
+  }
+}

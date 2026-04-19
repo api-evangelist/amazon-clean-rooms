@@ -1,0 +1,42 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-clean-rooms/refs/heads/main/json-structure/clean-rooms-create-configured-table-request-structure.json",
+  "name": "CreateConfiguredTableRequest",
+  "description": "Request body for creating a configured table.",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "The name of the configured table.",
+      "example": "Customer Segments Table"
+    },
+    "description": {
+      "type": "string",
+      "description": "A description for the configured table."
+    },
+    "tableReference": {
+      "type": "object",
+      "description": "A reference to the AWS Glue table being configured."
+    },
+    "allowedColumns": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "The columns of the underlying AWS Glue table that can be used by collaborators."
+    },
+    "analysisMethod": {
+      "type": "string",
+      "enum": [
+        "DIRECT_QUERY"
+      ],
+      "description": "The analysis method for the configured table."
+    }
+  },
+  "required": [
+    "name",
+    "tableReference",
+    "allowedColumns",
+    "analysisMethod"
+  ]
+}

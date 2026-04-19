@@ -1,0 +1,51 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-clean-rooms/refs/heads/main/json-schema/clean-rooms-create-collaboration-request-schema.json",
+  "title": "CreateCollaborationRequest",
+  "description": "Request body for creating a collaboration.",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "The display name for a collaboration.",
+      "example": "Marketing Analytics Collaboration"
+    },
+    "description": {
+      "type": "string",
+      "description": "A description of the collaboration."
+    },
+    "members": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      },
+      "description": "A list of initial members for the collaboration."
+    },
+    "creatorDisplayName": {
+      "type": "string",
+      "description": "The display name of the collaboration creator."
+    },
+    "creatorMemberAbilities": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "The abilities granted to the collaboration creator."
+    },
+    "queryLogStatus": {
+      "type": "string",
+      "enum": [
+        "ENABLED",
+        "DISABLED"
+      ],
+      "description": "An indicator as to whether query logging has been enabled or disabled."
+    }
+  },
+  "required": [
+    "name",
+    "members",
+    "creatorDisplayName",
+    "creatorMemberAbilities",
+    "queryLogStatus"
+  ]
+}

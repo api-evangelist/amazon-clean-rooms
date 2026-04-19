@@ -1,0 +1,7 @@
+{
+  "type": "SQL",
+  "sqlParameters": {
+    "queryString": "example-value"
+  },
+  "resultConfiguration": {}
+}

@@ -1,0 +1,20 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-clean-rooms/refs/heads/main/json-schema/clean-rooms-list-collaborations-response-schema.json",
+  "title": "ListCollaborationsResponse",
+  "description": "Response for listing collaborations.",
+  "type": "object",
+  "properties": {
+    "nextToken": {
+      "type": "string",
+      "description": "The token value retrieved from a previous paginated request."
+    },
+    "collaborationList": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/Collaboration"
+      },
+      "description": "The list of collaborations."
+    }
+  }
+}

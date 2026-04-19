@@ -1,0 +1,20 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-clean-rooms/refs/heads/main/json-structure/clean-rooms-list-memberships-response-structure.json",
+  "name": "ListMembershipsResponse",
+  "description": "Response for listing memberships.",
+  "type": "object",
+  "properties": {
+    "nextToken": {
+      "type": "string",
+      "description": "The token value retrieved from a previous paginated request."
+    },
+    "membershipList": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/Membership"
+      },
+      "description": "The list of memberships."
+    }
+  }
+}

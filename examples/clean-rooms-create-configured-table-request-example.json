@@ -1,0 +1,9 @@
+{
+  "name": "Example Collaboration",
+  "description": "example-value",
+  "tableReference": {},
+  "allowedColumns": [
+    "example-value"
+  ],
+  "analysisMethod": "DIRECT_QUERY"
+}

@@ -1,0 +1,177 @@
+vocabulary: "1.0.0"
+
+info:
+  provider: "Amazon Clean Rooms"
+  description: "Vocabulary and taxonomy for Amazon Clean Rooms APIs covering secure data collaboration, privacy-preserving analytics, configured tables, and protected query operations."
+  created: "2026-04-19"
+  modified: "2026-04-19"
+
+operational:
+  apis:
+    - name: Amazon Clean Rooms API
+      namespace: cleanrooms
+      version: "2022-02-17"
+      baseUrl: https://cleanrooms.us-east-1.amazonaws.com
+      status: active
+
+  resources:
+    - name: collaborations
+      description: "Secure multi-party collaboration workspaces"
+      api: cleanrooms
+      actions: [list, create, get, delete]
+    - name: memberships
+      description: "Member participation in collaboration workspaces"
+      api: cleanrooms
+      actions: [list, create]
+    - name: protected-queries
+      description: "Privacy-preserving analytical queries"
+      api: cleanrooms
+      actions: [list, start]
+    - name: configured-tables
+      description: "AWS Glue tables configured for Clean Rooms collaboration"
+      api: cleanrooms
+      actions: [list, create]
+
+  actions:
+    - name: list
+      description: "Retrieve a paginated list of resources"
+      httpMethod: GET
+      pattern: read
+    - name: create
+      description: "Create a new resource"
+      httpMethod: POST
+      pattern: write
+    - name: get
+      description: "Retrieve detailed metadata about a specific resource"
+      httpMethod: GET
+      pattern: read
+    - name: delete
+      description: "Permanently remove a resource"
+      httpMethod: DELETE
+      pattern: destructive
+    - name: start
+      description: "Initiate an asynchronous operation"
+      httpMethod: POST
+      pattern: write
+
+  schemas:
+    core:
+      - name: Collaboration
+        description: "Secure data collaboration workspace"
+        keyProperties: [id, arn, name, description, creatorAccountId, queryLogStatus]
+      - name: Membership
+        description: "Member participation in a collaboration"
+        keyProperties: [id, arn, collaborationId, status]
+      - name: ProtectedQuery
+        description: "Privacy-preserving analytical query"
+        keyProperties: [id, membershipId, status, createTime]
+      - name: ConfiguredTable
+        description: "AWS Glue table configured for collaboration"
+        keyProperties: [id, arn, name, analysisMethod]
+
+  parameters:
+    pagination:
+      - name: nextToken
+        description: "Pagination token for next page"
+        type: string
+      - name: maxResults
+        description: "Maximum number of results per page"
+        type: integer
+    identifiers:
+      - name: collaborationIdentifier
+        description: "Unique identifier for a collaboration"
+        type: string
+      - name: membershipIdentifier
+        description: "Unique identifier for a membership"
+        type: string
+    filters:
+      - name: memberStatus
+        description: "Filter collaborations by caller's status"
+        type: string
+      - name: status
+        description: "Filter resources by status"
+        type: string
+
+  enums:
+    queryLogStatus:
+      - ENABLED
+      - DISABLED
+    memberStatus:
+      - INVITED
+      - ACTIVE
+    membershipStatus:
+      - ACTIVE
+      - COLLABORATION_DELETED
+      - REMOVED
+    protectedQueryStatus:
+      - SUBMITTED
+      - STARTED
+      - CANCELLED
+      - CANCELLING
+      - FAILED
+      - SUCCESS
+      - TIMED_OUT
+    analysisMethod:
+      - DIRECT_QUERY
+
+  authentication:
+    schemes:
+      - type: AWS Signature Version 4
+        description: "AWS standard request signing"
+        apis: [cleanrooms]
+
+capability:
+  workflows:
+    - name: Secure Data Collaboration
+      file: capabilities/secure-data-collaboration.yaml
+      description: "End-to-end workflow for creating and operating secure multi-party data clean rooms"
+      apisConsumed: [cleanrooms]
+      toolCount: 9
+      personas:
+        - Data Analyst
+        - Marketing Analyst
+
+  personas:
+    - id: data-analyst
+      name: Data Analyst
+      description: "Analysts running collaborative queries across partner datasets without data exposure"
+      workflows: [Secure Data Collaboration]
+    - id: marketing-analyst
+      name: Marketing Analyst
+      description: "Marketing teams measuring campaign effectiveness across publisher and advertiser data"
+      workflows: [Secure Data Collaboration]
+
+  domains:
+    - name: Data Privacy
+      description: "Privacy-preserving multi-party data analytics"
+      resources: [collaborations, memberships, protected-queries, configured-tables]
+      workflows: [Secure Data Collaboration]
+
+  namespaces:
+    - name: cleanrooms
+      type: consumed
+      baseUri: https://cleanrooms.us-east-1.amazonaws.com
+    - name: secure-collaboration-api
+      type: rest-exposed
+      port: 8080
+    - name: secure-collaboration-mcp
+      type: mcp-exposed
+      port: 9090
+
+  binds:
+    - name: AWS_ACCESS_KEY_ID
+      description: "AWS access key ID"
+      workflows: [Secure Data Collaboration]
+    - name: AWS_SECRET_ACCESS_KEY
+      description: "AWS secret access key"
+      workflows: [Secure Data Collaboration]
+
+crossReference:
+  - resource: collaborations
+    operations: [ListCollaborations, CreateCollaboration, GetCollaboration, DeleteCollaboration]
+    workflows: [Secure Data Collaboration]
+    personas: [Data Analyst, Marketing Analyst]
+  - resource: protected-queries
+    operations: [ListProtectedQueries, StartProtectedQuery]
+    workflows: [Secure Data Collaboration]
+    personas: [Data Analyst, Marketing Analyst]

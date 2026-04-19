@@ -1,0 +1,34 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-clean-rooms/refs/heads/main/json-structure/clean-rooms-start-protected-query-request-structure.json",
+  "name": "StartProtectedQueryRequest",
+  "description": "Request body for starting a protected query.",
+  "type": "object",
+  "properties": {
+    "type": {
+      "type": "string",
+      "enum": [
+        "SQL"
+      ],
+      "description": "The type of the protected query."
+    },
+    "sqlParameters": {
+      "type": "object",
+      "description": "The parameters for the SQL type protected query.",
+      "properties": {
+        "queryString": {
+          "type": "string",
+          "description": "The query string to be submitted."
+        }
+      }
+    },
+    "resultConfiguration": {
+      "type": "object",
+      "description": "Contains configuration details for protected query results."
+    }
+  },
+  "required": [
+    "type",
+    "resultConfiguration"
+  ]
+}

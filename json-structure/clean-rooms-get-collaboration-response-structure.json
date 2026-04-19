@@ -1,0 +1,12 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-clean-rooms/refs/heads/main/json-structure/clean-rooms-get-collaboration-response-structure.json",
+  "name": "GetCollaborationResponse",
+  "description": "Response for getting a collaboration.",
+  "type": "object",
+  "properties": {
+    "collaboration": {
+      "$ref": "#/components/schemas/Collaboration"
+    }
+  }
+}

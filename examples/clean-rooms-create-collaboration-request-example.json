@@ -1,0 +1,12 @@
+{
+  "name": "Example Collaboration",
+  "description": "example-value",
+  "members": [
+    {}
+  ],
+  "creatorDisplayName": "Example Collaboration",
+  "creatorMemberAbilities": [
+    "example-value"
+  ],
+  "queryLogStatus": "ENABLED"
+}
