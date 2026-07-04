@@ -1,0 +1,336 @@
+# AWS Clean Rooms API Reference
+
+> Welcome to the AWS Clean Rooms API Reference.
+
+- [Welcome](https://docs.aws.amazon.com/clean-rooms/latest/apireference/Welcome.md)
+- [Common Parameters](https://docs.aws.amazon.com/clean-rooms/latest/apireference/CommonParameters.md)
+- [Common Error Types](https://docs.aws.amazon.com/clean-rooms/latest/apireference/CommonErrors.md)
+
+## [Actions](https://docs.aws.amazon.com/clean-rooms/latest/apireference/API_Operations.md)
+
+- [BatchGetCollaborationAnalysisTemplate](https://docs.aws.amazon.com/clean-rooms/latest/apireference/API_BatchGetCollaborationAnalysisTemplate.md): Retrieves multiple analysis templates within a collaboration by their Amazon Resource Names (ARNs).
+- [BatchGetSchema](https://docs.aws.amazon.com/clean-rooms/latest/apireference/API_BatchGetSchema.md): Retrieves multiple schemas by their identifiers.
+- [BatchGetSchemaAnalysisRule](https://docs.aws.amazon.com/clean-rooms/latest/apireference/API_BatchGetSchemaAnalysisRule.md): Retrieves multiple analysis rule schemas.
+- [CreateAnalysisTemplate](https://docs.aws.amazon.com/clean-rooms/latest/apireference/API_CreateAnalysisTemplate.md): Creates a new analysis template.
+- [CreateCollaboration](https://docs.aws.amazon.com/clean-rooms/latest/apireference/API_CreateCollaboration.md): Creates a new collaboration.
+- [CreateCollaborationChangeRequest](https://docs.aws.amazon.com/clean-rooms/latest/apireference/API_CreateCollaborationChangeRequest.md): Creates a new change request to modify an existing collaboration.
+- [CreateConfiguredAudienceModelAssociation](https://docs.aws.amazon.com/clean-rooms/latest/apireference/API_CreateConfiguredAudienceModelAssociation.md): Provides the details necessary to create a configured audience model association.
+- [CreateConfiguredTable](https://docs.aws.amazon.com/clean-rooms/latest/apireference/API_CreateConfiguredTable.md): Creates a new configured table resource.
+- [CreateConfiguredTableAnalysisRule](https://docs.aws.amazon.com/clean-rooms/latest/apireference/API_CreateConfiguredTableAnalysisRule.md): Creates a new analysis rule for a configured table.
+- [CreateConfiguredTableAssociation](https://docs.aws.amazon.com/clean-rooms/latest/apireference/API_CreateConfiguredTableAssociation.md): Creates a configured table association.
+- [CreateConfiguredTableAssociationAnalysisRule](https://docs.aws.amazon.com/clean-rooms/latest/apireference/API_CreateConfiguredTableAssociationAnalysisRule.md): Creates a new analysis rule for an associated configured table.
+- [CreateIdMappingTable](https://docs.aws.amazon.com/clean-rooms/latest/apireference/API_CreateIdMappingTable.md): Creates an ID mapping table.
+- [CreateIdNamespaceAssociation](https://docs.aws.amazon.com/clean-rooms/latest/apireference/API_CreateIdNamespaceAssociation.md): Creates an ID namespace association.
+- [CreateIntermediateTable](https://docs.aws.amazon.com/clean-rooms/latest/apireference/API_CreateIntermediateTable.md): Creates an intermediate table in a membership.
+- [CreateIntermediateTableAnalysisRule](https://docs.aws.amazon.com/clean-rooms/latest/apireference/API_CreateIntermediateTableAnalysisRule.md): Creates an analysis rule for an intermediate table.
+- [CreateMembership](https://docs.aws.amazon.com/clean-rooms/latest/apireference/API_CreateMembership.md): Creates a membership for a specific collaboration identifier and joins the collaboration.
+- [CreatePrivacyBudgetTemplate](https://docs.aws.amazon.com/clean-rooms/latest/apireference/API_CreatePrivacyBudgetTemplate.md): Creates a privacy budget template for a specified collaboration.
+- [DeleteAnalysisTemplate](https://docs.aws.amazon.com/clean-rooms/latest/apireference/API_DeleteAnalysisTemplate.md): Deletes an analysis template.
+- [DeleteCollaboration](https://docs.aws.amazon.com/clean-rooms/latest/apireference/API_DeleteCollaboration.md): Deletes a collaboration.
+- [DeleteConfiguredAudienceModelAssociation](https://docs.aws.amazon.com/clean-rooms/latest/apireference/API_DeleteConfiguredAudienceModelAssociation.md): Provides the information necessary to delete a configured audience model association.
+- [DeleteConfiguredTable](https://docs.aws.amazon.com/clean-rooms/latest/apireference/API_DeleteConfiguredTable.md): Deletes a configured table.
+- [DeleteConfiguredTableAnalysisRule](https://docs.aws.amazon.com/clean-rooms/latest/apireference/API_DeleteConfiguredTableAnalysisRule.md): Deletes a configured table analysis rule.
+- [DeleteConfiguredTableAssociation](https://docs.aws.amazon.com/clean-rooms/latest/apireference/API_DeleteConfiguredTableAssociation.md): Deletes a configured table association.
+- [DeleteConfiguredTableAssociationAnalysisRule](https://docs.aws.amazon.com/clean-rooms/latest/apireference/API_DeleteConfiguredTableAssociationAnalysisRule.md): Deletes an analysis rule for a configured table association.
+- [DeleteIdMappingTable](https://docs.aws.amazon.com/clean-rooms/latest/apireference/API_DeleteIdMappingTable.md): Deletes an ID mapping table.
+- [DeleteIdNamespaceAssociation](https://docs.aws.amazon.com/clean-rooms/latest/apireference/API_DeleteIdNamespaceAssociation.md): Deletes an ID namespace association.
+- [DeleteIntermediateTable](https://docs.aws.amazon.com/clean-rooms/latest/apireference/API_DeleteIntermediateTable.md): Deletes an intermediate table.
+- [DeleteIntermediateTableAnalysisRule](https://docs.aws.amazon.com/clean-rooms/latest/apireference/API_DeleteIntermediateTableAnalysisRule.md): Deletes an analysis rule from an intermediate table.
+- [DeleteMember](https://docs.aws.amazon.com/clean-rooms/latest/apireference/API_DeleteMember.md): Removes the specified member from a collaboration.
+- [DeleteMembership](https://docs.aws.amazon.com/clean-rooms/latest/apireference/API_DeleteMembership.md): Deletes a specified membership.
+- [DeletePrivacyBudgetTemplate](https://docs.aws.amazon.com/clean-rooms/latest/apireference/API_DeletePrivacyBudgetTemplate.md): Deletes a privacy budget template for a specified collaboration.
+- [DisallowIntermediateTable](https://docs.aws.amazon.com/clean-rooms/latest/apireference/API_DisallowIntermediateTable.md): Marks an intermediate table as invalid when it references the caller's base table.
+- [GetAnalysisTemplate](https://docs.aws.amazon.com/clean-rooms/latest/apireference/API_GetAnalysisTemplate.md): Retrieves an analysis template.
+- [GetCollaboration](https://docs.aws.amazon.com/clean-rooms/latest/apireference/API_GetCollaboration.md): Returns metadata about a collaboration.
+- [GetCollaborationAnalysisTemplate](https://docs.aws.amazon.com/clean-rooms/latest/apireference/API_GetCollaborationAnalysisTemplate.md): Retrieves an analysis template within a collaboration.
+- [GetCollaborationChangeRequest](https://docs.aws.amazon.com/clean-rooms/latest/apireference/API_GetCollaborationChangeRequest.md): Retrieves detailed information about a specific collaboration change request.
+- [GetCollaborationConfiguredAudienceModelAssociation](https://docs.aws.amazon.com/clean-rooms/latest/apireference/API_GetCollaborationConfiguredAudienceModelAssociation.md): Retrieves a configured audience model association within a collaboration.
+- [GetCollaborationIdNamespaceAssociation](https://docs.aws.amazon.com/clean-rooms/latest/apireference/API_GetCollaborationIdNamespaceAssociation.md): Retrieves an ID namespace association from a specific collaboration.
+- [GetCollaborationPrivacyBudgetTemplate](https://docs.aws.amazon.com/clean-rooms/latest/apireference/API_GetCollaborationPrivacyBudgetTemplate.md): Returns details about a specified privacy budget template.
+- [GetConfiguredAudienceModelAssociation](https://docs.aws.amazon.com/clean-rooms/latest/apireference/API_GetConfiguredAudienceModelAssociation.md): Returns information about a configured audience model association.
+- [GetConfiguredTable](https://docs.aws.amazon.com/clean-rooms/latest/apireference/API_GetConfiguredTable.md): Retrieves a configured table.
+- [GetConfiguredTableAnalysisRule](https://docs.aws.amazon.com/clean-rooms/latest/apireference/API_GetConfiguredTableAnalysisRule.md): Retrieves a configured table analysis rule.
+- [GetConfiguredTableAssociation](https://docs.aws.amazon.com/clean-rooms/latest/apireference/API_GetConfiguredTableAssociation.md): Retrieves a configured table association.
+- [GetConfiguredTableAssociationAnalysisRule](https://docs.aws.amazon.com/clean-rooms/latest/apireference/API_GetConfiguredTableAssociationAnalysisRule.md): Retrieves the analysis rule for a configured table association.
+- [GetIdMappingTable](https://docs.aws.amazon.com/clean-rooms/latest/apireference/API_GetIdMappingTable.md): Retrieves an ID mapping table.
+- [GetIdNamespaceAssociation](https://docs.aws.amazon.com/clean-rooms/latest/apireference/API_GetIdNamespaceAssociation.md): Retrieves an ID namespace association.
+- [GetIntermediateTable](https://docs.aws.amazon.com/clean-rooms/latest/apireference/API_GetIntermediateTable.md): Retrieves an intermediate table.
+- [GetIntermediateTableAnalysisRule](https://docs.aws.amazon.com/clean-rooms/latest/apireference/API_GetIntermediateTableAnalysisRule.md): Retrieves the analysis rule for an intermediate table.
+- [GetMembership](https://docs.aws.amazon.com/clean-rooms/latest/apireference/API_GetMembership.md): Retrieves a specified membership for an identifier.
+- [GetPrivacyBudgetTemplate](https://docs.aws.amazon.com/clean-rooms/latest/apireference/API_GetPrivacyBudgetTemplate.md): Returns details for a specified privacy budget template.
+- [GetProtectedJob](https://docs.aws.amazon.com/clean-rooms/latest/apireference/API_GetProtectedJob.md): Returns job processing metadata.
+- [GetProtectedQuery](https://docs.aws.amazon.com/clean-rooms/latest/apireference/API_GetProtectedQuery.md): Returns query processing metadata.
+- [GetSchema](https://docs.aws.amazon.com/clean-rooms/latest/apireference/API_GetSchema.md): Retrieves the schema for a relation within a collaboration.
+- [GetSchemaAnalysisRule](https://docs.aws.amazon.com/clean-rooms/latest/apireference/API_GetSchemaAnalysisRule.md): Retrieves a schema analysis rule.
+- [ListAnalysisTemplates](https://docs.aws.amazon.com/clean-rooms/latest/apireference/API_ListAnalysisTemplates.md): Lists analysis templates that the caller owns.
+- [ListCollaborationAnalysisTemplates](https://docs.aws.amazon.com/clean-rooms/latest/apireference/API_ListCollaborationAnalysisTemplates.md): Lists analysis templates within a collaboration.
+- [ListCollaborationChangeRequests](https://docs.aws.amazon.com/clean-rooms/latest/apireference/API_ListCollaborationChangeRequests.md): Lists all change requests for a collaboration with pagination support.
+- [ListCollaborationConfiguredAudienceModelAssociations](https://docs.aws.amazon.com/clean-rooms/latest/apireference/API_ListCollaborationConfiguredAudienceModelAssociations.md): Lists configured audience model associations within a collaboration.
+- [ListCollaborationIdNamespaceAssociations](https://docs.aws.amazon.com/clean-rooms/latest/apireference/API_ListCollaborationIdNamespaceAssociations.md): Returns a list of the ID namespace associations in a collaboration.
+- [ListCollaborationPrivacyBudgets](https://docs.aws.amazon.com/clean-rooms/latest/apireference/API_ListCollaborationPrivacyBudgets.md): Returns an array that summarizes each privacy budget in a specified collaboration.
+- [ListCollaborationPrivacyBudgetTemplates](https://docs.aws.amazon.com/clean-rooms/latest/apireference/API_ListCollaborationPrivacyBudgetTemplates.md): Returns an array that summarizes each privacy budget template in a specified collaboration.
+- [ListCollaborations](https://docs.aws.amazon.com/clean-rooms/latest/apireference/API_ListCollaborations.md): Lists collaborations the caller owns, is active in, or has been invited to.
+- [ListConfiguredAudienceModelAssociations](https://docs.aws.amazon.com/clean-rooms/latest/apireference/API_ListConfiguredAudienceModelAssociations.md): Lists information about requested configured audience model associations.
+- [ListConfiguredTableAssociations](https://docs.aws.amazon.com/clean-rooms/latest/apireference/API_ListConfiguredTableAssociations.md): Lists configured table associations for a membership.
+- [ListConfiguredTables](https://docs.aws.amazon.com/clean-rooms/latest/apireference/API_ListConfiguredTables.md): Lists configured tables.
+- [ListIdMappingTables](https://docs.aws.amazon.com/clean-rooms/latest/apireference/API_ListIdMappingTables.md): Returns a list of ID mapping tables.
+- [ListIdNamespaceAssociations](https://docs.aws.amazon.com/clean-rooms/latest/apireference/API_ListIdNamespaceAssociations.md): Returns a list of ID namespace associations.
+- [ListIntermediateTables](https://docs.aws.amazon.com/clean-rooms/latest/apireference/API_ListIntermediateTables.md): Lists intermediate tables owned by the caller in a membership.
+- [ListIntermediateTableVersions](https://docs.aws.amazon.com/clean-rooms/latest/apireference/API_ListIntermediateTableVersions.md): Lists the version history of an intermediate table.
+- [ListMembers](https://docs.aws.amazon.com/clean-rooms/latest/apireference/API_ListMembers.md): Lists all members within a collaboration.
+- [ListMemberships](https://docs.aws.amazon.com/clean-rooms/latest/apireference/API_ListMemberships.md): Lists all memberships resources within the caller's account.
+- [ListPrivacyBudgets](https://docs.aws.amazon.com/clean-rooms/latest/apireference/API_ListPrivacyBudgets.md): Returns detailed information about the privacy budgets in a specified membership.
+- [ListPrivacyBudgetTemplates](https://docs.aws.amazon.com/clean-rooms/latest/apireference/API_ListPrivacyBudgetTemplates.md): Returns detailed information about the privacy budget templates in a specified membership.
+- [ListProtectedJobs](https://docs.aws.amazon.com/clean-rooms/latest/apireference/API_ListProtectedJobs.md): Lists protected jobs, sorted by most recent job.
+- [ListProtectedQueries](https://docs.aws.amazon.com/clean-rooms/latest/apireference/API_ListProtectedQueries.md): Lists protected queries, sorted by the most recent query.
+- [ListSchemas](https://docs.aws.amazon.com/clean-rooms/latest/apireference/API_ListSchemas.md): Lists the schemas for relations within a collaboration.
+- [ListTagsForResource](https://docs.aws.amazon.com/clean-rooms/latest/apireference/API_ListTagsForResource.md): Lists all of the tags that have been added to a resource.
+- [PopulateIdMappingTable](https://docs.aws.amazon.com/clean-rooms/latest/apireference/API_PopulateIdMappingTable.md): Defines the information that's necessary to populate an ID mapping table.
+- [PopulateIntermediateTable](https://docs.aws.amazon.com/clean-rooms/latest/apireference/API_PopulateIntermediateTable.md): Runs the stored query of an intermediate table and makes the results available for querying.
+- [PreviewPrivacyImpact](https://docs.aws.amazon.com/clean-rooms/latest/apireference/API_PreviewPrivacyImpact.md): An estimate of the number of aggregation functions that the member who can query can run given epsilon and noise parameters.
+- [StartProtectedJob](https://docs.aws.amazon.com/clean-rooms/latest/apireference/API_StartProtectedJob.md): Creates a protected job that is started by AWS Clean Rooms.
+- [StartProtectedQuery](https://docs.aws.amazon.com/clean-rooms/latest/apireference/API_StartProtectedQuery.md): Creates a protected query that is started by AWS Clean Rooms.
+- [TagResource](https://docs.aws.amazon.com/clean-rooms/latest/apireference/API_TagResource.md): Tags a resource.
+- [UntagResource](https://docs.aws.amazon.com/clean-rooms/latest/apireference/API_UntagResource.md): Removes a tag or list of tags from a resource.
+- [UpdateAnalysisTemplate](https://docs.aws.amazon.com/clean-rooms/latest/apireference/API_UpdateAnalysisTemplate.md): Updates the analysis template metadata.
+- [UpdateCollaboration](https://docs.aws.amazon.com/clean-rooms/latest/apireference/API_UpdateCollaboration.md): Updates collaboration metadata and can only be called by the collaboration owner.
+- [UpdateCollaborationChangeRequest](https://docs.aws.amazon.com/clean-rooms/latest/apireference/API_UpdateCollaborationChangeRequest.md): Updates an existing collaboration change request.
+- [UpdateConfiguredAudienceModelAssociation](https://docs.aws.amazon.com/clean-rooms/latest/apireference/API_UpdateConfiguredAudienceModelAssociation.md): Provides the details necessary to update a configured audience model association.
+- [UpdateConfiguredTable](https://docs.aws.amazon.com/clean-rooms/latest/apireference/API_UpdateConfiguredTable.md): Updates a configured table.
+- [UpdateConfiguredTableAnalysisRule](https://docs.aws.amazon.com/clean-rooms/latest/apireference/API_UpdateConfiguredTableAnalysisRule.md): Updates a configured table analysis rule.
+- [UpdateConfiguredTableAssociation](https://docs.aws.amazon.com/clean-rooms/latest/apireference/API_UpdateConfiguredTableAssociation.md): Updates a configured table association.
+- [UpdateConfiguredTableAssociationAnalysisRule](https://docs.aws.amazon.com/clean-rooms/latest/apireference/API_UpdateConfiguredTableAssociationAnalysisRule.md): Updates the analysis rule for a configured table association.
+- [UpdateIdMappingTable](https://docs.aws.amazon.com/clean-rooms/latest/apireference/API_UpdateIdMappingTable.md): Provides the details that are necessary to update an ID mapping table.
+- [UpdateIdNamespaceAssociation](https://docs.aws.amazon.com/clean-rooms/latest/apireference/API_UpdateIdNamespaceAssociation.md): Provides the details that are necessary to update an ID namespace association.
+- [UpdateIntermediateTable](https://docs.aws.amazon.com/clean-rooms/latest/apireference/API_UpdateIntermediateTable.md): Updates an intermediate table.
+- [UpdateIntermediateTableAnalysisRule](https://docs.aws.amazon.com/clean-rooms/latest/apireference/API_UpdateIntermediateTableAnalysisRule.md): Updates the analysis rule policy for an intermediate table.
+- [UpdateMembership](https://docs.aws.amazon.com/clean-rooms/latest/apireference/API_UpdateMembership.md): Updates a membership.
+- [UpdatePrivacyBudgetTemplate](https://docs.aws.amazon.com/clean-rooms/latest/apireference/API_UpdatePrivacyBudgetTemplate.md): Updates the privacy budget template for the specified collaboration.
+- [UpdateProtectedJob](https://docs.aws.amazon.com/clean-rooms/latest/apireference/API_UpdateProtectedJob.md): Updates the processing of a currently running job.
+- [UpdateProtectedQuery](https://docs.aws.amazon.com/clean-rooms/latest/apireference/API_UpdateProtectedQuery.md): Updates the processing of a currently running query.
+
+
+## [Data Types](https://docs.aws.amazon.com/clean-rooms/latest/apireference/API_Types.md)
+
+- [AccessBudget](https://docs.aws.amazon.com/clean-rooms/latest/apireference/API_AccessBudget.md): Controls and tracks usage limits for associated configured tables within a collaboration across queries and job.
+- [AccessBudgetDetails](https://docs.aws.amazon.com/clean-rooms/latest/apireference/API_AccessBudgetDetails.md): Detailed information about an access budget including time bounds, budget allocation, and configuration settings.
+- [AccessBudgetsPrivacyTemplateParametersInput](https://docs.aws.amazon.com/clean-rooms/latest/apireference/API_AccessBudgetsPrivacyTemplateParametersInput.md): Input parameters for privacy budget templates that support access budgets functionality, enabling enhanced budget management capabilities.
+- [AccessBudgetsPrivacyTemplateParametersOutput](https://docs.aws.amazon.com/clean-rooms/latest/apireference/API_AccessBudgetsPrivacyTemplateParametersOutput.md): Output parameters for privacy budget templates with access budgets support, containing the configured budget information.
+- [AccessBudgetsPrivacyTemplateUpdateParameters](https://docs.aws.amazon.com/clean-rooms/latest/apireference/API_AccessBudgetsPrivacyTemplateUpdateParameters.md): Update parameters for privacy budget templates with access budgets functionality, allowing modification of existing budget configurations.
+- [AggregateColumn](https://docs.aws.amazon.com/clean-rooms/latest/apireference/API_AggregateColumn.md): Column in configured table that can be used in aggregate function in query.
+- [AggregationConstraint](https://docs.aws.amazon.com/clean-rooms/latest/apireference/API_AggregationConstraint.md): Constraint on query output removing output rows that do not meet a minimum number of distinct values of a specified column.
+- [AnalysisParameter](https://docs.aws.amazon.com/clean-rooms/latest/apireference/API_AnalysisParameter.md): Optional.
+- [AnalysisRule](https://docs.aws.amazon.com/clean-rooms/latest/apireference/API_AnalysisRule.md): A specification about how data from the configured table can be used in a query.
+- [AnalysisRuleAggregation](https://docs.aws.amazon.com/clean-rooms/latest/apireference/API_AnalysisRuleAggregation.md): A type of analysis rule that enables query structure and specified queries that produce aggregate statistics.
+- [AnalysisRuleCustom](https://docs.aws.amazon.com/clean-rooms/latest/apireference/API_AnalysisRuleCustom.md): A type of analysis rule that enables the table owner to approve custom SQL queries on their configured tables.
+- [AnalysisRuleIdMappingTable](https://docs.aws.amazon.com/clean-rooms/latest/apireference/API_AnalysisRuleIdMappingTable.md): Defines details for the analysis rule ID mapping table.
+- [AnalysisRuleList](https://docs.aws.amazon.com/clean-rooms/latest/apireference/API_AnalysisRuleList.md): A type of analysis rule that enables row-level analysis.
+- [AnalysisRulePolicy](https://docs.aws.amazon.com/clean-rooms/latest/apireference/API_AnalysisRulePolicy.md): Controls on the query specifications that can be run on configured table.
+- [AnalysisRulePolicyV1](https://docs.aws.amazon.com/clean-rooms/latest/apireference/API_AnalysisRulePolicyV1.md): Controls on the query specifications that can be run on configured table.
+- [AnalysisSchema](https://docs.aws.amazon.com/clean-rooms/latest/apireference/API_AnalysisSchema.md): A relation within an analysis.
+- [AnalysisSource](https://docs.aws.amazon.com/clean-rooms/latest/apireference/API_AnalysisSource.md): The structure that defines the body of the analysis template.
+- [AnalysisSourceMetadata](https://docs.aws.amazon.com/clean-rooms/latest/apireference/API_AnalysisSourceMetadata.md): The analysis source metadata.
+- [AnalysisTemplate](https://docs.aws.amazon.com/clean-rooms/latest/apireference/API_AnalysisTemplate.md): The analysis template.
+- [AnalysisTemplateArtifact](https://docs.aws.amazon.com/clean-rooms/latest/apireference/API_AnalysisTemplateArtifact.md): The analysis template artifact.
+- [AnalysisTemplateArtifactMetadata](https://docs.aws.amazon.com/clean-rooms/latest/apireference/API_AnalysisTemplateArtifactMetadata.md): The analysis template artifact metadata.
+- [AnalysisTemplateArtifacts](https://docs.aws.amazon.com/clean-rooms/latest/apireference/API_AnalysisTemplateArtifacts.md): The analysis template artifacts.
+- [AnalysisTemplateSummary](https://docs.aws.amazon.com/clean-rooms/latest/apireference/API_AnalysisTemplateSummary.md): The metadata of the analysis template.
+- [AnalysisTemplateValidationStatusDetail](https://docs.aws.amazon.com/clean-rooms/latest/apireference/API_AnalysisTemplateValidationStatusDetail.md): The status details of the analysis template validation.
+- [AnalysisTemplateValidationStatusReason](https://docs.aws.amazon.com/clean-rooms/latest/apireference/API_AnalysisTemplateValidationStatusReason.md): The reasons for the validation results.
+- [ApprovalStatusDetails](https://docs.aws.amazon.com/clean-rooms/latest/apireference/API_ApprovalStatusDetails.md): Contains detailed information about the approval state of a given member in the collaboration for a given collaboration change request.
+- [AthenaTableReference](https://docs.aws.amazon.com/clean-rooms/latest/apireference/API_AthenaTableReference.md): A reference to a table within Athena.
+- [BatchGetCollaborationAnalysisTemplateError](https://docs.aws.amazon.com/clean-rooms/latest/apireference/API_BatchGetCollaborationAnalysisTemplateError.md): Details of errors thrown by the call to retrieve multiple analysis templates within a collaboration by their identifiers.
+- [BatchGetSchemaAnalysisRuleError](https://docs.aws.amazon.com/clean-rooms/latest/apireference/API_BatchGetSchemaAnalysisRuleError.md): An error that describes why a schema could not be fetched.
+- [BatchGetSchemaError](https://docs.aws.amazon.com/clean-rooms/latest/apireference/API_BatchGetSchemaError.md): An error describing why a schema could not be fetched.
+- [BilledJobResourceUtilization](https://docs.aws.amazon.com/clean-rooms/latest/apireference/API_BilledJobResourceUtilization.md): Information related to the utilization of resources that have been billed or charged for in a given context, such as a protected job.
+- [BilledResourceUtilization](https://docs.aws.amazon.com/clean-rooms/latest/apireference/API_BilledResourceUtilization.md): Information related to the utilization of resources that have been billed or charged for in a given context, such as a protected query.
+- [BudgetParameter](https://docs.aws.amazon.com/clean-rooms/latest/apireference/API_BudgetParameter.md): Individual budget parameter configuration that defines specific budget allocation settings for access budgets.
+- [Change](https://docs.aws.amazon.com/clean-rooms/latest/apireference/API_Change.md): Represents a single change within a collaboration change request, containing the change identifier and specification.
+- [ChangeInput](https://docs.aws.amazon.com/clean-rooms/latest/apireference/API_ChangeInput.md): Specifies a change to apply to a collaboration.
+- [ChangeSpecification](https://docs.aws.amazon.com/clean-rooms/latest/apireference/API_ChangeSpecification.md): A union that contains the specification details for different types of changes.
+- [ChildResource](https://docs.aws.amazon.com/clean-rooms/latest/apireference/API_ChildResource.md): Contains information about a child resource of a given resource in a collaboration.
+- [Collaboration](https://docs.aws.amazon.com/clean-rooms/latest/apireference/API_Collaboration.md): The multi-party data share environment.
+- [CollaborationAnalysisTemplate](https://docs.aws.amazon.com/clean-rooms/latest/apireference/API_CollaborationAnalysisTemplate.md): The analysis template within a collaboration.
+- [CollaborationAnalysisTemplateSummary](https://docs.aws.amazon.com/clean-rooms/latest/apireference/API_CollaborationAnalysisTemplateSummary.md): The metadata of the analysis template within a collaboration.
+- [CollaborationChangeRequest](https://docs.aws.amazon.com/clean-rooms/latest/apireference/API_CollaborationChangeRequest.md): Represents a request to modify a collaboration.
+- [CollaborationChangeRequestSummary](https://docs.aws.amazon.com/clean-rooms/latest/apireference/API_CollaborationChangeRequestSummary.md): Summary information about a collaboration change request.
+- [CollaborationChangeSpecification](https://docs.aws.amazon.com/clean-rooms/latest/apireference/API_CollaborationChangeSpecification.md): Defines the specific changes being requested for a collaboration, including configuration modifications and approval requirements.
+- [CollaborationConfiguredAudienceModelAssociation](https://docs.aws.amazon.com/clean-rooms/latest/apireference/API_CollaborationConfiguredAudienceModelAssociation.md): The configured audience model association within a collaboration.
+- [CollaborationConfiguredAudienceModelAssociationSummary](https://docs.aws.amazon.com/clean-rooms/latest/apireference/API_CollaborationConfiguredAudienceModelAssociationSummary.md): A summary of the configured audience model association in the collaboration.
+- [CollaborationIdNamespaceAssociation](https://docs.aws.amazon.com/clean-rooms/latest/apireference/API_CollaborationIdNamespaceAssociation.md): Defines details for the collaboration ID namespace association.
+- [CollaborationIdNamespaceAssociationSummary](https://docs.aws.amazon.com/clean-rooms/latest/apireference/API_CollaborationIdNamespaceAssociationSummary.md): Provides summary information about the collaboration ID namespace association.
+- [CollaborationPrivacyBudgetSummary](https://docs.aws.amazon.com/clean-rooms/latest/apireference/API_CollaborationPrivacyBudgetSummary.md): A summary of the collaboration privacy budgets.
+- [CollaborationPrivacyBudgetTemplate](https://docs.aws.amazon.com/clean-rooms/latest/apireference/API_CollaborationPrivacyBudgetTemplate.md): An array that specifies the information for a collaboration's privacy budget template.
+- [CollaborationPrivacyBudgetTemplateSummary](https://docs.aws.amazon.com/clean-rooms/latest/apireference/API_CollaborationPrivacyBudgetTemplateSummary.md): A summary of the collaboration's privacy budget template.
+- [CollaborationSummary](https://docs.aws.amazon.com/clean-rooms/latest/apireference/API_CollaborationSummary.md): The metadata of the collaboration.
+- [Column](https://docs.aws.amazon.com/clean-rooms/latest/apireference/API_Column.md): A column within a schema relation, derived from the underlying table.
+- [ColumnClassificationDetails](https://docs.aws.amazon.com/clean-rooms/latest/apireference/API_ColumnClassificationDetails.md): Contains classification information for data columns, including mappings that specify how columns should be handled during synthetic data generation and privacy analysis.
+- [ColumnLineageEntry](https://docs.aws.amazon.com/clean-rooms/latest/apireference/API_ColumnLineageEntry.md): Contains column lineage information that traces a disallowed output column back to its source in a base table.
+- [ComputeConfiguration](https://docs.aws.amazon.com/clean-rooms/latest/apireference/API_ComputeConfiguration.md): The configuration of the compute resources for an analysis with the Spark analytics engine.
+- [ConfigurationDetails](https://docs.aws.amazon.com/clean-rooms/latest/apireference/API_ConfigurationDetails.md): The configuration details.
+- [ConfiguredAudienceModelAssociation](https://docs.aws.amazon.com/clean-rooms/latest/apireference/API_ConfiguredAudienceModelAssociation.md): Details about the configured audience model association.
+- [ConfiguredAudienceModelAssociationSummary](https://docs.aws.amazon.com/clean-rooms/latest/apireference/API_ConfiguredAudienceModelAssociationSummary.md): A summary of the configured audience model association.
+- [ConfiguredTable](https://docs.aws.amazon.com/clean-rooms/latest/apireference/API_ConfiguredTable.md): A table that has been configured for use in a collaboration.
+- [ConfiguredTableAnalysisRule](https://docs.aws.amazon.com/clean-rooms/latest/apireference/API_ConfiguredTableAnalysisRule.md): A configured table analysis rule, which limits how data for this table can be used.
+- [ConfiguredTableAnalysisRulePolicy](https://docs.aws.amazon.com/clean-rooms/latest/apireference/API_ConfiguredTableAnalysisRulePolicy.md): Controls on the query specifications that can be run on a configured table.
+- [ConfiguredTableAnalysisRulePolicyV1](https://docs.aws.amazon.com/clean-rooms/latest/apireference/API_ConfiguredTableAnalysisRulePolicyV1.md): Controls on the query specifications that can be run on a configured table.
+- [ConfiguredTableAssociation](https://docs.aws.amazon.com/clean-rooms/latest/apireference/API_ConfiguredTableAssociation.md): A configured table association links a configured table to a collaboration.
+- [ConfiguredTableAssociationAnalysisRule](https://docs.aws.amazon.com/clean-rooms/latest/apireference/API_ConfiguredTableAssociationAnalysisRule.md): An analysis rule for a configured table association.
+- [ConfiguredTableAssociationAnalysisRuleAggregation](https://docs.aws.amazon.com/clean-rooms/latest/apireference/API_ConfiguredTableAssociationAnalysisRuleAggregation.md): The configured table association analysis rule applied to a configured table with the aggregation analysis rule.
+- [ConfiguredTableAssociationAnalysisRuleCustom](https://docs.aws.amazon.com/clean-rooms/latest/apireference/API_ConfiguredTableAssociationAnalysisRuleCustom.md): The configured table association analysis rule applied to a configured table with the custom analysis rule.
+- [ConfiguredTableAssociationAnalysisRuleList](https://docs.aws.amazon.com/clean-rooms/latest/apireference/API_ConfiguredTableAssociationAnalysisRuleList.md): The configured table association analysis rule applied to a configured table with the list analysis rule.
+- [ConfiguredTableAssociationAnalysisRulePolicy](https://docs.aws.amazon.com/clean-rooms/latest/apireference/API_ConfiguredTableAssociationAnalysisRulePolicy.md): Controls on the query specifications that can be run on an associated configured table.
+- [ConfiguredTableAssociationAnalysisRulePolicyV1](https://docs.aws.amazon.com/clean-rooms/latest/apireference/API_ConfiguredTableAssociationAnalysisRulePolicyV1.md): Controls on the query specifications that can be run on an associated configured table.
+- [ConfiguredTableAssociationSchemaTypeProperties](https://docs.aws.amazon.com/clean-rooms/latest/apireference/API_ConfiguredTableAssociationSchemaTypeProperties.md): Contains the schema type properties for a configured table association.
+- [ConfiguredTableAssociationSummary](https://docs.aws.amazon.com/clean-rooms/latest/apireference/API_ConfiguredTableAssociationSummary.md): The configured table association summary for the objects listed by the request.
+- [ConfiguredTableSummary](https://docs.aws.amazon.com/clean-rooms/latest/apireference/API_ConfiguredTableSummary.md): The configured table summary for the objects listed by the request.
+- [ConsolidatedPolicy](https://docs.aws.amazon.com/clean-rooms/latest/apireference/API_ConsolidatedPolicy.md): Controls on the analysis specifications that can be run on a configured table.
+- [ConsolidatedPolicyAggregation](https://docs.aws.amazon.com/clean-rooms/latest/apireference/API_ConsolidatedPolicyAggregation.md): Controls on the analysis specifications that can be run on a configured table.
+- [ConsolidatedPolicyCustom](https://docs.aws.amazon.com/clean-rooms/latest/apireference/API_ConsolidatedPolicyCustom.md): Controls on the analysis specifications that can be run on a configured table.
+- [ConsolidatedPolicyList](https://docs.aws.amazon.com/clean-rooms/latest/apireference/API_ConsolidatedPolicyList.md): Controls on the analysis specifications that can be run on a configured table.
+- [ConsolidatedPolicyV1](https://docs.aws.amazon.com/clean-rooms/latest/apireference/API_ConsolidatedPolicyV1.md): Controls on the analysis specifications that can be run on a configured table.
+- [DataEncryptionMetadata](https://docs.aws.amazon.com/clean-rooms/latest/apireference/API_DataEncryptionMetadata.md): The settings for client-side encryption for cryptographic computing.
+- [DifferentialPrivacyColumn](https://docs.aws.amazon.com/clean-rooms/latest/apireference/API_DifferentialPrivacyColumn.md): Specifies the name of the column that contains the unique identifier of your users, whose privacy you want to protect.
+- [DifferentialPrivacyConfiguration](https://docs.aws.amazon.com/clean-rooms/latest/apireference/API_DifferentialPrivacyConfiguration.md): Specifies the unique identifier for your users.
+- [DifferentialPrivacyParameters](https://docs.aws.amazon.com/clean-rooms/latest/apireference/API_DifferentialPrivacyParameters.md): An array that contains the sensitivity parameters.
+- [DifferentialPrivacyPreviewAggregation](https://docs.aws.amazon.com/clean-rooms/latest/apireference/API_DifferentialPrivacyPreviewAggregation.md): Provides an estimate of the number of aggregation functions that the member who can query can run given the epsilon and noise parameters.
+- [DifferentialPrivacyPreviewParametersInput](https://docs.aws.amazon.com/clean-rooms/latest/apireference/API_DifferentialPrivacyPreviewParametersInput.md): The epsilon and noise parameters that you want to preview.
+- [DifferentialPrivacyPrivacyBudget](https://docs.aws.amazon.com/clean-rooms/latest/apireference/API_DifferentialPrivacyPrivacyBudget.md): Specifies the configured epsilon value and the utility in terms of total aggregations, as well as the remaining aggregations available.
+- [DifferentialPrivacyPrivacyBudgetAggregation](https://docs.aws.amazon.com/clean-rooms/latest/apireference/API_DifferentialPrivacyPrivacyBudgetAggregation.md): Information about the total number of aggregations, as well as the remaining aggregations.
+- [DifferentialPrivacyPrivacyImpact](https://docs.aws.amazon.com/clean-rooms/latest/apireference/API_DifferentialPrivacyPrivacyImpact.md): Information about the number of aggregation functions that the member who can query can run given the epsilon and noise parameters.
+- [DifferentialPrivacySensitivityParameters](https://docs.aws.amazon.com/clean-rooms/latest/apireference/API_DifferentialPrivacySensitivityParameters.md): Provides the sensitivity parameters.
+- [DifferentialPrivacyTemplateParametersInput](https://docs.aws.amazon.com/clean-rooms/latest/apireference/API_DifferentialPrivacyTemplateParametersInput.md): The epsilon and noise parameter values that you want to use for the differential privacy template.
+- [DifferentialPrivacyTemplateParametersOutput](https://docs.aws.amazon.com/clean-rooms/latest/apireference/API_DifferentialPrivacyTemplateParametersOutput.md): The epsilon and noise parameter values that were used for the differential privacy template.
+- [DifferentialPrivacyTemplateUpdateParameters](https://docs.aws.amazon.com/clean-rooms/latest/apireference/API_DifferentialPrivacyTemplateUpdateParameters.md): The epsilon and noise parameter values that you want to update in the differential privacy template.
+- [DirectAnalysisConfigurationDetails](https://docs.aws.amazon.com/clean-rooms/latest/apireference/API_DirectAnalysisConfigurationDetails.md): The direct analysis configuration details.
+- [ErrorMessageConfiguration](https://docs.aws.amazon.com/clean-rooms/latest/apireference/API_ErrorMessageConfiguration.md): A structure that defines the level of detail included in error messages returned by PySpark jobs.
+- [GlueTableReference](https://docs.aws.amazon.com/clean-rooms/latest/apireference/API_GlueTableReference.md): A reference to a table within an AWS Glue data catalog.
+- [Hash](https://docs.aws.amazon.com/clean-rooms/latest/apireference/API_Hash.md): Hash
+- [IdMappingConfig](https://docs.aws.amazon.com/clean-rooms/latest/apireference/API_IdMappingConfig.md): The configuration settings for the ID mapping table.
+- [IdMappingTable](https://docs.aws.amazon.com/clean-rooms/latest/apireference/API_IdMappingTable.md): Describes information about the ID mapping table.
+- [IdMappingTableInputReferenceConfig](https://docs.aws.amazon.com/clean-rooms/latest/apireference/API_IdMappingTableInputReferenceConfig.md): Provides the input reference configuration for the ID mapping table.
+- [IdMappingTableInputReferenceProperties](https://docs.aws.amazon.com/clean-rooms/latest/apireference/API_IdMappingTableInputReferenceProperties.md): The input reference properties for the ID mapping table.
+- [IdMappingTableInputSource](https://docs.aws.amazon.com/clean-rooms/latest/apireference/API_IdMappingTableInputSource.md): The input source of the ID mapping table.
+- [IdMappingTableSchemaTypeProperties](https://docs.aws.amazon.com/clean-rooms/latest/apireference/API_IdMappingTableSchemaTypeProperties.md): Additional properties that are specific to the type of the associated schema.
+- [IdMappingTableSummary](https://docs.aws.amazon.com/clean-rooms/latest/apireference/API_IdMappingTableSummary.md): Detailed information about the ID mapping table.
+- [IdNamespaceAssociation](https://docs.aws.amazon.com/clean-rooms/latest/apireference/API_IdNamespaceAssociation.md): Provides information to create the ID namespace association.
+- [IdNamespaceAssociationInputReferenceConfig](https://docs.aws.amazon.com/clean-rooms/latest/apireference/API_IdNamespaceAssociationInputReferenceConfig.md): Provides the information for the ID namespace association input reference configuration.
+- [IdNamespaceAssociationInputReferenceProperties](https://docs.aws.amazon.com/clean-rooms/latest/apireference/API_IdNamespaceAssociationInputReferenceProperties.md): Provides the information for the ID namespace association input reference properties.
+- [IdNamespaceAssociationInputReferencePropertiesSummary](https://docs.aws.amazon.com/clean-rooms/latest/apireference/API_IdNamespaceAssociationInputReferencePropertiesSummary.md): Detailed information about the ID namespace association input reference properties.
+- [IdNamespaceAssociationSummary](https://docs.aws.amazon.com/clean-rooms/latest/apireference/API_IdNamespaceAssociationSummary.md): Detailed information about the ID namespace association.
+- [InheritedAdditionalAnalyses](https://docs.aws.amazon.com/clean-rooms/latest/apireference/API_InheritedAdditionalAnalyses.md): Contains the inherited additional analyses constraint and its sources from parent tables.
+- [InheritedAdditionalAnalysesSource](https://docs.aws.amazon.com/clean-rooms/latest/apireference/API_InheritedAdditionalAnalysesSource.md): Contains information about a parent table that contributes an additional analyses constraint.
+- [InheritedAllowedAdditionalAnalyses](https://docs.aws.amazon.com/clean-rooms/latest/apireference/API_InheritedAllowedAdditionalAnalyses.md): Contains the inherited allowed additional analyses constraint and its sources from parent tables.
+- [InheritedAllowedAdditionalAnalysesSource](https://docs.aws.amazon.com/clean-rooms/latest/apireference/API_InheritedAllowedAdditionalAnalysesSource.md): Contains information about a parent table that contributes an allowed additional analyses constraint.
+- [InheritedAllowedResultReceivers](https://docs.aws.amazon.com/clean-rooms/latest/apireference/API_InheritedAllowedResultReceivers.md): Contains the inherited allowed result receivers constraint and its sources from parent tables.
+- [InheritedAllowedResultReceiversSource](https://docs.aws.amazon.com/clean-rooms/latest/apireference/API_InheritedAllowedResultReceiversSource.md): Contains information about a parent table that contributes an allowed result receivers constraint.
+- [InheritedDisallowedOutputColumns](https://docs.aws.amazon.com/clean-rooms/latest/apireference/API_InheritedDisallowedOutputColumns.md): Contains the inherited disallowed output columns constraint and the column lineage tracing each column to its source.
+- [IntermediateTable](https://docs.aws.amazon.com/clean-rooms/latest/apireference/API_IntermediateTable.md): Contains the details of an intermediate table in AWS Clean Rooms.
+- [IntermediateTableActiveVersion](https://docs.aws.amazon.com/clean-rooms/latest/apireference/API_IntermediateTableActiveVersion.md): Contains the details of the currently active version of an intermediate table.
+- [IntermediateTableAnalysisRule](https://docs.aws.amazon.com/clean-rooms/latest/apireference/API_IntermediateTableAnalysisRule.md): Contains the details of an analysis rule for an intermediate table.
+- [IntermediateTableAnalysisRuleCustom](https://docs.aws.amazon.com/clean-rooms/latest/apireference/API_IntermediateTableAnalysisRuleCustom.md): Contains the custom analysis rule configuration for an intermediate table.
+- [IntermediateTableAnalysisRulePolicy](https://docs.aws.amazon.com/clean-rooms/latest/apireference/API_IntermediateTableAnalysisRulePolicy.md): Contains the policy for an intermediate table analysis rule.
+- [IntermediateTableAnalysisRulePolicyV1](https://docs.aws.amazon.com/clean-rooms/latest/apireference/API_IntermediateTableAnalysisRulePolicyV1.md): Contains the version 1 policy for an intermediate table analysis rule.
+- [IntermediateTableColumn](https://docs.aws.amazon.com/clean-rooms/latest/apireference/API_IntermediateTableColumn.md): Contains the name and type of a column in an intermediate table.
+- [IntermediateTableComputeConfiguration](https://docs.aws.amazon.com/clean-rooms/latest/apireference/API_IntermediateTableComputeConfiguration.md): Contains the compute configuration for an intermediate table population operation.
+- [IntermediateTableDependency](https://docs.aws.amazon.com/clean-rooms/latest/apireference/API_IntermediateTableDependency.md): Contains information about a base table that an intermediate table depends on.
+- [IntermediateTableInheritedConstraints](https://docs.aws.amazon.com/clean-rooms/latest/apireference/API_IntermediateTableInheritedConstraints.md): Contains the privacy constraints inherited from parent tables for an intermediate table version.
+- [IntermediateTableOutputConfiguration](https://docs.aws.amazon.com/clean-rooms/latest/apireference/API_IntermediateTableOutputConfiguration.md): Contains the output configuration of an intermediate table when a protected query populates it.
+- [IntermediateTableSchema](https://docs.aws.amazon.com/clean-rooms/latest/apireference/API_IntermediateTableSchema.md): Contains the schema definition of an intermediate table.
+- [IntermediateTableSchemaTypeProperties](https://docs.aws.amazon.com/clean-rooms/latest/apireference/API_IntermediateTableSchemaTypeProperties.md): Contains the schema type properties for an intermediate table.
+- [IntermediateTableSummary](https://docs.aws.amazon.com/clean-rooms/latest/apireference/API_IntermediateTableSummary.md): Contains summary information about an intermediate table.
+- [IntermediateTableVersionSummary](https://docs.aws.amazon.com/clean-rooms/latest/apireference/API_IntermediateTableVersionSummary.md): Contains summary information about a version of an intermediate table.
+- [JobComputePaymentConfig](https://docs.aws.amazon.com/clean-rooms/latest/apireference/API_JobComputePaymentConfig.md): An object representing the collaboration member's payment responsibilities set by the collaboration creator for query and job compute costs.
+- [MemberChangeSpecification](https://docs.aws.amazon.com/clean-rooms/latest/apireference/API_MemberChangeSpecification.md): Specifies changes to collaboration membership, including adding new members with their abilities and display names.
+- [Membership](https://docs.aws.amazon.com/clean-rooms/latest/apireference/API_Membership.md): The membership object.
+- [MembershipJobComputePaymentConfig](https://docs.aws.amazon.com/clean-rooms/latest/apireference/API_MembershipJobComputePaymentConfig.md): An object representing the payment responsibilities accepted by the collaboration member for query and job compute costs.
+- [MembershipMLPaymentConfig](https://docs.aws.amazon.com/clean-rooms/latest/apireference/API_MembershipMLPaymentConfig.md): An object representing the collaboration member's machine learning payment responsibilities set by the collaboration creator.
+- [MembershipModelInferencePaymentConfig](https://docs.aws.amazon.com/clean-rooms/latest/apireference/API_MembershipModelInferencePaymentConfig.md): An object representing the collaboration member's model inference payment responsibilities set by the collaboration creator.
+- [MembershipModelTrainingPaymentConfig](https://docs.aws.amazon.com/clean-rooms/latest/apireference/API_MembershipModelTrainingPaymentConfig.md): An object representing the collaboration member's model training payment responsibilities set by the collaboration creator.
+- [MembershipPaymentConfiguration](https://docs.aws.amazon.com/clean-rooms/latest/apireference/API_MembershipPaymentConfiguration.md): An object representing the payment responsibilities accepted by the collaboration member.
+- [MembershipProtectedJobOutputConfiguration](https://docs.aws.amazon.com/clean-rooms/latest/apireference/API_MembershipProtectedJobOutputConfiguration.md): Contains configurations for protected job results.
+- [MembershipProtectedJobResultConfiguration](https://docs.aws.amazon.com/clean-rooms/latest/apireference/API_MembershipProtectedJobResultConfiguration.md): Contains configurations for protected job results.
+- [MembershipProtectedQueryOutputConfiguration](https://docs.aws.amazon.com/clean-rooms/latest/apireference/API_MembershipProtectedQueryOutputConfiguration.md): Contains configurations for protected query results.
+- [MembershipProtectedQueryResultConfiguration](https://docs.aws.amazon.com/clean-rooms/latest/apireference/API_MembershipProtectedQueryResultConfiguration.md): Contains configurations for protected query results.
+- [MembershipQueryComputePaymentConfig](https://docs.aws.amazon.com/clean-rooms/latest/apireference/API_MembershipQueryComputePaymentConfig.md): An object representing the payment responsibilities accepted by the collaboration member for query compute costs.
+- [MembershipSummary](https://docs.aws.amazon.com/clean-rooms/latest/apireference/API_MembershipSummary.md): The membership object listed by the request.
+- [MembershipSyntheticDataGenerationPaymentConfig](https://docs.aws.amazon.com/clean-rooms/latest/apireference/API_MembershipSyntheticDataGenerationPaymentConfig.md): Configuration for payment for synthetic data generation in a membership.
+- [MemberSpecification](https://docs.aws.amazon.com/clean-rooms/latest/apireference/API_MemberSpecification.md): Basic metadata used to construct a new member.
+- [MemberSummary](https://docs.aws.amazon.com/clean-rooms/latest/apireference/API_MemberSummary.md): The member object listed by the request.
+- [MLMemberAbilities](https://docs.aws.amazon.com/clean-rooms/latest/apireference/API_MLMemberAbilities.md): The ML member abilities for a collaboration member.
+- [MLPaymentConfig](https://docs.aws.amazon.com/clean-rooms/latest/apireference/API_MLPaymentConfig.md): An object representing the collaboration member's machine learning payment responsibilities set by the collaboration creator.
+- [MLSyntheticDataParameters](https://docs.aws.amazon.com/clean-rooms/latest/apireference/API_MLSyntheticDataParameters.md): Parameters that control the generation of synthetic data for machine learning, including privacy settings and column classification details.
+- [ModelInferencePaymentConfig](https://docs.aws.amazon.com/clean-rooms/latest/apireference/API_ModelInferencePaymentConfig.md): An object representing the collaboration member's model inference payment responsibilities set by the collaboration creator.
+- [ModelTrainingPaymentConfig](https://docs.aws.amazon.com/clean-rooms/latest/apireference/API_ModelTrainingPaymentConfig.md): An object representing the collaboration member's model training payment responsibilities set by the collaboration creator.
+- [PaymentConfiguration](https://docs.aws.amazon.com/clean-rooms/latest/apireference/API_PaymentConfiguration.md): An object representing the collaboration member's payment responsibilities set by the collaboration creator.
+- [PopulationAnalysisConfiguration](https://docs.aws.amazon.com/clean-rooms/latest/apireference/API_PopulationAnalysisConfiguration.md): Contains the configuration that defines the analysis used to populate an intermediate table.
+- [PopulationAnalysisSqlParameters](https://docs.aws.amazon.com/clean-rooms/latest/apireference/API_PopulationAnalysisSqlParameters.md): Contains the SQL parameters used to populate an intermediate table.
+- [PreviewPrivacyImpactParametersInput](https://docs.aws.amazon.com/clean-rooms/latest/apireference/API_PreviewPrivacyImpactParametersInput.md): Specifies the updated epsilon and noise parameters to preview.
+- [PrivacyBudget](https://docs.aws.amazon.com/clean-rooms/latest/apireference/API_PrivacyBudget.md): The epsilon parameter value and number of each aggregation function that you can perform.
+- [PrivacyBudgetSummary](https://docs.aws.amazon.com/clean-rooms/latest/apireference/API_PrivacyBudgetSummary.md): An array that summaries the specified privacy budget.
+- [PrivacyBudgetTemplate](https://docs.aws.amazon.com/clean-rooms/latest/apireference/API_PrivacyBudgetTemplate.md): An object that defines the privacy budget template.
+- [PrivacyBudgetTemplateParametersInput](https://docs.aws.amazon.com/clean-rooms/latest/apireference/API_PrivacyBudgetTemplateParametersInput.md): The epsilon and noise parameters that you want to use for the privacy budget template.
+- [PrivacyBudgetTemplateParametersOutput](https://docs.aws.amazon.com/clean-rooms/latest/apireference/API_PrivacyBudgetTemplateParametersOutput.md): The epsilon and noise parameters that were used in the privacy budget template.
+- [PrivacyBudgetTemplateSummary](https://docs.aws.amazon.com/clean-rooms/latest/apireference/API_PrivacyBudgetTemplateSummary.md): A summary of the privacy budget template.
+- [PrivacyBudgetTemplateUpdateParameters](https://docs.aws.amazon.com/clean-rooms/latest/apireference/API_PrivacyBudgetTemplateUpdateParameters.md): The epsilon and noise parameters that you want to update in the privacy budget template.
+- [PrivacyImpact](https://docs.aws.amazon.com/clean-rooms/latest/apireference/API_PrivacyImpact.md): Provides an estimate of the number of aggregation functions that the member who can query can run given the epsilon and noise parameters.
+- [ProtectedJob](https://docs.aws.amazon.com/clean-rooms/latest/apireference/API_ProtectedJob.md): The parameters for an AWS Clean Rooms protected job.
+- [ProtectedJobComputeConfiguration](https://docs.aws.amazon.com/clean-rooms/latest/apireference/API_ProtectedJobComputeConfiguration.md): The configuration of the compute resources for a PySpark job.
+- [ProtectedJobConfigurationDetails](https://docs.aws.amazon.com/clean-rooms/latest/apireference/API_ProtectedJobConfigurationDetails.md): The protected job configuration details.
+- [ProtectedJobDirectAnalysisConfigurationDetails](https://docs.aws.amazon.com/clean-rooms/latest/apireference/API_ProtectedJobDirectAnalysisConfigurationDetails.md): The protected job direct analysis configuration details.
+- [ProtectedJobError](https://docs.aws.amazon.com/clean-rooms/latest/apireference/API_ProtectedJobError.md): The protected job error.
+- [ProtectedJobMemberOutputConfigurationInput](https://docs.aws.amazon.com/clean-rooms/latest/apireference/API_ProtectedJobMemberOutputConfigurationInput.md): The protected job member output configuration input.
+- [ProtectedJobMemberOutputConfigurationOutput](https://docs.aws.amazon.com/clean-rooms/latest/apireference/API_ProtectedJobMemberOutputConfigurationOutput.md): The protected job member output configuration output.
+- [ProtectedJobOutput](https://docs.aws.amazon.com/clean-rooms/latest/apireference/API_ProtectedJobOutput.md): Contains details about the protected job output.
+- [ProtectedJobOutputConfigurationInput](https://docs.aws.amazon.com/clean-rooms/latest/apireference/API_ProtectedJobOutputConfigurationInput.md): The protected job output configuration input.
+- [ProtectedJobOutputConfigurationOutput](https://docs.aws.amazon.com/clean-rooms/latest/apireference/API_ProtectedJobOutputConfigurationOutput.md): The protected job output configuration output.
+- [ProtectedJobParameters](https://docs.aws.amazon.com/clean-rooms/latest/apireference/API_ProtectedJobParameters.md): The parameters for the protected job.
+- [ProtectedJobReceiverConfiguration](https://docs.aws.amazon.com/clean-rooms/latest/apireference/API_ProtectedJobReceiverConfiguration.md): The protected job receiver configuration.
+- [ProtectedJobResult](https://docs.aws.amazon.com/clean-rooms/latest/apireference/API_ProtectedJobResult.md): Details about the job results.
+- [ProtectedJobResultConfigurationInput](https://docs.aws.amazon.com/clean-rooms/latest/apireference/API_ProtectedJobResultConfigurationInput.md): The protected job result configuration input.
+- [ProtectedJobResultConfigurationOutput](https://docs.aws.amazon.com/clean-rooms/latest/apireference/API_ProtectedJobResultConfigurationOutput.md): The output configuration for a protected job result.
+- [ProtectedJobS3Output](https://docs.aws.amazon.com/clean-rooms/latest/apireference/API_ProtectedJobS3Output.md): Contains output information for protected jobs with an S3 output type.
+- [ProtectedJobS3OutputConfigurationInput](https://docs.aws.amazon.com/clean-rooms/latest/apireference/API_ProtectedJobS3OutputConfigurationInput.md): Contains input information for protected jobs with an S3 output type.
+- [ProtectedJobS3OutputConfigurationOutput](https://docs.aws.amazon.com/clean-rooms/latest/apireference/API_ProtectedJobS3OutputConfigurationOutput.md): The output configuration for a protected job's S3 output.
+- [ProtectedJobSingleMemberOutput](https://docs.aws.amazon.com/clean-rooms/latest/apireference/API_ProtectedJobSingleMemberOutput.md): Details about the member who received the job result.
+- [ProtectedJobStatistics](https://docs.aws.amazon.com/clean-rooms/latest/apireference/API_ProtectedJobStatistics.md): Contains statistics about the execution of the protected job.
+- [ProtectedJobSummary](https://docs.aws.amazon.com/clean-rooms/latest/apireference/API_ProtectedJobSummary.md): The protected job summary for the objects listed by the request.
+- [ProtectedJobWorkerComputeConfiguration](https://docs.aws.amazon.com/clean-rooms/latest/apireference/API_ProtectedJobWorkerComputeConfiguration.md): The configuration of the compute resources for a PySpark job.
+- [ProtectedQuery](https://docs.aws.amazon.com/clean-rooms/latest/apireference/API_ProtectedQuery.md): The parameters for an AWS Clean Rooms protected query.
+- [ProtectedQueryDistributeOutput](https://docs.aws.amazon.com/clean-rooms/latest/apireference/API_ProtectedQueryDistributeOutput.md): Contains the output information for a protected query with a distribute output configuration.
+- [ProtectedQueryDistributeOutputConfiguration](https://docs.aws.amazon.com/clean-rooms/latest/apireference/API_ProtectedQueryDistributeOutputConfiguration.md): Specifies the configuration for distributing protected query results to multiple receivers, including S3 and collaboration members.
+- [ProtectedQueryDistributeOutputConfigurationLocation](https://docs.aws.amazon.com/clean-rooms/latest/apireference/API_ProtectedQueryDistributeOutputConfigurationLocation.md): Specifies where you'll distribute the results of your protected query.
+- [ProtectedQueryError](https://docs.aws.amazon.com/clean-rooms/latest/apireference/API_ProtectedQueryError.md): Details of errors thrown by the protected query.
+- [ProtectedQueryMemberOutputConfiguration](https://docs.aws.amazon.com/clean-rooms/latest/apireference/API_ProtectedQueryMemberOutputConfiguration.md): Contains configuration details for the protected query member output.
+- [ProtectedQueryOutput](https://docs.aws.amazon.com/clean-rooms/latest/apireference/API_ProtectedQueryOutput.md): Contains details about the protected query output.
+- [ProtectedQueryOutputConfiguration](https://docs.aws.amazon.com/clean-rooms/latest/apireference/API_ProtectedQueryOutputConfiguration.md): Contains configuration details for protected query output.
+- [ProtectedQueryResult](https://docs.aws.amazon.com/clean-rooms/latest/apireference/API_ProtectedQueryResult.md): Details about the query results.
+- [ProtectedQueryResultConfiguration](https://docs.aws.amazon.com/clean-rooms/latest/apireference/API_ProtectedQueryResultConfiguration.md): Contains configurations for protected query results.
+- [ProtectedQueryS3Output](https://docs.aws.amazon.com/clean-rooms/latest/apireference/API_ProtectedQueryS3Output.md): Contains output information for protected queries with an S3 output type.
+- [ProtectedQueryS3OutputConfiguration](https://docs.aws.amazon.com/clean-rooms/latest/apireference/API_ProtectedQueryS3OutputConfiguration.md): Contains the configuration to write the query results to S3.
+- [ProtectedQuerySingleMemberOutput](https://docs.aws.amazon.com/clean-rooms/latest/apireference/API_ProtectedQuerySingleMemberOutput.md): Details about the member who received the query result.
+- [ProtectedQuerySQLParameters](https://docs.aws.amazon.com/clean-rooms/latest/apireference/API_ProtectedQuerySQLParameters.md): The parameters for the SQL type Protected Query.
+- [ProtectedQueryStatistics](https://docs.aws.amazon.com/clean-rooms/latest/apireference/API_ProtectedQueryStatistics.md): Contains statistics about the execution of the protected query.
+- [ProtectedQuerySummary](https://docs.aws.amazon.com/clean-rooms/latest/apireference/API_ProtectedQuerySummary.md): The protected query summary for the objects listed by the request.
+- [QueryComputePaymentConfig](https://docs.aws.amazon.com/clean-rooms/latest/apireference/API_QueryComputePaymentConfig.md): An object representing the collaboration member's payment responsibilities set by the collaboration creator for query compute costs.
+- [QueryConstraint](https://docs.aws.amazon.com/clean-rooms/latest/apireference/API_QueryConstraint.md): Provides any necessary query constraint information.
+- [QueryConstraintRequireOverlap](https://docs.aws.amazon.com/clean-rooms/latest/apireference/API_QueryConstraintRequireOverlap.md): Provides the name of the columns that are required to overlap.
+- [ReceiverConfiguration](https://docs.aws.amazon.com/clean-rooms/latest/apireference/API_ReceiverConfiguration.md): The receiver configuration for a protected query.
+- [S3Location](https://docs.aws.amazon.com/clean-rooms/latest/apireference/API_S3Location.md): The S3 location.
+- [Schema](https://docs.aws.amazon.com/clean-rooms/latest/apireference/API_Schema.md): A schema is a relation within a collaboration.
+- [SchemaAnalysisRuleRequest](https://docs.aws.amazon.com/clean-rooms/latest/apireference/API_SchemaAnalysisRuleRequest.md): Defines the information that's necessary to retrieve an analysis rule schema.
+- [SchemaStatusDetail](https://docs.aws.amazon.com/clean-rooms/latest/apireference/API_SchemaStatusDetail.md): Information about the schema status.
+- [SchemaStatusReason](https://docs.aws.amazon.com/clean-rooms/latest/apireference/API_SchemaStatusReason.md): A reason why the schema status is set to its current value.
+- [SchemaSummary](https://docs.aws.amazon.com/clean-rooms/latest/apireference/API_SchemaSummary.md): The schema summary for the objects listed by the request.
+- [SchemaTypeProperties](https://docs.aws.amazon.com/clean-rooms/latest/apireference/API_SchemaTypeProperties.md): Information about the schema type properties.
+- [SnowflakeTableReference](https://docs.aws.amazon.com/clean-rooms/latest/apireference/API_SnowflakeTableReference.md): A reference to a table within Snowflake.
+- [SnowflakeTableSchema](https://docs.aws.amazon.com/clean-rooms/latest/apireference/API_SnowflakeTableSchema.md): The schema of a Snowflake table.
+- [SnowflakeTableSchemaV1](https://docs.aws.amazon.com/clean-rooms/latest/apireference/API_SnowflakeTableSchemaV1.md): The Snowflake table schema.
+- [SyntheticDataColumnProperties](https://docs.aws.amazon.com/clean-rooms/latest/apireference/API_SyntheticDataColumnProperties.md): Properties that define how a specific data column should be handled during synthetic data generation, including its name, type, and role in predictive modeling.
+- [SyntheticDataGenerationPaymentConfig](https://docs.aws.amazon.com/clean-rooms/latest/apireference/API_SyntheticDataGenerationPaymentConfig.md): Payment configuration for synthetic data generation.
+- [SyntheticDataParameters](https://docs.aws.amazon.com/clean-rooms/latest/apireference/API_SyntheticDataParameters.md): The parameters that control how synthetic data is generated, including privacy settings, column classifications, and other configuration options that affect the data synthesis process.
+- [TableReference](https://docs.aws.amazon.com/clean-rooms/latest/apireference/API_TableReference.md): A pointer to the dataset that underlies this table.
+- [UpdateMembershipPaymentConfiguration](https://docs.aws.amazon.com/clean-rooms/latest/apireference/API_UpdateMembershipPaymentConfiguration.md): An object representing the payment responsibilities to update for the membership.
+- [ValidationExceptionField](https://docs.aws.amazon.com/clean-rooms/latest/apireference/API_ValidationExceptionField.md): Describes validation errors for specific input parameters.
+- [WorkerComputeConfiguration](https://docs.aws.amazon.com/clean-rooms/latest/apireference/API_WorkerComputeConfiguration.md): The configuration of the compute resources for workers running an analysis with the AWS Clean Rooms SQL analytics engine.
+- [WorkerComputeConfigurationProperties](https://docs.aws.amazon.com/clean-rooms/latest/apireference/API_WorkerComputeConfigurationProperties.md): The configuration properties that define the compute environment settings for workers in AWS Clean Rooms.

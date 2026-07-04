@@ -1,0 +1,28 @@
+generated: '2026-06-20'
+method: searched
+source: >-
+  AWS Clean Rooms documentation (API version date, endpoints/regions reference),
+  the AWS Health status dashboard, and openapi/amazon-clean-rooms-openapi.yml.
+versioning:
+  scheme: api-version-date
+  current: '2022-02-17'
+  note: >-
+    AWS services version by API-version date (info.version 2022-02-17); the SDKs
+    pin this automatically. There is no URI-path version segment.
+  docs: https://docs.aws.amazon.com/clean-rooms/latest/apireference/
+deprecation:
+  policy_url: https://docs.aws.amazon.com/whitepapers/latest/aws-overview/introduction.html
+  sunset_header: false
+  deprecation_header: false
+  note: >-
+    AWS communicates deprecations via service documentation, the AWS Health
+    Dashboard, and account notifications rather than RFC 8594 Sunset/Deprecation
+    HTTP headers.
+sla:
+  url: https://aws.amazon.com/service-terms/
+  note: >-
+    No standalone published uptime SLA located for AWS Clean Rooms; covered by
+    the AWS Service Terms and Customer Agreement.
+status_page: https://health.aws.amazon.com/health/status
+support: https://aws.amazon.com/premiumsupport/
+deprecated_operations: []

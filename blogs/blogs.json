@@ -1,0 +1,13 @@
+{
+  "repo": "amazon-clean-rooms",
+  "feeds": [
+    {
+      "source": "https://aws.amazon.com/blogs/big-data/",
+      "feed_url": "https://aws.amazon.com/blogs/big-data/feed/",
+      "title": "AWS Big Data Blog",
+      "saved": 20
+    }
+  ],
+  "fetched": "2026-07-04T13:39:28Z",
+  "post_count": 20
+}

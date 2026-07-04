@@ -15,7 +15,7 @@ tags:
 url: >-
   https://raw.githubusercontent.com/api-evangelist/amazon-clean-rooms/refs/heads/main/apis.yml
 created: '2026-03-16'
-modified: '2026-04-19'
+modified: '2026-06-20'
 specificationVersion: '0.19'
 apis:
 - name: Amazon Clean Rooms API
@@ -62,6 +62,14 @@ apis:
     url: examples/clean-rooms-membership-example.json
   - type: Example
     url: examples/clean-rooms-protected-query-example.json
+  - type: Overlay
+    url: overlays/amazon-clean-rooms-openapi-overlay.yaml
+  - type: MCPServer
+    url: mcp/amazon-clean-rooms-mcp.yml
+  - type: Conformance
+    url: conformance/amazon-clean-rooms-conformance.yml
+  - type: ErrorCatalog
+    url: errors/amazon-clean-rooms-problem-types.yml
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
@@ -102,6 +110,16 @@ common:
   url: vocabulary/amazon-clean-rooms-vocabulary.yaml
 - type: NaftikoCapability
   url: capabilities/secure-data-collaboration.yaml
+- type: Packages
+  url: packages/amazon-clean-rooms-packages.yml
+- type: WellKnown
+  url: well-known/amazon-clean-rooms-well-known.yml
+- type: SecurityTxt
+  url: well-known/amazon-clean-rooms-security.txt
+- type: LLMsTxt
+  url: llms/amazon-clean-rooms-llms.txt
+- type: Lifecycle
+  url: lifecycle/amazon-clean-rooms-lifecycle.yml
 - type: Features
   data:
   - name: Privacy-Preserving Analytics

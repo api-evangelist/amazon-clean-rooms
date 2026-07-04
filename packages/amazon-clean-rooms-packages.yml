@@ -1,0 +1,54 @@
+generated: '2026-06-20'
+method: searched
+source: >-
+  Registry lookups against npm, RubyGems, Maven Central, NuGet, pkg.go.dev,
+  Packagist, and PyPI for the first-party AWS SDK Clean Rooms clients.
+packages:
+  - language: javascript
+    registry: npm
+    name: "@aws-sdk/client-cleanrooms"
+    url: https://www.npmjs.com/package/@aws-sdk/client-cleanrooms
+    install: npm install @aws-sdk/client-cleanrooms
+    official: true
+  - language: python
+    registry: pypi
+    name: boto3
+    url: https://pypi.org/project/boto3/
+    install: pip install boto3
+    official: true
+    notes: >-
+      AWS Clean Rooms is exposed as the "cleanrooms" client within the unified
+      boto3 SDK; there is no standalone Clean Rooms PyPI distribution.
+  - language: java
+    registry: maven
+    name: software.amazon.awssdk:cleanrooms
+    url: https://central.sonatype.com/artifact/software.amazon.awssdk/cleanrooms
+    install: "implementation 'software.amazon.awssdk:cleanrooms'"
+    official: true
+  - language: csharp
+    registry: nuget
+    name: AWSSDK.CleanRooms
+    url: https://www.nuget.org/packages/AWSSDK.CleanRooms
+    install: dotnet add package AWSSDK.CleanRooms
+    official: true
+  - language: go
+    registry: go
+    name: github.com/aws/aws-sdk-go-v2/service/cleanrooms
+    url: https://pkg.go.dev/github.com/aws/aws-sdk-go-v2/service/cleanrooms
+    install: go get github.com/aws/aws-sdk-go-v2/service/cleanrooms
+    official: true
+  - language: ruby
+    registry: rubygems
+    name: aws-sdk-cleanrooms
+    url: https://rubygems.org/gems/aws-sdk-cleanrooms
+    install: gem install aws-sdk-cleanrooms
+    official: true
+  - language: php
+    registry: packagist
+    name: aws/aws-sdk-php
+    url: https://packagist.org/packages/aws/aws-sdk-php
+    install: composer require aws/aws-sdk-php
+    official: true
+    notes: >-
+      AWS Clean Rooms is accessed via the CleanRoomsClient inside the unified
+      AWS SDK for PHP; there is no standalone Clean Rooms Packagist package.

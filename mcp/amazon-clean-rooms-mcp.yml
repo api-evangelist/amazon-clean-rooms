@@ -1,0 +1,43 @@
+generated: '2026-06-20'
+method: derived
+status: candidate
+source: openapi/amazon-clean-rooms-openapi.yml
+note: >-
+  No official first-party hosted/remote MCP server was found for AWS Clean Rooms
+  (AWS publishes general-purpose MCP servers such as the AWS API MCP Server, but
+  none dedicated to Clean Rooms). The tool list below is a CANDIDATE derived one
+  tool per OpenAPI operationId; it is not a published server.
+server:
+  name: amazon-clean-rooms
+  transport: stdio
+tools:
+  - name: list_collaborations
+    description: Lists collaborations the caller owns, is active in, or has been invited to.
+    source_operation: openapi/amazon-clean-rooms-openapi.yml#ListCollaborations
+  - name: create_collaboration
+    description: Creates a new collaboration workspace.
+    source_operation: openapi/amazon-clean-rooms-openapi.yml#CreateCollaboration
+  - name: get_collaboration
+    description: Returns metadata about a collaboration.
+    source_operation: openapi/amazon-clean-rooms-openapi.yml#GetCollaboration
+  - name: delete_collaboration
+    description: Deletes a collaboration.
+    source_operation: openapi/amazon-clean-rooms-openapi.yml#DeleteCollaboration
+  - name: list_memberships
+    description: Lists all membership resources within the caller's account.
+    source_operation: openapi/amazon-clean-rooms-openapi.yml#ListMemberships
+  - name: create_membership
+    description: Creates a membership for a collaboration and joins it.
+    source_operation: openapi/amazon-clean-rooms-openapi.yml#CreateMembership
+  - name: list_protected_queries
+    description: Lists protected queries, sorted by most recent.
+    source_operation: openapi/amazon-clean-rooms-openapi.yml#ListProtectedQueries
+  - name: start_protected_query
+    description: Starts a protected query against configured tables.
+    source_operation: openapi/amazon-clean-rooms-openapi.yml#StartProtectedQuery
+  - name: list_configured_tables
+    description: Lists configured tables in the caller's account.
+    source_operation: openapi/amazon-clean-rooms-openapi.yml#ListConfiguredTables
+  - name: create_configured_table
+    description: Creates a new configured table resource.
+    source_operation: openapi/amazon-clean-rooms-openapi.yml#CreateConfiguredTable

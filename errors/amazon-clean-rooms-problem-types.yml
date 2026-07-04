@@ -1,0 +1,75 @@
+generated: '2026-06-20'
+method: derived
+format: aws-json-exception
+source: >-
+  Derived from the 4xx/5xx responses in openapi/amazon-clean-rooms-openapi.yml.
+  AWS Clean Rooms returns AWS-style JSON exception objects (a "message" field,
+  and for ResourceNotFoundException a resourceId/resourceType), not RFC 9457
+  application/problem+json. Titles/descriptions enriched from the AWS Clean Rooms
+  Common Errors reference:
+  https://docs.aws.amazon.com/clean-rooms/latest/apireference/CommonErrors.html
+problems:
+  - status: 400
+    name: ValidationException
+    title: The input fails to satisfy the specified constraints.
+    remediation: >-
+      Correct the request parameters/body to satisfy the documented constraints;
+      inspect the fieldList array for the specific fields that failed.
+    schema: '#/components/schemas/ValidationException'
+    source_operations:
+      - openapi/amazon-clean-rooms-openapi.yml#ListCollaborations
+      - openapi/amazon-clean-rooms-openapi.yml#CreateCollaboration
+      - openapi/amazon-clean-rooms-openapi.yml#GetCollaboration
+      - openapi/amazon-clean-rooms-openapi.yml#DeleteCollaboration
+      - openapi/amazon-clean-rooms-openapi.yml#ListMemberships
+      - openapi/amazon-clean-rooms-openapi.yml#CreateMembership
+      - openapi/amazon-clean-rooms-openapi.yml#ListProtectedQueries
+      - openapi/amazon-clean-rooms-openapi.yml#StartProtectedQuery
+      - openapi/amazon-clean-rooms-openapi.yml#ListConfiguredTables
+      - openapi/amazon-clean-rooms-openapi.yml#CreateConfiguredTable
+  - status: 403
+    name: AccessDeniedException
+    title: Caller does not have sufficient access to perform this action.
+    remediation: >-
+      Grant the calling IAM principal the required cleanrooms:* permissions and
+      verify the resource policy allows the action.
+    schema: '#/components/schemas/AccessDeniedException'
+    source_operations:
+      - openapi/amazon-clean-rooms-openapi.yml#ListCollaborations
+      - openapi/amazon-clean-rooms-openapi.yml#CreateCollaboration
+      - openapi/amazon-clean-rooms-openapi.yml#GetCollaboration
+      - openapi/amazon-clean-rooms-openapi.yml#DeleteCollaboration
+      - openapi/amazon-clean-rooms-openapi.yml#ListMemberships
+      - openapi/amazon-clean-rooms-openapi.yml#CreateMembership
+      - openapi/amazon-clean-rooms-openapi.yml#ListProtectedQueries
+      - openapi/amazon-clean-rooms-openapi.yml#StartProtectedQuery
+      - openapi/amazon-clean-rooms-openapi.yml#ListConfiguredTables
+      - openapi/amazon-clean-rooms-openapi.yml#CreateConfiguredTable
+  - status: 404
+    name: ResourceNotFoundException
+    title: Request references a resource which does not exist.
+    remediation: >-
+      Verify the collaborationIdentifier / membershipIdentifier exists and is
+      accessible to the caller before retrying.
+    schema: '#/components/schemas/ResourceNotFoundException'
+    source_operations:
+      - openapi/amazon-clean-rooms-openapi.yml#GetCollaboration
+      - openapi/amazon-clean-rooms-openapi.yml#DeleteCollaboration
+  - status: 500
+    name: InternalServerException
+    title: Unexpected error during processing of request.
+    remediation: >-
+      Transient server-side error; retry with exponential backoff. If it
+      persists, contact AWS Support.
+    schema: '#/components/schemas/InternalServerException'
+    source_operations:
+      - openapi/amazon-clean-rooms-openapi.yml#ListCollaborations
+      - openapi/amazon-clean-rooms-openapi.yml#CreateCollaboration
+      - openapi/amazon-clean-rooms-openapi.yml#GetCollaboration
+      - openapi/amazon-clean-rooms-openapi.yml#DeleteCollaboration
+      - openapi/amazon-clean-rooms-openapi.yml#ListMemberships
+      - openapi/amazon-clean-rooms-openapi.yml#CreateMembership
+      - openapi/amazon-clean-rooms-openapi.yml#ListProtectedQueries
+      - openapi/amazon-clean-rooms-openapi.yml#StartProtectedQuery
+      - openapi/amazon-clean-rooms-openapi.yml#ListConfiguredTables
+      - openapi/amazon-clean-rooms-openapi.yml#CreateConfiguredTable

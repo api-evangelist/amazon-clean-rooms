@@ -1,0 +1,46 @@
+generated: '2026-06-20'
+method: searched
+source: >-
+  Probed /.well-known/ discovery paths on the Clean Rooms regional endpoint and
+  the aws.amazon.com / docs.aws.amazon.com hosts.
+hosts:
+  - host: https://cleanrooms.us-east-1.amazonaws.com
+    note: >-
+      Clean Rooms regional API endpoint; all /.well-known/ probes return 403
+      (AWS SigV4-signed service endpoint, no public discovery surface).
+    documents:
+      - path: /.well-known/security.txt
+        status: 403
+      - path: /.well-known/openid-configuration
+        status: 403
+      - path: /.well-known/oauth-authorization-server
+        status: 403
+      - path: /.well-known/api-catalog
+        status: 403
+      - path: /.well-known/ai-plugin.json
+        status: 403
+  - host: https://aws.amazon.com
+    documents:
+      - path: /.well-known/security.txt          # RFC 9116
+        status: 200
+        file: amazon-clean-rooms-security.txt
+      - path: /.well-known/openid-configuration
+        status: 404
+      - path: /.well-known/oauth-authorization-server
+        status: 404
+      - path: /.well-known/api-catalog
+        status: 404
+      - path: /.well-known/ai-plugin.json
+        status: 404
+  - host: https://docs.aws.amazon.com
+    documents:
+      - path: /.well-known/security.txt
+        status: 404
+      - path: /.well-known/openid-configuration
+        status: 404
+      - path: /.well-known/oauth-authorization-server
+        status: 404
+      - path: /.well-known/api-catalog
+        status: 404
+      - path: /.well-known/ai-plugin.json
+        status: 404

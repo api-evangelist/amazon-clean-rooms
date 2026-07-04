@@ -1,0 +1,54 @@
+generated: '2026-06-20'
+method: derived
+source: >-
+  Derived from openapi/amazon-clean-rooms-openapi.yml (security schemes, response
+  shapes, pagination parameters) and AWS Clean Rooms compliance documentation.
+standards:
+  - id: aws-sigv4
+    conforms: true
+    evidence: >-
+      securitySchemes.aws_signature documents AWS Signature Version 4 as the
+      request authentication mechanism.
+  - id: oauth2
+    conforms: false
+    evidence: API authenticates with AWS SigV4, not OAuth2.
+  - id: oidc
+    conforms: false
+  - id: rfc9457-problem-details
+    conforms: false
+    evidence: >-
+      Errors return AWS-style JSON exception objects (message field), not
+      application/problem+json.
+  - id: json-api
+    conforms: false
+  - id: odata
+    conforms: false
+  - id: fhir-r4
+    conforms: false
+  - id: fapi
+    conforms: false
+  - id: scim
+    conforms: false
+  - id: psd2
+    conforms: false
+  - id: token-pagination
+    conforms: true
+    evidence: >-
+      List operations use nextToken/maxResults cursor pagination
+      (ListCollaborations, ListMemberships, ListConfiguredTables,
+      ListProtectedQueries).
+  - id: idempotency
+    conforms: false
+    evidence: >-
+      No idempotency-key header defined on write operations in the captured
+      OpenAPI (AWS Clean Rooms uses server-generated resource identifiers).
+  - id: differential-privacy
+    conforms: true
+    evidence: >-
+      AWS Clean Rooms Differential Privacy applies configurable privacy budgets
+      to protected queries; documented in the User Guide and Privacy Budgets API.
+  - id: soc-2
+    conforms: true
+    evidence: >-
+      AWS Clean Rooms is in scope for AWS SOC 1/2/3 compliance programs per
+      https://aws.amazon.com/compliance/services-in-scope/.

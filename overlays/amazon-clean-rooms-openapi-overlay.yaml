@@ -1,0 +1,35 @@
+overlay: 1.0.0
+info:
+  title: API Evangelist enhancements for Amazon Clean Rooms API
+  version: 1.0.0
+extends: openapi/amazon-clean-rooms-openapi.yml
+x-provenance:
+  generated: '2026-06-20'
+  method: generated
+  source: openapi/amazon-clean-rooms-openapi.yml
+actions:
+  - target: $.info
+    update:
+      x-apievangelist-provider: amazon-clean-rooms
+      x-apievangelist-category: data-collaboration
+      x-apievangelist-privacy: differential-privacy
+      x-api-search: https://apis.io/search?q=amazon+clean+rooms
+  - target: $.info.contact
+    update:
+      x-support: https://aws.amazon.com/premiumsupport/
+  - target: $.paths./collaborations.get
+    update:
+      x-apievangelist-pattern: token-pagination
+  - target: $.paths./memberships.get
+    update:
+      x-apievangelist-pattern: token-pagination
+  - target: $.paths./configuredTables.get
+    update:
+      x-apievangelist-pattern: token-pagination
+  - target: $.paths./memberships/{membershipIdentifier}/protectedQueries.get
+    update:
+      x-apievangelist-pattern: token-pagination
+  - target: $.components.securitySchemes.aws_signature
+    update:
+      x-standard: aws-sigv4
+      x-docs: https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_aws-signing.html
