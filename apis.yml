@@ -74,6 +74,14 @@ maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
 common:
+- type: TrustCenter
+  url: security/amazon-clean-rooms-trust-center.yml
+- type: VulnerabilityDisclosure
+  url: security/amazon-clean-rooms-vulnerability-disclosure.yml
+- type: DomainSecurity
+  url: security/amazon-clean-rooms-domain-security.yml
+- type: Authentication
+  url: authentication/amazon-clean-rooms-authentication.yml
 - type: Portal
   url: https://aws.amazon.com/
 - type: Website
