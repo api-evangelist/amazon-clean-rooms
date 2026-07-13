@@ -2,12 +2,20 @@
   "repo": "amazon-clean-rooms",
   "feeds": [
     {
-      "source": "https://aws.amazon.com/blogs/big-data/",
+      "source": "https://aws.amazon.com/blogs/big-data/feed/",
       "feed_url": "https://aws.amazon.com/blogs/big-data/feed/",
-      "title": "AWS Big Data Blog",
-      "saved": 20
+      "title": "",
+      "saved": 0,
+      "method": "feed"
+    },
+    {
+      "source": "https://aws.amazon.com/premiumsupport/",
+      "feed_url": "https://aws.amazon.com/premiumsupport/",
+      "title": "",
+      "saved": 0,
+      "method": "none"
     }
   ],
-  "fetched": "2026-07-04T13:39:28Z",
-  "post_count": 20
+  "fetched": "2026-07-11T11:50:51Z",
+  "post_count": 23
 }
