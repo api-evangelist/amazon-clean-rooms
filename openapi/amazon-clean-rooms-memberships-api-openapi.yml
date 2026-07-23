@@ -1,0 +1,249 @@
+openapi: 3.1.0
+info:
+  title: Amazon Clean Rooms Collaborations Memberships API
+  description: Amazon Clean Rooms enables organizations to collaborate and analyze shared datasets without exposing underlying raw data to partners. Create secure data clean rooms and collaborate with any company while maintaining data privacy through differential privacy, cryptographic computing, and flexible analytics using SQL, PySpark, or ML models.
+  version: '2022-02-17'
+  contact:
+    name: Amazon Web Services
+    url: https://aws.amazon.com/contact-us/
+  termsOfService: https://aws.amazon.com/service-terms/
+  x-generated-from: documentation
+servers:
+- url: https://cleanrooms.{region}.amazonaws.com
+  description: Amazon Clean Rooms Regional Endpoint
+  variables:
+    region:
+      default: us-east-1
+      description: AWS Region
+security:
+- aws_signature: []
+tags:
+- name: Memberships
+  description: Operations for managing collaboration memberships
+paths:
+  /memberships:
+    get:
+      operationId: ListMemberships
+      summary: Amazon Clean Rooms List Memberships
+      description: Lists all memberships resources within the caller's account.
+      tags:
+      - Memberships
+      parameters:
+      - name: nextToken
+        in: query
+        description: The token value retrieved from a previous paginated request.
+        schema:
+          type: string
+      - name: maxResults
+        in: query
+        description: The maximum number of memberships to return.
+        schema:
+          type: integer
+          minimum: 1
+          maximum: 100
+      - name: status
+        in: query
+        description: A filter for membership status.
+        schema:
+          type: string
+          enum:
+          - ACTIVE
+          - COLLABORATION_DELETED
+          - REMOVED
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListMembershipsResponse'
+              examples:
+                ListMemberships200Example:
+                  summary: Default ListMemberships 200 response
+                  x-microcks-default: true
+                  value:
+                    membershipList:
+                    - id: member-abc12345
+                      arn: arn:aws:cleanrooms:us-east-1:123456789012:membership/member-abc12345
+                      collaborationArn: arn:aws:cleanrooms:us-east-1:123456789012:collaboration/collab-abc12345
+                      collaborationId: collab-abc12345
+                      collaborationCreatorAccountId: '123456789012'
+                      collaborationCreatorDisplayName: Acme Corp
+                      collaborationName: Marketing Analytics Collaboration
+                      status: ACTIVE
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationException'
+        '403':
+          description: Access denied
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AccessDeniedException'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InternalServerException'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+    post:
+      operationId: CreateMembership
+      summary: Amazon Clean Rooms Create a Membership
+      description: Creates a membership for a specific collaboration identifier and joins the collaboration. Membership provides access to collaborate on configured tables.
+      tags:
+      - Memberships
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateMembershipRequest'
+            examples:
+              CreateMembershipRequestExample:
+                summary: Default CreateMembership request
+                x-microcks-default: true
+                value:
+                  collaborationIdentifier: collab-abc12345
+                  queryLogStatus: ENABLED
+      responses:
+        '200':
+          description: Membership created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CreateMembershipResponse'
+              examples:
+                CreateMembership200Example:
+                  summary: Default CreateMembership 200 response
+                  x-microcks-default: true
+                  value:
+                    membership:
+                      id: member-abc12345
+                      arn: arn:aws:cleanrooms:us-east-1:123456789012:membership/member-abc12345
+                      collaborationId: collab-abc12345
+                      status: ACTIVE
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationException'
+        '403':
+          description: Access denied
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AccessDeniedException'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InternalServerException'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+components:
+  schemas:
+    Membership:
+      type: object
+      description: Represents a member's participation in a Clean Rooms collaboration.
+      properties:
+        id:
+          type: string
+          description: The unique ID of the membership.
+          example: member-abc12345
+        arn:
+          type: string
+          description: The ARN of the membership.
+        collaborationArn:
+          type: string
+          description: The ARN of the collaboration.
+        collaborationId:
+          type: string
+          description: The ID of the collaboration.
+        collaborationCreatorAccountId:
+          type: string
+          description: The account ID of the collaboration creator.
+        collaborationName:
+          type: string
+          description: The name of the collaboration.
+        status:
+          type: string
+          enum:
+          - ACTIVE
+          - COLLABORATION_DELETED
+          - REMOVED
+          description: The status of the membership.
+    CreateMembershipResponse:
+      type: object
+      description: Response for creating a membership.
+      properties:
+        membership:
+          $ref: '#/components/schemas/Membership'
+    AccessDeniedException:
+      type: object
+      description: Caller does not have sufficient access to perform this action.
+      properties:
+        message:
+          type: string
+    ListMembershipsResponse:
+      type: object
+      description: Response for listing memberships.
+      properties:
+        nextToken:
+          type: string
+          description: The token value retrieved from a previous paginated request.
+        membershipList:
+          type: array
+          items:
+            $ref: '#/components/schemas/Membership'
+          description: The list of memberships.
+    CreateMembershipRequest:
+      type: object
+      description: Request body for creating a membership.
+      required:
+      - collaborationIdentifier
+      - queryLogStatus
+      properties:
+        collaborationIdentifier:
+          type: string
+          description: The unique ID for the associated collaboration.
+          example: collab-abc12345
+        queryLogStatus:
+          type: string
+          enum:
+          - ENABLED
+          - DISABLED
+          description: An indicator as to whether query logging has been enabled or disabled.
+    ValidationException:
+      type: object
+      description: The input fails to satisfy the specified constraints.
+      properties:
+        message:
+          type: string
+        fieldList:
+          type: array
+          items:
+            type: object
+    InternalServerException:
+      type: object
+      description: Unexpected error during processing of request.
+      properties:
+        message:
+          type: string
+  securitySchemes:
+    aws_signature:
+      type: apiKey
+      in: header
+      name: Authorization
+      description: AWS Signature Version 4
+externalDocs:
+  description: Amazon Clean Rooms API Reference
+  url: https://docs.aws.amazon.com/clean-rooms/latest/apireference/

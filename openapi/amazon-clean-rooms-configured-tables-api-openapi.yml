@@ -1,0 +1,262 @@
+openapi: 3.1.0
+info:
+  title: Amazon Clean Rooms Collaborations Configured Tables API
+  description: Amazon Clean Rooms enables organizations to collaborate and analyze shared datasets without exposing underlying raw data to partners. Create secure data clean rooms and collaborate with any company while maintaining data privacy through differential privacy, cryptographic computing, and flexible analytics using SQL, PySpark, or ML models.
+  version: '2022-02-17'
+  contact:
+    name: Amazon Web Services
+    url: https://aws.amazon.com/contact-us/
+  termsOfService: https://aws.amazon.com/service-terms/
+  x-generated-from: documentation
+servers:
+- url: https://cleanrooms.{region}.amazonaws.com
+  description: Amazon Clean Rooms Regional Endpoint
+  variables:
+    region:
+      default: us-east-1
+      description: AWS Region
+security:
+- aws_signature: []
+tags:
+- name: Configured Tables
+  description: Operations for managing configured tables
+paths:
+  /configuredTables:
+    get:
+      operationId: ListConfiguredTables
+      summary: Amazon Clean Rooms List Configured Tables
+      description: Lists configured tables in the caller's account.
+      tags:
+      - Configured Tables
+      parameters:
+      - name: nextToken
+        in: query
+        description: The token value retrieved from a previous paginated request.
+        schema:
+          type: string
+      - name: maxResults
+        in: query
+        description: The maximum number of configured tables to return.
+        schema:
+          type: integer
+          minimum: 1
+          maximum: 100
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListConfiguredTablesResponse'
+              examples:
+                ListConfiguredTables200Example:
+                  summary: Default ListConfiguredTables 200 response
+                  x-microcks-default: true
+                  value:
+                    configuredTableList:
+                    - id: table-abc12345
+                      arn: arn:aws:cleanrooms:us-east-1:123456789012:configuredtable/table-abc12345
+                      name: Customer Segments Table
+                      createTime: '2025-03-15T14:30:00Z'
+                      updateTime: '2025-03-15T14:30:00Z'
+                      analysisRuleTypes:
+                      - AGGREGATION
+                      analysisMethod: DIRECT_QUERY
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationException'
+        '403':
+          description: Access denied
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AccessDeniedException'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InternalServerException'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+    post:
+      operationId: CreateConfiguredTable
+      summary: Amazon Clean Rooms Create a Configured Table
+      description: Creates a new configured table resource. A configured table represents an AWS Glue table that is configured for Clean Rooms collaboration with specific analysis rules governing how it may be queried.
+      tags:
+      - Configured Tables
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateConfiguredTableRequest'
+            examples:
+              CreateConfiguredTableRequestExample:
+                summary: Default CreateConfiguredTable request
+                x-microcks-default: true
+                value:
+                  name: Customer Segments Table
+                  description: Customer segmentation data for marketing analytics
+                  tableReference:
+                    glue:
+                      databaseName: marketing_db
+                      tableName: customer_segments
+                  allowedColumns:
+                  - customer_id
+                  - segment
+                  - region
+                  analysisMethod: DIRECT_QUERY
+      responses:
+        '200':
+          description: Configured table created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CreateConfiguredTableResponse'
+              examples:
+                CreateConfiguredTable200Example:
+                  summary: Default CreateConfiguredTable 200 response
+                  x-microcks-default: true
+                  value:
+                    configuredTable:
+                      id: table-abc12345
+                      arn: arn:aws:cleanrooms:us-east-1:123456789012:configuredtable/table-abc12345
+                      name: Customer Segments Table
+                      analysisMethod: DIRECT_QUERY
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationException'
+        '403':
+          description: Access denied
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AccessDeniedException'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InternalServerException'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+components:
+  schemas:
+    ListConfiguredTablesResponse:
+      type: object
+      description: Response for listing configured tables.
+      properties:
+        nextToken:
+          type: string
+          description: The token value retrieved from a previous paginated request.
+        configuredTableList:
+          type: array
+          items:
+            $ref: '#/components/schemas/ConfiguredTable'
+          description: The list of configured tables.
+    CreateConfiguredTableResponse:
+      type: object
+      description: Response for creating a configured table.
+      properties:
+        configuredTable:
+          $ref: '#/components/schemas/ConfiguredTable'
+    AccessDeniedException:
+      type: object
+      description: Caller does not have sufficient access to perform this action.
+      properties:
+        message:
+          type: string
+    CreateConfiguredTableRequest:
+      type: object
+      description: Request body for creating a configured table.
+      required:
+      - name
+      - tableReference
+      - allowedColumns
+      - analysisMethod
+      properties:
+        name:
+          type: string
+          description: The name of the configured table.
+          example: Customer Segments Table
+        description:
+          type: string
+          description: A description for the configured table.
+        tableReference:
+          type: object
+          description: A reference to the AWS Glue table being configured.
+        allowedColumns:
+          type: array
+          items:
+            type: string
+          description: The columns of the underlying AWS Glue table that can be used by collaborators.
+        analysisMethod:
+          type: string
+          enum:
+          - DIRECT_QUERY
+          description: The analysis method for the configured table.
+    ConfiguredTable:
+      type: object
+      description: Represents a configured table in Clean Rooms.
+      properties:
+        id:
+          type: string
+          description: The unique ID of the configured table.
+          example: table-abc12345
+        arn:
+          type: string
+          description: The ARN of the configured table.
+        name:
+          type: string
+          description: A human-readable name for the configured table.
+          example: Customer Segments Table
+        description:
+          type: string
+          description: A description of the configured table.
+        createTime:
+          type: string
+          format: date-time
+          description: The time when the configured table was created.
+        updateTime:
+          type: string
+          format: date-time
+          description: The time when the configured table was last updated.
+        analysisMethod:
+          type: string
+          enum:
+          - DIRECT_QUERY
+          description: The analysis method for the configured table.
+    ValidationException:
+      type: object
+      description: The input fails to satisfy the specified constraints.
+      properties:
+        message:
+          type: string
+        fieldList:
+          type: array
+          items:
+            type: object
+    InternalServerException:
+      type: object
+      description: Unexpected error during processing of request.
+      properties:
+        message:
+          type: string
+  securitySchemes:
+    aws_signature:
+      type: apiKey
+      in: header
+      name: Authorization
+      description: AWS Signature Version 4
+externalDocs:
+  description: Amazon Clean Rooms API Reference
+  url: https://docs.aws.amazon.com/clean-rooms/latest/apireference/

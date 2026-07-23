@@ -1,0 +1,409 @@
+openapi: 3.1.0
+info:
+  title: Amazon Clean Rooms Collaborations API
+  description: Amazon Clean Rooms enables organizations to collaborate and analyze shared datasets without exposing underlying raw data to partners. Create secure data clean rooms and collaborate with any company while maintaining data privacy through differential privacy, cryptographic computing, and flexible analytics using SQL, PySpark, or ML models.
+  version: '2022-02-17'
+  contact:
+    name: Amazon Web Services
+    url: https://aws.amazon.com/contact-us/
+  termsOfService: https://aws.amazon.com/service-terms/
+  x-generated-from: documentation
+servers:
+- url: https://cleanrooms.{region}.amazonaws.com
+  description: Amazon Clean Rooms Regional Endpoint
+  variables:
+    region:
+      default: us-east-1
+      description: AWS Region
+security:
+- aws_signature: []
+tags:
+- name: Collaborations
+  description: Operations for managing Clean Rooms collaborations
+paths:
+  /collaborations:
+    get:
+      operationId: ListCollaborations
+      summary: Amazon Clean Rooms List Collaborations
+      description: Lists collaborations the caller owns, is active in, or has been invited to.
+      tags:
+      - Collaborations
+      parameters:
+      - name: nextToken
+        in: query
+        description: The token value retrieved from a previous paginated request.
+        schema:
+          type: string
+      - name: maxResults
+        in: query
+        description: The maximum number of collaborations to return.
+        schema:
+          type: integer
+          minimum: 1
+          maximum: 100
+      - name: memberStatus
+        in: query
+        description: The caller's status in the collaborations.
+        schema:
+          type: string
+          enum:
+          - INVITED
+          - ACTIVE
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListCollaborationsResponse'
+              examples:
+                ListCollaborations200Example:
+                  summary: Default ListCollaborations 200 response
+                  x-microcks-default: true
+                  value:
+                    collaborationList:
+                    - id: collab-abc12345
+                      arn: arn:aws:cleanrooms:us-east-1:123456789012:collaboration/collab-abc12345
+                      name: Marketing Analytics Collaboration
+                      creatorAccountId: '123456789012'
+                      creatorDisplayName: Acme Corp
+                      createTime: '2025-03-15T14:30:00Z'
+                      updateTime: '2025-03-15T14:30:00Z'
+                      memberStatus: ACTIVE
+                      membershipStatus: ACTIVE
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationException'
+        '403':
+          description: Access denied
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AccessDeniedException'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InternalServerException'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+    post:
+      operationId: CreateCollaboration
+      summary: Amazon Clean Rooms Create a Collaboration
+      description: Creates a new collaboration. A collaboration is a shared space where multiple parties can analyze data together without exposing raw data to one another.
+      tags:
+      - Collaborations
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateCollaborationRequest'
+            examples:
+              CreateCollaborationRequestExample:
+                summary: Default CreateCollaboration request
+                x-microcks-default: true
+                value:
+                  name: Marketing Analytics Collaboration
+                  description: Collaborative analytics for marketing measurement
+                  members:
+                  - accountId: '987654321098'
+                    displayName: Partner Corp
+                    memberAbilities:
+                    - CAN_QUERY
+                  creatorDisplayName: Acme Corp
+                  creatorMemberAbilities:
+                  - CAN_QUERY
+                  queryLogStatus: ENABLED
+      responses:
+        '200':
+          description: Collaboration created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CreateCollaborationResponse'
+              examples:
+                CreateCollaboration200Example:
+                  summary: Default CreateCollaboration 200 response
+                  x-microcks-default: true
+                  value:
+                    collaboration:
+                      id: collab-abc12345
+                      arn: arn:aws:cleanrooms:us-east-1:123456789012:collaboration/collab-abc12345
+                      name: Marketing Analytics Collaboration
+                      creatorAccountId: '123456789012'
+                      queryLogStatus: ENABLED
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationException'
+        '403':
+          description: Access denied
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AccessDeniedException'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InternalServerException'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /collaborations/{collaborationIdentifier}:
+    get:
+      operationId: GetCollaboration
+      summary: Amazon Clean Rooms Get a Collaboration
+      description: Returns metadata about a collaboration, including its ID, ARN, name, description, creator details, and query log status.
+      tags:
+      - Collaborations
+      parameters:
+      - name: collaborationIdentifier
+        in: path
+        required: true
+        description: The identifier for the collaboration.
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetCollaborationResponse'
+              examples:
+                GetCollaboration200Example:
+                  summary: Default GetCollaboration 200 response
+                  x-microcks-default: true
+                  value:
+                    collaboration:
+                      id: collab-abc12345
+                      arn: arn:aws:cleanrooms:us-east-1:123456789012:collaboration/collab-abc12345
+                      name: Marketing Analytics Collaboration
+                      description: Collaborative analytics for marketing measurement
+                      creatorAccountId: '123456789012'
+                      queryLogStatus: ENABLED
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationException'
+        '403':
+          description: Access denied
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AccessDeniedException'
+        '404':
+          description: Resource not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResourceNotFoundException'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InternalServerException'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+    delete:
+      operationId: DeleteCollaboration
+      summary: Amazon Clean Rooms Delete a Collaboration
+      description: Deletes a collaboration. The collaboration must have no active memberships before it can be deleted.
+      tags:
+      - Collaborations
+      parameters:
+      - name: collaborationIdentifier
+        in: path
+        required: true
+        description: The identifier for the collaboration to delete.
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Collaboration deleted
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationException'
+        '403':
+          description: Access denied
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AccessDeniedException'
+        '404':
+          description: Resource not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResourceNotFoundException'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InternalServerException'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+components:
+  schemas:
+    Collaboration:
+      type: object
+      description: Represents an AWS Clean Rooms collaboration workspace.
+      properties:
+        id:
+          type: string
+          description: The unique ID of the collaboration.
+          example: collab-abc12345
+        arn:
+          type: string
+          description: The ARN of the collaboration.
+          example: arn:aws:cleanrooms:us-east-1:123456789012:collaboration/collab-abc12345
+        name:
+          type: string
+          description: A human-readable identifier for the collaboration.
+          example: Marketing Analytics Collaboration
+        description:
+          type: string
+          description: A description of the collaboration.
+          example: Collaborative analytics for marketing measurement
+        creatorAccountId:
+          type: string
+          description: The account ID of the creator.
+          example: '123456789012'
+        creatorDisplayName:
+          type: string
+          description: The display name of the collaboration creator.
+          example: Acme Corp
+        createTime:
+          type: string
+          format: date-time
+          description: The time when the collaboration was created.
+        updateTime:
+          type: string
+          format: date-time
+          description: The time when the collaboration was last updated.
+        queryLogStatus:
+          type: string
+          enum:
+          - ENABLED
+          - DISABLED
+          description: Whether query logs are enabled.
+    CreateCollaborationResponse:
+      type: object
+      description: Response for creating a collaboration.
+      properties:
+        collaboration:
+          $ref: '#/components/schemas/Collaboration'
+    GetCollaborationResponse:
+      type: object
+      description: Response for getting a collaboration.
+      properties:
+        collaboration:
+          $ref: '#/components/schemas/Collaboration'
+    AccessDeniedException:
+      type: object
+      description: Caller does not have sufficient access to perform this action.
+      properties:
+        message:
+          type: string
+    CreateCollaborationRequest:
+      type: object
+      description: Request body for creating a collaboration.
+      required:
+      - name
+      - members
+      - creatorDisplayName
+      - creatorMemberAbilities
+      - queryLogStatus
+      properties:
+        name:
+          type: string
+          description: The display name for a collaboration.
+          example: Marketing Analytics Collaboration
+        description:
+          type: string
+          description: A description of the collaboration.
+        members:
+          type: array
+          items:
+            type: object
+          description: A list of initial members for the collaboration.
+        creatorDisplayName:
+          type: string
+          description: The display name of the collaboration creator.
+        creatorMemberAbilities:
+          type: array
+          items:
+            type: string
+          description: The abilities granted to the collaboration creator.
+        queryLogStatus:
+          type: string
+          enum:
+          - ENABLED
+          - DISABLED
+          description: An indicator as to whether query logging has been enabled or disabled.
+    ResourceNotFoundException:
+      type: object
+      description: Request references a resource which does not exist.
+      properties:
+        message:
+          type: string
+        resourceId:
+          type: string
+        resourceType:
+          type: string
+    InternalServerException:
+      type: object
+      description: Unexpected error during processing of request.
+      properties:
+        message:
+          type: string
+    ValidationException:
+      type: object
+      description: The input fails to satisfy the specified constraints.
+      properties:
+        message:
+          type: string
+        fieldList:
+          type: array
+          items:
+            type: object
+    ListCollaborationsResponse:
+      type: object
+      description: Response for listing collaborations.
+      properties:
+        nextToken:
+          type: string
+          description: The token value retrieved from a previous paginated request.
+        collaborationList:
+          type: array
+          items:
+            $ref: '#/components/schemas/Collaboration'
+          description: The list of collaborations.
+  securitySchemes:
+    aws_signature:
+      type: apiKey
+      in: header
+      name: Authorization
+      description: AWS Signature Version 4
+externalDocs:
+  description: Amazon Clean Rooms API Reference
+  url: https://docs.aws.amazon.com/clean-rooms/latest/apireference/
