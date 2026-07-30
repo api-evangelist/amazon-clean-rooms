@@ -4,7 +4,19 @@ description: >-
   Amazon Clean Rooms enables organizations to collaborate and analyze shared datasets without exposing underlying raw data to partners. Create secure data clean rooms in minutes and collaborate with any
   company while maintaining data privacy through differential privacy, cryptographic computing, and flexible analytics.
 type: Index
-image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+accessModel:
+  pricing: unknown
+  onboarding: self-serve
+  trial: false
+  try_now: false
+  public: false
+  label: Self-serve signup
+  confidence: medium
+  source:
+  - authentication
+  generated: '2026-07-22'
+  method: derived
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/amazon-clean-rooms.png
 tags:
 - AWS
 - Clean Rooms
@@ -18,22 +30,18 @@ created: '2026-03-16'
 modified: '2026-06-20'
 specificationVersion: '0.19'
 apis:
-- name: Amazon Clean Rooms API
-  description: API for creating and managing secure collaboration workspaces, memberships, configured tables, analysis templates, and executing privacy-preserving protected queries and jobs.
-  image: https://a0.awsstatic.com/libra-css/images/logos/aws_logo_smile_1200x630.png
+- aid: amazon-clean-rooms:amazon-clean-rooms-collaborations-api
+  name: Amazon Clean Rooms Collaborations API
+  description: Operations for managing Clean Rooms collaborations
   humanURL: https://aws.amazon.com/clean-rooms/
   baseURL: https://cleanrooms.us-east-1.amazonaws.com
   tags:
-  - AWS
-  - Clean Rooms
-  - Data Collaboration
-  - Privacy
-  - Analytics
+  - Collaborations
   properties:
+  - type: OpenAPI
+    url: openapi/amazon-clean-rooms-collaborations-api-openapi.yml
   - type: Documentation
     url: https://docs.aws.amazon.com/clean-rooms/latest/apireference/
-  - type: OpenAPI
-    url: openapi/amazon-clean-rooms-openapi.yml
   - type: GettingStarted
     url: https://aws.amazon.com/clean-rooms/getting-started/
   - type: Pricing
@@ -62,10 +70,138 @@ apis:
     url: examples/clean-rooms-membership-example.json
   - type: Example
     url: examples/clean-rooms-protected-query-example.json
-  - type: Overlay
-    url: overlays/amazon-clean-rooms-openapi-overlay.yaml
-  - type: MCPServer
-    url: mcp/amazon-clean-rooms-mcp.yml
+  - type: Conformance
+    url: conformance/amazon-clean-rooms-conformance.yml
+  - type: ErrorCatalog
+    url: errors/amazon-clean-rooms-problem-types.yml
+- aid: amazon-clean-rooms:amazon-clean-rooms-configured-tables-api
+  name: Amazon Clean Rooms Configured Tables API
+  description: Operations for managing configured tables
+  humanURL: https://aws.amazon.com/clean-rooms/
+  baseURL: https://cleanrooms.us-east-1.amazonaws.com
+  tags:
+  - Configured Tables
+  properties:
+  - type: OpenAPI
+    url: openapi/amazon-clean-rooms-configured-tables-api-openapi.yml
+  - type: Documentation
+    url: https://docs.aws.amazon.com/clean-rooms/latest/apireference/
+  - type: GettingStarted
+    url: https://aws.amazon.com/clean-rooms/getting-started/
+  - type: Pricing
+    url: https://aws.amazon.com/clean-rooms/pricing/
+  - type: FAQ
+    url: https://aws.amazon.com/clean-rooms/faqs/
+  - type: APIReference
+    url: https://docs.aws.amazon.com/clean-rooms/latest/apireference/
+  - type: UserGuide
+    url: https://docs.aws.amazon.com/clean-rooms/latest/userguide/
+  - type: CLI
+    url: https://docs.aws.amazon.com/cli/latest/reference/cleanrooms/
+  - type: JSONSchema
+    url: json-schema/clean-rooms-collaboration-schema.json
+  - type: JSONSchema
+    url: json-schema/clean-rooms-membership-schema.json
+  - type: JSONSchema
+    url: json-schema/clean-rooms-protected-query-schema.json
+  - type: JSONSchema
+    url: json-schema/clean-rooms-configured-table-schema.json
+  - type: JSONLD
+    url: json-ld/amazon-clean-rooms-context.jsonld
+  - type: Example
+    url: examples/clean-rooms-collaboration-example.json
+  - type: Example
+    url: examples/clean-rooms-membership-example.json
+  - type: Example
+    url: examples/clean-rooms-protected-query-example.json
+  - type: Conformance
+    url: conformance/amazon-clean-rooms-conformance.yml
+  - type: ErrorCatalog
+    url: errors/amazon-clean-rooms-problem-types.yml
+- aid: amazon-clean-rooms:amazon-clean-rooms-memberships-api
+  name: Amazon Clean Rooms Memberships API
+  description: Operations for managing collaboration memberships
+  humanURL: https://aws.amazon.com/clean-rooms/
+  baseURL: https://cleanrooms.us-east-1.amazonaws.com
+  tags:
+  - Memberships
+  properties:
+  - type: OpenAPI
+    url: openapi/amazon-clean-rooms-memberships-api-openapi.yml
+  - type: Documentation
+    url: https://docs.aws.amazon.com/clean-rooms/latest/apireference/
+  - type: GettingStarted
+    url: https://aws.amazon.com/clean-rooms/getting-started/
+  - type: Pricing
+    url: https://aws.amazon.com/clean-rooms/pricing/
+  - type: FAQ
+    url: https://aws.amazon.com/clean-rooms/faqs/
+  - type: APIReference
+    url: https://docs.aws.amazon.com/clean-rooms/latest/apireference/
+  - type: UserGuide
+    url: https://docs.aws.amazon.com/clean-rooms/latest/userguide/
+  - type: CLI
+    url: https://docs.aws.amazon.com/cli/latest/reference/cleanrooms/
+  - type: JSONSchema
+    url: json-schema/clean-rooms-collaboration-schema.json
+  - type: JSONSchema
+    url: json-schema/clean-rooms-membership-schema.json
+  - type: JSONSchema
+    url: json-schema/clean-rooms-protected-query-schema.json
+  - type: JSONSchema
+    url: json-schema/clean-rooms-configured-table-schema.json
+  - type: JSONLD
+    url: json-ld/amazon-clean-rooms-context.jsonld
+  - type: Example
+    url: examples/clean-rooms-collaboration-example.json
+  - type: Example
+    url: examples/clean-rooms-membership-example.json
+  - type: Example
+    url: examples/clean-rooms-protected-query-example.json
+  - type: Conformance
+    url: conformance/amazon-clean-rooms-conformance.yml
+  - type: ErrorCatalog
+    url: errors/amazon-clean-rooms-problem-types.yml
+- aid: amazon-clean-rooms:amazon-clean-rooms-protected-queries-api
+  name: Amazon Clean Rooms Protected Queries API
+  description: Operations for executing and managing protected queries
+  humanURL: https://aws.amazon.com/clean-rooms/
+  baseURL: https://cleanrooms.us-east-1.amazonaws.com
+  tags:
+  - Protected Queries
+  properties:
+  - type: OpenAPI
+    url: openapi/amazon-clean-rooms-protected-queries-api-openapi.yml
+  - type: Documentation
+    url: https://docs.aws.amazon.com/clean-rooms/latest/apireference/
+  - type: GettingStarted
+    url: https://aws.amazon.com/clean-rooms/getting-started/
+  - type: Pricing
+    url: https://aws.amazon.com/clean-rooms/pricing/
+  - type: FAQ
+    url: https://aws.amazon.com/clean-rooms/faqs/
+  - type: APIReference
+    url: https://docs.aws.amazon.com/clean-rooms/latest/apireference/
+  - type: UserGuide
+    url: https://docs.aws.amazon.com/clean-rooms/latest/userguide/
+  - type: CLI
+    url: https://docs.aws.amazon.com/cli/latest/reference/cleanrooms/
+  - type: JSONSchema
+    url: json-schema/clean-rooms-collaboration-schema.json
+  - type: JSONSchema
+    url: json-schema/clean-rooms-membership-schema.json
+  - type: JSONSchema
+    url: json-schema/clean-rooms-protected-query-schema.json
+  - type: JSONSchema
+    url: json-schema/clean-rooms-configured-table-schema.json
+  - type: JSONLD
+    url: json-ld/amazon-clean-rooms-context.jsonld
+  - type: Example
+    url: examples/clean-rooms-collaboration-example.json
+  - type: Example
+    url: examples/clean-rooms-membership-example.json
+  - type: Example
+    url: examples/clean-rooms-protected-query-example.json
   - type: Conformance
     url: conformance/amazon-clean-rooms-conformance.yml
   - type: ErrorCatalog
@@ -74,6 +210,8 @@ maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
 common:
+- type: PostmanWorkspace
+  url: https://www.postman.com/kinlaneapi/amazon-clean-rooms/overview
 - type: AgenticAccess
   url: agentic-access/amazon-clean-rooms-agentic-access.yml
 - type: TrustCenter
