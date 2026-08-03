@@ -1,0 +1,20 @@
+{
+  "provider": "amazon-clean-rooms",
+  "sources": [
+    "amazon-clean-rooms-collaborations-api-openapi.yml",
+    "amazon-clean-rooms-configured-tables-api-openapi.yml",
+    "amazon-clean-rooms-memberships-api-openapi.yml",
+    "amazon-clean-rooms-protected-queries-api-openapi.yml"
+  ],
+  "outputs": [
+    "amazon-clean-rooms-collaborations-api-openapi.yml",
+    "amazon-clean-rooms-configured-tables-api-openapi.yml",
+    "amazon-clean-rooms-memberships-api-openapi.yml",
+    "amazon-clean-rooms-protected-queries-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}

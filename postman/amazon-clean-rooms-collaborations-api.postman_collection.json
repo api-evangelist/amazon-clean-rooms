@@ -1,0 +1,1166 @@
+{
+  "info": {
+    "_postman_id": "ddde06b7-ca7c-4479-a8ae-8cd03e584409",
+    "name": "Amazon Clean Rooms Collaborations API",
+    "description": "Amazon Clean Rooms enables organizations to collaborate and analyze shared datasets without exposing underlying raw data to partners. Create secure data clean rooms and collaborate with any company while maintaining data privacy through differential privacy, cryptographic computing, and flexible analytics using SQL, PySpark, or ML models.\n\nContact Support:\n Name: Amazon Web Services",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T00:30:30.000Z",
+    "updatedAt": "2026-07-28T00:30:31.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-ddde06b7-ca7c-4479-a8ae-8cd03e584409"
+  },
+  "item": [
+    {
+      "name": "collaborations",
+      "item": [
+        {
+          "name": "{collaborationIdentifier}",
+          "item": [
+            {
+              "name": "Amazon Clean Rooms Get a Collaboration",
+              "id": "646075c8-1630-4754-a688-3cb1127b7372",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/collaborations/:collaborationIdentifier",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "collaborations",
+                    ":collaborationIdentifier"
+                  ],
+                  "variable": [
+                    {
+                      "id": "911548a8-2205-495a-9992-9cae535f7093",
+                      "key": "collaborationIdentifier",
+                      "value": "<string>",
+                      "description": "(Required) The identifier for the collaboration."
+                    }
+                  ]
+                },
+                "description": "Returns metadata about a collaboration, including its ID, ARN, name, description, creator details, and query log status."
+              },
+              "response": [
+                {
+                  "id": "cb1f2f3a-0db9-413a-848f-1e29eea3cda2",
+                  "name": "Successful response",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "Authorization",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/collaborations/:collaborationIdentifier",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "collaborations",
+                        ":collaborationIdentifier"
+                      ],
+                      "variable": [
+                        {
+                          "key": "collaborationIdentifier"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"collaboration\": {\n    \"id\": \"<string>\",\n    \"arn\": \"<string>\",\n    \"name\": \"<string>\",\n    \"description\": \"<string>\",\n    \"creatorAccountId\": \"<string>\",\n    \"creatorDisplayName\": \"<string>\",\n    \"createTime\": \"<dateTime>\",\n    \"updateTime\": \"<dateTime>\",\n    \"queryLogStatus\": \"ENABLED\"\n  }\n}",
+                  "createdAt": "2026-07-28T00:30:31.000Z",
+                  "updatedAt": "2026-07-28T00:30:31.000Z",
+                  "uid": "35240-cb1f2f3a-0db9-413a-848f-1e29eea3cda2"
+                },
+                {
+                  "id": "5adf5a1e-e4d3-48c7-ace6-e8c28bddb359",
+                  "name": "Bad request",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "Authorization",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/collaborations/:collaborationIdentifier",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "collaborations",
+                        ":collaborationIdentifier"
+                      ],
+                      "variable": [
+                        {
+                          "key": "collaborationIdentifier"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Bad Request",
+                  "code": 400,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"message\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T00:30:31.000Z",
+                  "updatedAt": "2026-07-28T00:30:31.000Z",
+                  "uid": "35240-5adf5a1e-e4d3-48c7-ace6-e8c28bddb359"
+                },
+                {
+                  "id": "b63a4292-0db6-4a70-a63d-048ffac48b84",
+                  "name": "Access denied",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "Authorization",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/collaborations/:collaborationIdentifier",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "collaborations",
+                        ":collaborationIdentifier"
+                      ],
+                      "variable": [
+                        {
+                          "key": "collaborationIdentifier"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Forbidden",
+                  "code": 403,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"message\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T00:30:31.000Z",
+                  "updatedAt": "2026-07-28T00:30:31.000Z",
+                  "uid": "35240-b63a4292-0db6-4a70-a63d-048ffac48b84"
+                },
+                {
+                  "id": "02ec091e-1f0b-4b8a-afcc-03a2a49cc0f3",
+                  "name": "Resource not found",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "Authorization",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/collaborations/:collaborationIdentifier",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "collaborations",
+                        ":collaborationIdentifier"
+                      ],
+                      "variable": [
+                        {
+                          "key": "collaborationIdentifier"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Not Found",
+                  "code": 404,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"message\": \"<string>\",\n  \"resourceId\": \"<string>\",\n  \"resourceType\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T00:30:31.000Z",
+                  "updatedAt": "2026-07-28T00:30:31.000Z",
+                  "uid": "35240-02ec091e-1f0b-4b8a-afcc-03a2a49cc0f3"
+                },
+                {
+                  "id": "134f32d5-94dd-4153-959a-37e8ae70fcae",
+                  "name": "Internal server error",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "Authorization",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/collaborations/:collaborationIdentifier",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "collaborations",
+                        ":collaborationIdentifier"
+                      ],
+                      "variable": [
+                        {
+                          "key": "collaborationIdentifier"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Internal Server Error",
+                  "code": 500,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"message\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T00:30:31.000Z",
+                  "updatedAt": "2026-07-28T00:30:31.000Z",
+                  "uid": "35240-134f32d5-94dd-4153-959a-37e8ae70fcae"
+                }
+              ],
+              "createdAt": "2026-07-28T00:30:31.000Z",
+              "updatedAt": "2026-07-28T00:30:31.000Z",
+              "uid": "35240-646075c8-1630-4754-a688-3cb1127b7372"
+            },
+            {
+              "name": "Amazon Clean Rooms Delete a Collaboration",
+              "id": "b351a1cc-9076-4f66-b102-1ee4090e6905",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "DELETE",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/collaborations/:collaborationIdentifier",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "collaborations",
+                    ":collaborationIdentifier"
+                  ],
+                  "variable": [
+                    {
+                      "id": "3762593e-0e49-4240-8526-e12457faa4cc",
+                      "key": "collaborationIdentifier",
+                      "value": "<string>",
+                      "description": "(Required) The identifier for the collaboration to delete."
+                    }
+                  ]
+                },
+                "description": "Deletes a collaboration. The collaboration must have no active memberships before it can be deleted."
+              },
+              "response": [
+                {
+                  "id": "77dd7b09-225d-4b01-b8d6-6efb2c9d42a5",
+                  "name": "Collaboration deleted",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "Authorization",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/collaborations/:collaborationIdentifier",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "collaborations",
+                        ":collaborationIdentifier"
+                      ],
+                      "variable": [
+                        {
+                          "key": "collaborationIdentifier"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-07-28T00:30:31.000Z",
+                  "updatedAt": "2026-07-28T00:30:31.000Z",
+                  "uid": "35240-77dd7b09-225d-4b01-b8d6-6efb2c9d42a5"
+                },
+                {
+                  "id": "76991c70-5bbd-4493-b0e7-e2915673ab32",
+                  "name": "Bad request",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "Authorization",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/collaborations/:collaborationIdentifier",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "collaborations",
+                        ":collaborationIdentifier"
+                      ],
+                      "variable": [
+                        {
+                          "key": "collaborationIdentifier"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Bad Request",
+                  "code": 400,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"message\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T00:30:31.000Z",
+                  "updatedAt": "2026-07-28T00:30:31.000Z",
+                  "uid": "35240-76991c70-5bbd-4493-b0e7-e2915673ab32"
+                },
+                {
+                  "id": "7c592e50-98c6-4f4c-b0d8-9b8cc88f68a7",
+                  "name": "Access denied",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "Authorization",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/collaborations/:collaborationIdentifier",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "collaborations",
+                        ":collaborationIdentifier"
+                      ],
+                      "variable": [
+                        {
+                          "key": "collaborationIdentifier"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Forbidden",
+                  "code": 403,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"message\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T00:30:31.000Z",
+                  "updatedAt": "2026-07-28T00:30:31.000Z",
+                  "uid": "35240-7c592e50-98c6-4f4c-b0d8-9b8cc88f68a7"
+                },
+                {
+                  "id": "c28badf5-bbec-45be-9154-32b7a968676e",
+                  "name": "Resource not found",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "Authorization",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/collaborations/:collaborationIdentifier",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "collaborations",
+                        ":collaborationIdentifier"
+                      ],
+                      "variable": [
+                        {
+                          "key": "collaborationIdentifier"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Not Found",
+                  "code": 404,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"message\": \"<string>\",\n  \"resourceId\": \"<string>\",\n  \"resourceType\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T00:30:31.000Z",
+                  "updatedAt": "2026-07-28T00:30:31.000Z",
+                  "uid": "35240-c28badf5-bbec-45be-9154-32b7a968676e"
+                },
+                {
+                  "id": "4842ff3f-3499-498c-827a-82d985502f00",
+                  "name": "Internal server error",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "Authorization",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/collaborations/:collaborationIdentifier",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "collaborations",
+                        ":collaborationIdentifier"
+                      ],
+                      "variable": [
+                        {
+                          "key": "collaborationIdentifier"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Internal Server Error",
+                  "code": 500,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"message\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T00:30:31.000Z",
+                  "updatedAt": "2026-07-28T00:30:31.000Z",
+                  "uid": "35240-4842ff3f-3499-498c-827a-82d985502f00"
+                }
+              ],
+              "createdAt": "2026-07-28T00:30:31.000Z",
+              "updatedAt": "2026-07-28T00:30:31.000Z",
+              "uid": "35240-b351a1cc-9076-4f66-b102-1ee4090e6905"
+            }
+          ],
+          "id": "e7763f27-5c70-4e7a-9bef-750188f92d80",
+          "createdAt": "2026-07-28T00:30:31.000Z",
+          "updatedAt": "2026-07-28T00:30:31.000Z",
+          "uid": "35240-e7763f27-5c70-4e7a-9bef-750188f92d80"
+        },
+        {
+          "name": "Amazon Clean Rooms List Collaborations",
+          "id": "ef533296-c420-433d-b6b2-b3b375f2766a",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/collaborations?nextToken=<string>&maxResults=<integer>&memberStatus=INVITED",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "collaborations"
+              ],
+              "query": [
+                {
+                  "description": "The token value retrieved from a previous paginated request.",
+                  "key": "nextToken",
+                  "value": "<string>"
+                },
+                {
+                  "description": "The maximum number of collaborations to return.",
+                  "key": "maxResults",
+                  "value": "<integer>"
+                },
+                {
+                  "description": "The caller's status in the collaborations.",
+                  "key": "memberStatus",
+                  "value": "INVITED"
+                }
+              ]
+            },
+            "description": "Lists collaborations the caller owns, is active in, or has been invited to."
+          },
+          "response": [
+            {
+              "id": "a9aa02d4-fda3-4573-a80d-d9b5ebfb355b",
+              "name": "Successful response",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/collaborations?nextToken=<string>&maxResults=<integer>&memberStatus=INVITED",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "collaborations"
+                  ],
+                  "query": [
+                    {
+                      "description": "The token value retrieved from a previous paginated request.",
+                      "key": "nextToken",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The maximum number of collaborations to return.",
+                      "key": "maxResults",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "The caller's status in the collaborations.",
+                      "key": "memberStatus",
+                      "value": "INVITED"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"nextToken\": \"<string>\",\n  \"collaborationList\": [\n    {\n      \"id\": \"<string>\",\n      \"arn\": \"<string>\",\n      \"name\": \"<string>\",\n      \"description\": \"<string>\",\n      \"creatorAccountId\": \"<string>\",\n      \"creatorDisplayName\": \"<string>\",\n      \"createTime\": \"<dateTime>\",\n      \"updateTime\": \"<dateTime>\",\n      \"queryLogStatus\": \"DISABLED\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"arn\": \"<string>\",\n      \"name\": \"<string>\",\n      \"description\": \"<string>\",\n      \"creatorAccountId\": \"<string>\",\n      \"creatorDisplayName\": \"<string>\",\n      \"createTime\": \"<dateTime>\",\n      \"updateTime\": \"<dateTime>\",\n      \"queryLogStatus\": \"ENABLED\"\n    }\n  ]\n}",
+              "createdAt": "2026-07-28T00:30:31.000Z",
+              "updatedAt": "2026-07-28T00:30:31.000Z",
+              "uid": "35240-a9aa02d4-fda3-4573-a80d-d9b5ebfb355b"
+            },
+            {
+              "id": "1b8af03c-2d22-431b-9d33-2129d94f0149",
+              "name": "Bad request",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/collaborations?nextToken=<string>&maxResults=<integer>&memberStatus=INVITED",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "collaborations"
+                  ],
+                  "query": [
+                    {
+                      "description": "The token value retrieved from a previous paginated request.",
+                      "key": "nextToken",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The maximum number of collaborations to return.",
+                      "key": "maxResults",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "The caller's status in the collaborations.",
+                      "key": "memberStatus",
+                      "value": "INVITED"
+                    }
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"message\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T00:30:31.000Z",
+              "updatedAt": "2026-07-28T00:30:31.000Z",
+              "uid": "35240-1b8af03c-2d22-431b-9d33-2129d94f0149"
+            },
+            {
+              "id": "2b77b421-c9be-45c0-8267-fbd2b2388b26",
+              "name": "Access denied",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/collaborations?nextToken=<string>&maxResults=<integer>&memberStatus=INVITED",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "collaborations"
+                  ],
+                  "query": [
+                    {
+                      "description": "The token value retrieved from a previous paginated request.",
+                      "key": "nextToken",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The maximum number of collaborations to return.",
+                      "key": "maxResults",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "The caller's status in the collaborations.",
+                      "key": "memberStatus",
+                      "value": "INVITED"
+                    }
+                  ]
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"message\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T00:30:31.000Z",
+              "updatedAt": "2026-07-28T00:30:31.000Z",
+              "uid": "35240-2b77b421-c9be-45c0-8267-fbd2b2388b26"
+            },
+            {
+              "id": "132a298f-c729-48d3-9ae4-e9f496d457fb",
+              "name": "Internal server error",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/collaborations?nextToken=<string>&maxResults=<integer>&memberStatus=INVITED",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "collaborations"
+                  ],
+                  "query": [
+                    {
+                      "description": "The token value retrieved from a previous paginated request.",
+                      "key": "nextToken",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The maximum number of collaborations to return.",
+                      "key": "maxResults",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "The caller's status in the collaborations.",
+                      "key": "memberStatus",
+                      "value": "INVITED"
+                    }
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"message\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T00:30:31.000Z",
+              "updatedAt": "2026-07-28T00:30:31.000Z",
+              "uid": "35240-132a298f-c729-48d3-9ae4-e9f496d457fb"
+            }
+          ],
+          "createdAt": "2026-07-28T00:30:31.000Z",
+          "updatedAt": "2026-07-28T00:30:31.000Z",
+          "uid": "35240-ef533296-c420-433d-b6b2-b3b375f2766a"
+        },
+        {
+          "name": "Amazon Clean Rooms Create a Collaboration",
+          "id": "551a39ef-3caf-4261-9e70-772abe0c970b",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"members\": [],\n  \"creatorDisplayName\": \"<string>\",\n  \"creatorMemberAbilities\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"queryLogStatus\": \"DISABLED\",\n  \"description\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "headerFamily": "json",
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/collaborations",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "collaborations"
+              ]
+            },
+            "description": "Creates a new collaboration. A collaboration is a shared space where multiple parties can analyze data together without exposing raw data to one another."
+          },
+          "response": [
+            {
+              "id": "9ad584a0-2795-49d9-81c2-f604c230e1aa",
+              "name": "Collaboration created",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"members\": [],\n  \"creatorDisplayName\": \"<string>\",\n  \"creatorMemberAbilities\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"queryLogStatus\": \"DISABLED\",\n  \"description\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/collaborations",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "collaborations"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"collaboration\": {\n    \"id\": \"<string>\",\n    \"arn\": \"<string>\",\n    \"name\": \"<string>\",\n    \"description\": \"<string>\",\n    \"creatorAccountId\": \"<string>\",\n    \"creatorDisplayName\": \"<string>\",\n    \"createTime\": \"<dateTime>\",\n    \"updateTime\": \"<dateTime>\",\n    \"queryLogStatus\": \"ENABLED\"\n  }\n}",
+              "createdAt": "2026-07-28T00:30:31.000Z",
+              "updatedAt": "2026-07-28T00:30:31.000Z",
+              "uid": "35240-9ad584a0-2795-49d9-81c2-f604c230e1aa"
+            },
+            {
+              "id": "fc8dd6fd-4f54-4dc5-a810-7e899374a641",
+              "name": "Bad request",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"members\": [],\n  \"creatorDisplayName\": \"<string>\",\n  \"creatorMemberAbilities\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"queryLogStatus\": \"DISABLED\",\n  \"description\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/collaborations",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "collaborations"
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"message\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T00:30:31.000Z",
+              "updatedAt": "2026-07-28T00:30:31.000Z",
+              "uid": "35240-fc8dd6fd-4f54-4dc5-a810-7e899374a641"
+            },
+            {
+              "id": "aa9f4d69-552d-4b56-b31e-c4ebf385fa6c",
+              "name": "Access denied",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"members\": [],\n  \"creatorDisplayName\": \"<string>\",\n  \"creatorMemberAbilities\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"queryLogStatus\": \"DISABLED\",\n  \"description\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/collaborations",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "collaborations"
+                  ]
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"message\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T00:30:31.000Z",
+              "updatedAt": "2026-07-28T00:30:31.000Z",
+              "uid": "35240-aa9f4d69-552d-4b56-b31e-c4ebf385fa6c"
+            },
+            {
+              "id": "5d2148be-b8ec-4196-8747-818c7c41b010",
+              "name": "Internal server error",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"members\": [],\n  \"creatorDisplayName\": \"<string>\",\n  \"creatorMemberAbilities\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"queryLogStatus\": \"DISABLED\",\n  \"description\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/collaborations",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "collaborations"
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"message\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T00:30:31.000Z",
+              "updatedAt": "2026-07-28T00:30:31.000Z",
+              "uid": "35240-5d2148be-b8ec-4196-8747-818c7c41b010"
+            }
+          ],
+          "createdAt": "2026-07-28T00:30:31.000Z",
+          "updatedAt": "2026-07-28T00:30:31.000Z",
+          "uid": "35240-551a39ef-3caf-4261-9e70-772abe0c970b"
+        }
+      ],
+      "id": "2715560c-f069-468a-80d3-50eb2f10b045",
+      "createdAt": "2026-07-28T00:30:31.000Z",
+      "updatedAt": "2026-07-28T00:30:31.000Z",
+      "uid": "35240-2715560c-f069-468a-80d3-50eb2f10b045"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "Authorization",
+        "type": "string"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}",
+        "type": "string"
+      },
+      {
+        "key": "in",
+        "value": "header",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "region",
+      "value": "us-east-1"
+    },
+    {
+      "key": "baseUrl",
+      "value": "https://cleanrooms.{{region}}.amazonaws.com"
+    }
+  ]
+}

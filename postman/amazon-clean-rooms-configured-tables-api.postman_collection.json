@@ -1,0 +1,581 @@
+{
+  "info": {
+    "_postman_id": "b8ddd4ea-0579-45a5-860c-7e9959cbf5df",
+    "name": "Amazon Clean Rooms Collaborations Configured Tables API",
+    "description": "Amazon Clean Rooms enables organizations to collaborate and analyze shared datasets without exposing underlying raw data to partners. Create secure data clean rooms and collaborate with any company while maintaining data privacy through differential privacy, cryptographic computing, and flexible analytics using SQL, PySpark, or ML models.\n\nContact Support:\n Name: Amazon Web Services",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T00:30:31.000Z",
+    "updatedAt": "2026-07-28T00:30:32.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-b8ddd4ea-0579-45a5-860c-7e9959cbf5df"
+  },
+  "item": [
+    {
+      "name": "configuredTables",
+      "item": [
+        {
+          "name": "Amazon Clean Rooms List Configured Tables",
+          "id": "ef2251f8-81b3-4630-bc1d-4c1c8b6446bf",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/configuredTables?nextToken=<string>&maxResults=<integer>",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "configuredTables"
+              ],
+              "query": [
+                {
+                  "description": "The token value retrieved from a previous paginated request.",
+                  "key": "nextToken",
+                  "value": "<string>"
+                },
+                {
+                  "description": "The maximum number of configured tables to return.",
+                  "key": "maxResults",
+                  "value": "<integer>"
+                }
+              ]
+            },
+            "description": "Lists configured tables in the caller's account."
+          },
+          "response": [
+            {
+              "id": "0651d40e-09e8-406a-8c53-a3e688635355",
+              "name": "Successful response",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/configuredTables?nextToken=<string>&maxResults=<integer>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "configuredTables"
+                  ],
+                  "query": [
+                    {
+                      "description": "The token value retrieved from a previous paginated request.",
+                      "key": "nextToken",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The maximum number of configured tables to return.",
+                      "key": "maxResults",
+                      "value": "<integer>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"nextToken\": \"<string>\",\n  \"configuredTableList\": [\n    {\n      \"id\": \"<string>\",\n      \"arn\": \"<string>\",\n      \"name\": \"<string>\",\n      \"description\": \"<string>\",\n      \"createTime\": \"<dateTime>\",\n      \"updateTime\": \"<dateTime>\",\n      \"analysisMethod\": \"DIRECT_QUERY\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"arn\": \"<string>\",\n      \"name\": \"<string>\",\n      \"description\": \"<string>\",\n      \"createTime\": \"<dateTime>\",\n      \"updateTime\": \"<dateTime>\",\n      \"analysisMethod\": \"DIRECT_QUERY\"\n    }\n  ]\n}",
+              "createdAt": "2026-07-28T00:30:32.000Z",
+              "updatedAt": "2026-07-28T00:30:32.000Z",
+              "uid": "35240-0651d40e-09e8-406a-8c53-a3e688635355"
+            },
+            {
+              "id": "267899b7-00b5-4c71-9404-c2c2f52b23d9",
+              "name": "Bad request",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/configuredTables?nextToken=<string>&maxResults=<integer>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "configuredTables"
+                  ],
+                  "query": [
+                    {
+                      "description": "The token value retrieved from a previous paginated request.",
+                      "key": "nextToken",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The maximum number of configured tables to return.",
+                      "key": "maxResults",
+                      "value": "<integer>"
+                    }
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"message\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T00:30:32.000Z",
+              "updatedAt": "2026-07-28T00:30:32.000Z",
+              "uid": "35240-267899b7-00b5-4c71-9404-c2c2f52b23d9"
+            },
+            {
+              "id": "dc1e15e6-491d-4e79-b17c-7737aedb023f",
+              "name": "Access denied",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/configuredTables?nextToken=<string>&maxResults=<integer>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "configuredTables"
+                  ],
+                  "query": [
+                    {
+                      "description": "The token value retrieved from a previous paginated request.",
+                      "key": "nextToken",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The maximum number of configured tables to return.",
+                      "key": "maxResults",
+                      "value": "<integer>"
+                    }
+                  ]
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"message\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T00:30:32.000Z",
+              "updatedAt": "2026-07-28T00:30:32.000Z",
+              "uid": "35240-dc1e15e6-491d-4e79-b17c-7737aedb023f"
+            },
+            {
+              "id": "3022ba63-db85-457a-a964-ccb4d73fb620",
+              "name": "Internal server error",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/configuredTables?nextToken=<string>&maxResults=<integer>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "configuredTables"
+                  ],
+                  "query": [
+                    {
+                      "description": "The token value retrieved from a previous paginated request.",
+                      "key": "nextToken",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The maximum number of configured tables to return.",
+                      "key": "maxResults",
+                      "value": "<integer>"
+                    }
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"message\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T00:30:32.000Z",
+              "updatedAt": "2026-07-28T00:30:32.000Z",
+              "uid": "35240-3022ba63-db85-457a-a964-ccb4d73fb620"
+            }
+          ],
+          "createdAt": "2026-07-28T00:30:32.000Z",
+          "updatedAt": "2026-07-28T00:30:32.000Z",
+          "uid": "35240-ef2251f8-81b3-4630-bc1d-4c1c8b6446bf"
+        },
+        {
+          "name": "Amazon Clean Rooms Create a Configured Table",
+          "id": "b08d5cd9-e79b-4e93-9900-b882783cdb26",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"tableReference\": {},\n  \"allowedColumns\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"analysisMethod\": \"DIRECT_QUERY\",\n  \"description\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "headerFamily": "json",
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/configuredTables",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "configuredTables"
+              ]
+            },
+            "description": "Creates a new configured table resource. A configured table represents an AWS Glue table that is configured for Clean Rooms collaboration with specific analysis rules governing how it may be queried."
+          },
+          "response": [
+            {
+              "id": "6324d718-d346-4489-b822-e4724e9721d5",
+              "name": "Configured table created",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"tableReference\": {},\n  \"allowedColumns\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"analysisMethod\": \"DIRECT_QUERY\",\n  \"description\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/configuredTables",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "configuredTables"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"configuredTable\": {\n    \"id\": \"<string>\",\n    \"arn\": \"<string>\",\n    \"name\": \"<string>\",\n    \"description\": \"<string>\",\n    \"createTime\": \"<dateTime>\",\n    \"updateTime\": \"<dateTime>\",\n    \"analysisMethod\": \"DIRECT_QUERY\"\n  }\n}",
+              "createdAt": "2026-07-28T00:30:32.000Z",
+              "updatedAt": "2026-07-28T00:30:32.000Z",
+              "uid": "35240-6324d718-d346-4489-b822-e4724e9721d5"
+            },
+            {
+              "id": "18a46725-3bcb-4235-bbac-4661969e0d85",
+              "name": "Bad request",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"tableReference\": {},\n  \"allowedColumns\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"analysisMethod\": \"DIRECT_QUERY\",\n  \"description\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/configuredTables",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "configuredTables"
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"message\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T00:30:32.000Z",
+              "updatedAt": "2026-07-28T00:30:32.000Z",
+              "uid": "35240-18a46725-3bcb-4235-bbac-4661969e0d85"
+            },
+            {
+              "id": "3169e0cb-4636-4916-87d7-ca3faba09f15",
+              "name": "Access denied",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"tableReference\": {},\n  \"allowedColumns\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"analysisMethod\": \"DIRECT_QUERY\",\n  \"description\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/configuredTables",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "configuredTables"
+                  ]
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"message\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T00:30:32.000Z",
+              "updatedAt": "2026-07-28T00:30:32.000Z",
+              "uid": "35240-3169e0cb-4636-4916-87d7-ca3faba09f15"
+            },
+            {
+              "id": "b9b31867-796e-4863-8a55-1ce3c0ffef99",
+              "name": "Internal server error",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"tableReference\": {},\n  \"allowedColumns\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"analysisMethod\": \"DIRECT_QUERY\",\n  \"description\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/configuredTables",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "configuredTables"
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"message\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T00:30:32.000Z",
+              "updatedAt": "2026-07-28T00:30:32.000Z",
+              "uid": "35240-b9b31867-796e-4863-8a55-1ce3c0ffef99"
+            }
+          ],
+          "createdAt": "2026-07-28T00:30:32.000Z",
+          "updatedAt": "2026-07-28T00:30:32.000Z",
+          "uid": "35240-b08d5cd9-e79b-4e93-9900-b882783cdb26"
+        }
+      ],
+      "id": "5dfcf9a6-f023-437b-b698-bdd6aba11292",
+      "createdAt": "2026-07-28T00:30:32.000Z",
+      "updatedAt": "2026-07-28T00:30:32.000Z",
+      "uid": "35240-5dfcf9a6-f023-437b-b698-bdd6aba11292"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "Authorization",
+        "type": "string"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}",
+        "type": "string"
+      },
+      {
+        "key": "in",
+        "value": "header",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "region",
+      "value": "us-east-1"
+    },
+    {
+      "key": "baseUrl",
+      "value": "https://cleanrooms.{{region}}.amazonaws.com"
+    }
+  ]
+}

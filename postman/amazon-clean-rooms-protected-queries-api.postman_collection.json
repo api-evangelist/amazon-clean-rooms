@@ -1,0 +1,700 @@
+{
+  "info": {
+    "_postman_id": "e0245276-626c-42a4-8370-b14d53dddce6",
+    "name": "Amazon Clean Rooms Collaborations Protected Queries API",
+    "description": "Amazon Clean Rooms enables organizations to collaborate and analyze shared datasets without exposing underlying raw data to partners. Create secure data clean rooms and collaborate with any company while maintaining data privacy through differential privacy, cryptographic computing, and flexible analytics using SQL, PySpark, or ML models.\n\nContact Support:\n Name: Amazon Web Services",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T00:30:34.000Z",
+    "updatedAt": "2026-07-28T00:30:34.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-e0245276-626c-42a4-8370-b14d53dddce6"
+  },
+  "item": [
+    {
+      "name": "memberships",
+      "item": [
+        {
+          "name": "{membershipIdentifier}",
+          "item": [
+            {
+              "name": "protectedQueries",
+              "item": [
+                {
+                  "name": "Amazon Clean Rooms List Protected Queries",
+                  "id": "f597077f-e4ad-4873-876a-38b720b1739e",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/memberships/:membershipIdentifier/protectedQueries?nextToken=<string>&maxResults=<integer>&status=STARTED",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "memberships",
+                        ":membershipIdentifier",
+                        "protectedQueries"
+                      ],
+                      "query": [
+                        {
+                          "description": "The token value retrieved from a previous paginated request.",
+                          "key": "nextToken",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "The maximum number of protected queries to return.",
+                          "key": "maxResults",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "A filter for the status of the protected query.",
+                          "key": "status",
+                          "value": "STARTED"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "id": "9fff4249-f4d0-4e7e-98ca-6ebfa70922f3",
+                          "key": "membershipIdentifier",
+                          "value": "<string>",
+                          "description": "(Required) The identifier for a membership resource."
+                        }
+                      ]
+                    },
+                    "description": "Lists protected queries, sorted by the most recent query."
+                  },
+                  "response": [
+                    {
+                      "id": "bd2ea4d8-2680-4820-afb4-cf072c1727ce",
+                      "name": "Successful response",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "Authorization",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/memberships/:membershipIdentifier/protectedQueries?nextToken=<string>&maxResults=<integer>&status=STARTED",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "memberships",
+                            ":membershipIdentifier",
+                            "protectedQueries"
+                          ],
+                          "query": [
+                            {
+                              "description": "The token value retrieved from a previous paginated request.",
+                              "key": "nextToken",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "The maximum number of protected queries to return.",
+                              "key": "maxResults",
+                              "value": "<integer>"
+                            },
+                            {
+                              "description": "A filter for the status of the protected query.",
+                              "key": "status",
+                              "value": "STARTED"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "membershipIdentifier"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"nextToken\": \"<string>\",\n  \"protectedQueries\": [\n    {\n      \"id\": \"<string>\",\n      \"membershipId\": \"<string>\",\n      \"membershipArn\": \"<string>\",\n      \"createTime\": \"<dateTime>\",\n      \"status\": \"TIMED_OUT\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"membershipId\": \"<string>\",\n      \"membershipArn\": \"<string>\",\n      \"createTime\": \"<dateTime>\",\n      \"status\": \"STARTED\"\n    }\n  ]\n}",
+                      "createdAt": "2026-07-28T00:30:34.000Z",
+                      "updatedAt": "2026-07-28T00:30:34.000Z",
+                      "uid": "35240-bd2ea4d8-2680-4820-afb4-cf072c1727ce"
+                    },
+                    {
+                      "id": "63e4edf2-ca25-4f22-8cba-5f9a899bbbed",
+                      "name": "Bad request",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "Authorization",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/memberships/:membershipIdentifier/protectedQueries?nextToken=<string>&maxResults=<integer>&status=STARTED",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "memberships",
+                            ":membershipIdentifier",
+                            "protectedQueries"
+                          ],
+                          "query": [
+                            {
+                              "description": "The token value retrieved from a previous paginated request.",
+                              "key": "nextToken",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "The maximum number of protected queries to return.",
+                              "key": "maxResults",
+                              "value": "<integer>"
+                            },
+                            {
+                              "description": "A filter for the status of the protected query.",
+                              "key": "status",
+                              "value": "STARTED"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "membershipIdentifier"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Bad Request",
+                      "code": 400,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"message\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T00:30:34.000Z",
+                      "updatedAt": "2026-07-28T00:30:34.000Z",
+                      "uid": "35240-63e4edf2-ca25-4f22-8cba-5f9a899bbbed"
+                    },
+                    {
+                      "id": "672c2970-e92c-4ca5-bc37-4451b6aa9012",
+                      "name": "Access denied",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "Authorization",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/memberships/:membershipIdentifier/protectedQueries?nextToken=<string>&maxResults=<integer>&status=STARTED",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "memberships",
+                            ":membershipIdentifier",
+                            "protectedQueries"
+                          ],
+                          "query": [
+                            {
+                              "description": "The token value retrieved from a previous paginated request.",
+                              "key": "nextToken",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "The maximum number of protected queries to return.",
+                              "key": "maxResults",
+                              "value": "<integer>"
+                            },
+                            {
+                              "description": "A filter for the status of the protected query.",
+                              "key": "status",
+                              "value": "STARTED"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "membershipIdentifier"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Forbidden",
+                      "code": 403,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"message\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T00:30:34.000Z",
+                      "updatedAt": "2026-07-28T00:30:34.000Z",
+                      "uid": "35240-672c2970-e92c-4ca5-bc37-4451b6aa9012"
+                    },
+                    {
+                      "id": "160a9be7-00c0-4243-abc9-da51be1acf3c",
+                      "name": "Internal server error",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "Authorization",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/memberships/:membershipIdentifier/protectedQueries?nextToken=<string>&maxResults=<integer>&status=STARTED",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "memberships",
+                            ":membershipIdentifier",
+                            "protectedQueries"
+                          ],
+                          "query": [
+                            {
+                              "description": "The token value retrieved from a previous paginated request.",
+                              "key": "nextToken",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "The maximum number of protected queries to return.",
+                              "key": "maxResults",
+                              "value": "<integer>"
+                            },
+                            {
+                              "description": "A filter for the status of the protected query.",
+                              "key": "status",
+                              "value": "STARTED"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "membershipIdentifier"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Internal Server Error",
+                      "code": 500,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"message\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T00:30:34.000Z",
+                      "updatedAt": "2026-07-28T00:30:34.000Z",
+                      "uid": "35240-160a9be7-00c0-4243-abc9-da51be1acf3c"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T00:30:34.000Z",
+                  "updatedAt": "2026-07-28T00:30:34.000Z",
+                  "uid": "35240-f597077f-e4ad-4873-876a-38b720b1739e"
+                },
+                {
+                  "name": "Amazon Clean Rooms Start a Protected Query",
+                  "id": "7e82b213-6a26-4726-9e30-3756774483e8",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"type\": \"SQL\",\n  \"resultConfiguration\": {},\n  \"sqlParameters\": {\n    \"queryString\": \"<string>\"\n  }\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/memberships/:membershipIdentifier/protectedQueries",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "memberships",
+                        ":membershipIdentifier",
+                        "protectedQueries"
+                      ],
+                      "variable": [
+                        {
+                          "id": "b8a393a6-623e-42ac-ad83-e34c0a38df28",
+                          "key": "membershipIdentifier",
+                          "value": "<string>",
+                          "description": "(Required) A unique identifier for the membership to run the protected query."
+                        }
+                      ]
+                    },
+                    "description": "Creates a protected query that is started by AWS Clean Rooms. A protected query enables analysis on configured tables without exposing underlying raw data."
+                  },
+                  "response": [
+                    {
+                      "id": "072f7480-daf2-411a-ae22-f365a479baf7",
+                      "name": "Protected query started",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "Authorization",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"type\": \"SQL\",\n  \"resultConfiguration\": {},\n  \"sqlParameters\": {\n    \"queryString\": \"<string>\"\n  }\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/memberships/:membershipIdentifier/protectedQueries",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "memberships",
+                            ":membershipIdentifier",
+                            "protectedQueries"
+                          ],
+                          "variable": [
+                            {
+                              "key": "membershipIdentifier"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"protectedQuery\": {\n    \"id\": \"<string>\",\n    \"membershipId\": \"<string>\",\n    \"membershipArn\": \"<string>\",\n    \"createTime\": \"<dateTime>\",\n    \"status\": \"SUBMITTED\"\n  }\n}",
+                      "createdAt": "2026-07-28T00:30:34.000Z",
+                      "updatedAt": "2026-07-28T00:30:34.000Z",
+                      "uid": "35240-072f7480-daf2-411a-ae22-f365a479baf7"
+                    },
+                    {
+                      "id": "210b4479-ddc0-43d7-a8b7-c295c5b78ca0",
+                      "name": "Bad request",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "Authorization",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"type\": \"SQL\",\n  \"resultConfiguration\": {},\n  \"sqlParameters\": {\n    \"queryString\": \"<string>\"\n  }\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/memberships/:membershipIdentifier/protectedQueries",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "memberships",
+                            ":membershipIdentifier",
+                            "protectedQueries"
+                          ],
+                          "variable": [
+                            {
+                              "key": "membershipIdentifier"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Bad Request",
+                      "code": 400,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"message\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T00:30:34.000Z",
+                      "updatedAt": "2026-07-28T00:30:34.000Z",
+                      "uid": "35240-210b4479-ddc0-43d7-a8b7-c295c5b78ca0"
+                    },
+                    {
+                      "id": "48b161c4-d63c-4ed7-9651-fdd3acceafff",
+                      "name": "Access denied",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "Authorization",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"type\": \"SQL\",\n  \"resultConfiguration\": {},\n  \"sqlParameters\": {\n    \"queryString\": \"<string>\"\n  }\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/memberships/:membershipIdentifier/protectedQueries",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "memberships",
+                            ":membershipIdentifier",
+                            "protectedQueries"
+                          ],
+                          "variable": [
+                            {
+                              "key": "membershipIdentifier"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Forbidden",
+                      "code": 403,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"message\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T00:30:34.000Z",
+                      "updatedAt": "2026-07-28T00:30:34.000Z",
+                      "uid": "35240-48b161c4-d63c-4ed7-9651-fdd3acceafff"
+                    },
+                    {
+                      "id": "e1d5e096-1c95-4214-aa3c-96a511ce70c5",
+                      "name": "Internal server error",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "Authorization",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"type\": \"SQL\",\n  \"resultConfiguration\": {},\n  \"sqlParameters\": {\n    \"queryString\": \"<string>\"\n  }\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/memberships/:membershipIdentifier/protectedQueries",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "memberships",
+                            ":membershipIdentifier",
+                            "protectedQueries"
+                          ],
+                          "variable": [
+                            {
+                              "key": "membershipIdentifier"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Internal Server Error",
+                      "code": 500,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"message\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T00:30:34.000Z",
+                      "updatedAt": "2026-07-28T00:30:34.000Z",
+                      "uid": "35240-e1d5e096-1c95-4214-aa3c-96a511ce70c5"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T00:30:34.000Z",
+                  "updatedAt": "2026-07-28T00:30:34.000Z",
+                  "uid": "35240-7e82b213-6a26-4726-9e30-3756774483e8"
+                }
+              ],
+              "id": "fe609a4b-eee8-431d-b2e3-fc2ab972f3aa",
+              "createdAt": "2026-07-28T00:30:34.000Z",
+              "updatedAt": "2026-07-28T00:30:34.000Z",
+              "uid": "35240-fe609a4b-eee8-431d-b2e3-fc2ab972f3aa"
+            }
+          ],
+          "id": "bef40069-3b2b-4b45-a034-f550d9a858f1",
+          "createdAt": "2026-07-28T00:30:34.000Z",
+          "updatedAt": "2026-07-28T00:30:34.000Z",
+          "uid": "35240-bef40069-3b2b-4b45-a034-f550d9a858f1"
+        }
+      ],
+      "id": "f6db4fe6-7af0-4932-9a8b-345543dcc38c",
+      "createdAt": "2026-07-28T00:30:34.000Z",
+      "updatedAt": "2026-07-28T00:30:34.000Z",
+      "uid": "35240-f6db4fe6-7af0-4932-9a8b-345543dcc38c"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "Authorization",
+        "type": "string"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}",
+        "type": "string"
+      },
+      {
+        "key": "in",
+        "value": "header",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "region",
+      "value": "us-east-1"
+    },
+    {
+      "key": "baseUrl",
+      "value": "https://cleanrooms.{{region}}.amazonaws.com"
+    }
+  ]
+}

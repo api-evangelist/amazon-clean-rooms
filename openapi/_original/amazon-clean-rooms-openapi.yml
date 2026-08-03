@@ -1,0 +1,1085 @@
+openapi: 3.1.0
+info:
+  title: Amazon Clean Rooms API
+  description: >-
+    Amazon Clean Rooms enables organizations to collaborate and analyze shared datasets
+    without exposing underlying raw data to partners. Create secure data clean rooms
+    and collaborate with any company while maintaining data privacy through differential
+    privacy, cryptographic computing, and flexible analytics using SQL, PySpark, or ML models.
+  version: '2022-02-17'
+  contact:
+    name: Amazon Web Services
+    url: https://aws.amazon.com/contact-us/
+  termsOfService: https://aws.amazon.com/service-terms/
+  x-generated-from: documentation
+externalDocs:
+  description: Amazon Clean Rooms API Reference
+  url: https://docs.aws.amazon.com/clean-rooms/latest/apireference/
+servers:
+  - url: https://cleanrooms.{region}.amazonaws.com
+    description: Amazon Clean Rooms Regional Endpoint
+    variables:
+      region:
+        default: us-east-1
+        description: AWS Region
+tags:
+  - name: Collaborations
+    description: Operations for managing Clean Rooms collaborations
+  - name: Memberships
+    description: Operations for managing collaboration memberships
+  - name: Configured Tables
+    description: Operations for managing configured tables
+  - name: Analysis Templates
+    description: Operations for managing analysis templates
+  - name: Protected Queries
+    description: Operations for executing and managing protected queries
+  - name: Privacy Budgets
+    description: Operations for managing privacy budgets
+paths:
+  /collaborations:
+    get:
+      operationId: ListCollaborations
+      summary: Amazon Clean Rooms List Collaborations
+      description: >-
+        Lists collaborations the caller owns, is active in, or has been invited to.
+      tags:
+        - Collaborations
+      parameters:
+        - name: nextToken
+          in: query
+          description: The token value retrieved from a previous paginated request.
+          schema:
+            type: string
+        - name: maxResults
+          in: query
+          description: The maximum number of collaborations to return.
+          schema:
+            type: integer
+            minimum: 1
+            maximum: 100
+        - name: memberStatus
+          in: query
+          description: The caller's status in the collaborations.
+          schema:
+            type: string
+            enum:
+              - INVITED
+              - ACTIVE
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListCollaborationsResponse'
+              examples:
+                ListCollaborations200Example:
+                  summary: Default ListCollaborations 200 response
+                  x-microcks-default: true
+                  value:
+                    collaborationList:
+                      - id: "collab-abc12345"
+                        arn: "arn:aws:cleanrooms:us-east-1:123456789012:collaboration/collab-abc12345"
+                        name: "Marketing Analytics Collaboration"
+                        creatorAccountId: "123456789012"
+                        creatorDisplayName: "Acme Corp"
+                        createTime: "2025-03-15T14:30:00Z"
+                        updateTime: "2025-03-15T14:30:00Z"
+                        memberStatus: "ACTIVE"
+                        membershipStatus: "ACTIVE"
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationException'
+        '403':
+          description: Access denied
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AccessDeniedException'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InternalServerException'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+    post:
+      operationId: CreateCollaboration
+      summary: Amazon Clean Rooms Create a Collaboration
+      description: >-
+        Creates a new collaboration. A collaboration is a shared space where multiple
+        parties can analyze data together without exposing raw data to one another.
+      tags:
+        - Collaborations
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateCollaborationRequest'
+            examples:
+              CreateCollaborationRequestExample:
+                summary: Default CreateCollaboration request
+                x-microcks-default: true
+                value:
+                  name: "Marketing Analytics Collaboration"
+                  description: "Collaborative analytics for marketing measurement"
+                  members:
+                    - accountId: "987654321098"
+                      displayName: "Partner Corp"
+                      memberAbilities:
+                        - CAN_QUERY
+                  creatorDisplayName: "Acme Corp"
+                  creatorMemberAbilities:
+                    - CAN_QUERY
+                  queryLogStatus: "ENABLED"
+      responses:
+        '200':
+          description: Collaboration created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CreateCollaborationResponse'
+              examples:
+                CreateCollaboration200Example:
+                  summary: Default CreateCollaboration 200 response
+                  x-microcks-default: true
+                  value:
+                    collaboration:
+                      id: "collab-abc12345"
+                      arn: "arn:aws:cleanrooms:us-east-1:123456789012:collaboration/collab-abc12345"
+                      name: "Marketing Analytics Collaboration"
+                      creatorAccountId: "123456789012"
+                      queryLogStatus: "ENABLED"
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationException'
+        '403':
+          description: Access denied
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AccessDeniedException'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InternalServerException'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+
+  /collaborations/{collaborationIdentifier}:
+    get:
+      operationId: GetCollaboration
+      summary: Amazon Clean Rooms Get a Collaboration
+      description: >-
+        Returns metadata about a collaboration, including its ID, ARN, name, description,
+        creator details, and query log status.
+      tags:
+        - Collaborations
+      parameters:
+        - name: collaborationIdentifier
+          in: path
+          required: true
+          description: The identifier for the collaboration.
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetCollaborationResponse'
+              examples:
+                GetCollaboration200Example:
+                  summary: Default GetCollaboration 200 response
+                  x-microcks-default: true
+                  value:
+                    collaboration:
+                      id: "collab-abc12345"
+                      arn: "arn:aws:cleanrooms:us-east-1:123456789012:collaboration/collab-abc12345"
+                      name: "Marketing Analytics Collaboration"
+                      description: "Collaborative analytics for marketing measurement"
+                      creatorAccountId: "123456789012"
+                      queryLogStatus: "ENABLED"
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationException'
+        '403':
+          description: Access denied
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AccessDeniedException'
+        '404':
+          description: Resource not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResourceNotFoundException'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InternalServerException'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+    delete:
+      operationId: DeleteCollaboration
+      summary: Amazon Clean Rooms Delete a Collaboration
+      description: >-
+        Deletes a collaboration. The collaboration must have no active memberships
+        before it can be deleted.
+      tags:
+        - Collaborations
+      parameters:
+        - name: collaborationIdentifier
+          in: path
+          required: true
+          description: The identifier for the collaboration to delete.
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Collaboration deleted
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationException'
+        '403':
+          description: Access denied
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AccessDeniedException'
+        '404':
+          description: Resource not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResourceNotFoundException'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InternalServerException'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+
+  /memberships:
+    get:
+      operationId: ListMemberships
+      summary: Amazon Clean Rooms List Memberships
+      description: >-
+        Lists all memberships resources within the caller's account.
+      tags:
+        - Memberships
+      parameters:
+        - name: nextToken
+          in: query
+          description: The token value retrieved from a previous paginated request.
+          schema:
+            type: string
+        - name: maxResults
+          in: query
+          description: The maximum number of memberships to return.
+          schema:
+            type: integer
+            minimum: 1
+            maximum: 100
+        - name: status
+          in: query
+          description: A filter for membership status.
+          schema:
+            type: string
+            enum:
+              - ACTIVE
+              - COLLABORATION_DELETED
+              - REMOVED
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListMembershipsResponse'
+              examples:
+                ListMemberships200Example:
+                  summary: Default ListMemberships 200 response
+                  x-microcks-default: true
+                  value:
+                    membershipList:
+                      - id: "member-abc12345"
+                        arn: "arn:aws:cleanrooms:us-east-1:123456789012:membership/member-abc12345"
+                        collaborationArn: "arn:aws:cleanrooms:us-east-1:123456789012:collaboration/collab-abc12345"
+                        collaborationId: "collab-abc12345"
+                        collaborationCreatorAccountId: "123456789012"
+                        collaborationCreatorDisplayName: "Acme Corp"
+                        collaborationName: "Marketing Analytics Collaboration"
+                        status: "ACTIVE"
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationException'
+        '403':
+          description: Access denied
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AccessDeniedException'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InternalServerException'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+    post:
+      operationId: CreateMembership
+      summary: Amazon Clean Rooms Create a Membership
+      description: >-
+        Creates a membership for a specific collaboration identifier and joins the
+        collaboration. Membership provides access to collaborate on configured tables.
+      tags:
+        - Memberships
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateMembershipRequest'
+            examples:
+              CreateMembershipRequestExample:
+                summary: Default CreateMembership request
+                x-microcks-default: true
+                value:
+                  collaborationIdentifier: "collab-abc12345"
+                  queryLogStatus: "ENABLED"
+      responses:
+        '200':
+          description: Membership created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CreateMembershipResponse'
+              examples:
+                CreateMembership200Example:
+                  summary: Default CreateMembership 200 response
+                  x-microcks-default: true
+                  value:
+                    membership:
+                      id: "member-abc12345"
+                      arn: "arn:aws:cleanrooms:us-east-1:123456789012:membership/member-abc12345"
+                      collaborationId: "collab-abc12345"
+                      status: "ACTIVE"
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationException'
+        '403':
+          description: Access denied
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AccessDeniedException'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InternalServerException'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+
+  /memberships/{membershipIdentifier}/protectedQueries:
+    get:
+      operationId: ListProtectedQueries
+      summary: Amazon Clean Rooms List Protected Queries
+      description: >-
+        Lists protected queries, sorted by the most recent query.
+      tags:
+        - Protected Queries
+      parameters:
+        - name: membershipIdentifier
+          in: path
+          required: true
+          description: The identifier for a membership resource.
+          schema:
+            type: string
+        - name: nextToken
+          in: query
+          description: The token value retrieved from a previous paginated request.
+          schema:
+            type: string
+        - name: maxResults
+          in: query
+          description: The maximum number of protected queries to return.
+          schema:
+            type: integer
+            minimum: 1
+            maximum: 100
+        - name: status
+          in: query
+          description: A filter for the status of the protected query.
+          schema:
+            type: string
+            enum:
+              - SUBMITTED
+              - STARTED
+              - CANCELLED
+              - CANCELLING
+              - FAILED
+              - SUCCESS
+              - TIMED_OUT
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListProtectedQueriesResponse'
+              examples:
+                ListProtectedQueries200Example:
+                  summary: Default ListProtectedQueries 200 response
+                  x-microcks-default: true
+                  value:
+                    protectedQueries:
+                      - id: "query-abc12345"
+                        membershipId: "member-abc12345"
+                        membershipArn: "arn:aws:cleanrooms:us-east-1:123456789012:membership/member-abc12345"
+                        createTime: "2025-03-15T14:30:00Z"
+                        status: "SUCCESS"
+                        receiverConfigurations: []
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationException'
+        '403':
+          description: Access denied
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AccessDeniedException'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InternalServerException'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+    post:
+      operationId: StartProtectedQuery
+      summary: Amazon Clean Rooms Start a Protected Query
+      description: >-
+        Creates a protected query that is started by AWS Clean Rooms. A protected
+        query enables analysis on configured tables without exposing underlying raw data.
+      tags:
+        - Protected Queries
+      parameters:
+        - name: membershipIdentifier
+          in: path
+          required: true
+          description: A unique identifier for the membership to run the protected query.
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/StartProtectedQueryRequest'
+            examples:
+              StartProtectedQueryRequestExample:
+                summary: Default StartProtectedQuery request
+                x-microcks-default: true
+                value:
+                  type: "SQL"
+                  sqlParameters:
+                    queryString: "SELECT COUNT(*) as count FROM table1"
+                  resultConfiguration:
+                    outputConfiguration:
+                      s3:
+                        bucket: "my-results-bucket"
+                        keyPrefix: "clean-rooms-results/"
+                        resultFormat: "CSV"
+      responses:
+        '200':
+          description: Protected query started
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/StartProtectedQueryResponse'
+              examples:
+                StartProtectedQuery200Example:
+                  summary: Default StartProtectedQuery 200 response
+                  x-microcks-default: true
+                  value:
+                    protectedQuery:
+                      id: "query-abc12345"
+                      membershipId: "member-abc12345"
+                      status: "SUBMITTED"
+                      createTime: "2025-03-15T14:30:00Z"
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationException'
+        '403':
+          description: Access denied
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AccessDeniedException'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InternalServerException'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+
+  /configuredTables:
+    get:
+      operationId: ListConfiguredTables
+      summary: Amazon Clean Rooms List Configured Tables
+      description: >-
+        Lists configured tables in the caller's account.
+      tags:
+        - Configured Tables
+      parameters:
+        - name: nextToken
+          in: query
+          description: The token value retrieved from a previous paginated request.
+          schema:
+            type: string
+        - name: maxResults
+          in: query
+          description: The maximum number of configured tables to return.
+          schema:
+            type: integer
+            minimum: 1
+            maximum: 100
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListConfiguredTablesResponse'
+              examples:
+                ListConfiguredTables200Example:
+                  summary: Default ListConfiguredTables 200 response
+                  x-microcks-default: true
+                  value:
+                    configuredTableList:
+                      - id: "table-abc12345"
+                        arn: "arn:aws:cleanrooms:us-east-1:123456789012:configuredtable/table-abc12345"
+                        name: "Customer Segments Table"
+                        createTime: "2025-03-15T14:30:00Z"
+                        updateTime: "2025-03-15T14:30:00Z"
+                        analysisRuleTypes:
+                          - AGGREGATION
+                        analysisMethod: "DIRECT_QUERY"
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationException'
+        '403':
+          description: Access denied
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AccessDeniedException'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InternalServerException'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+    post:
+      operationId: CreateConfiguredTable
+      summary: Amazon Clean Rooms Create a Configured Table
+      description: >-
+        Creates a new configured table resource. A configured table represents an
+        AWS Glue table that is configured for Clean Rooms collaboration with specific
+        analysis rules governing how it may be queried.
+      tags:
+        - Configured Tables
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateConfiguredTableRequest'
+            examples:
+              CreateConfiguredTableRequestExample:
+                summary: Default CreateConfiguredTable request
+                x-microcks-default: true
+                value:
+                  name: "Customer Segments Table"
+                  description: "Customer segmentation data for marketing analytics"
+                  tableReference:
+                    glue:
+                      databaseName: "marketing_db"
+                      tableName: "customer_segments"
+                  allowedColumns:
+                    - "customer_id"
+                    - "segment"
+                    - "region"
+                  analysisMethod: "DIRECT_QUERY"
+      responses:
+        '200':
+          description: Configured table created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CreateConfiguredTableResponse'
+              examples:
+                CreateConfiguredTable200Example:
+                  summary: Default CreateConfiguredTable 200 response
+                  x-microcks-default: true
+                  value:
+                    configuredTable:
+                      id: "table-abc12345"
+                      arn: "arn:aws:cleanrooms:us-east-1:123456789012:configuredtable/table-abc12345"
+                      name: "Customer Segments Table"
+                      analysisMethod: "DIRECT_QUERY"
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationException'
+        '403':
+          description: Access denied
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AccessDeniedException'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InternalServerException'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+
+components:
+  schemas:
+    Collaboration:
+      type: object
+      description: "Represents an AWS Clean Rooms collaboration workspace."
+      properties:
+        id:
+          type: string
+          description: "The unique ID of the collaboration."
+          example: "collab-abc12345"
+        arn:
+          type: string
+          description: "The ARN of the collaboration."
+          example: "arn:aws:cleanrooms:us-east-1:123456789012:collaboration/collab-abc12345"
+        name:
+          type: string
+          description: "A human-readable identifier for the collaboration."
+          example: "Marketing Analytics Collaboration"
+        description:
+          type: string
+          description: "A description of the collaboration."
+          example: "Collaborative analytics for marketing measurement"
+        creatorAccountId:
+          type: string
+          description: "The account ID of the creator."
+          example: "123456789012"
+        creatorDisplayName:
+          type: string
+          description: "The display name of the collaboration creator."
+          example: "Acme Corp"
+        createTime:
+          type: string
+          format: date-time
+          description: "The time when the collaboration was created."
+        updateTime:
+          type: string
+          format: date-time
+          description: "The time when the collaboration was last updated."
+        queryLogStatus:
+          type: string
+          enum:
+            - ENABLED
+            - DISABLED
+          description: "Whether query logs are enabled."
+
+    Membership:
+      type: object
+      description: "Represents a member's participation in a Clean Rooms collaboration."
+      properties:
+        id:
+          type: string
+          description: "The unique ID of the membership."
+          example: "member-abc12345"
+        arn:
+          type: string
+          description: "The ARN of the membership."
+        collaborationArn:
+          type: string
+          description: "The ARN of the collaboration."
+        collaborationId:
+          type: string
+          description: "The ID of the collaboration."
+        collaborationCreatorAccountId:
+          type: string
+          description: "The account ID of the collaboration creator."
+        collaborationName:
+          type: string
+          description: "The name of the collaboration."
+        status:
+          type: string
+          enum:
+            - ACTIVE
+            - COLLABORATION_DELETED
+            - REMOVED
+          description: "The status of the membership."
+
+    ProtectedQuery:
+      type: object
+      description: "Represents a protected query executed within a Clean Rooms collaboration."
+      properties:
+        id:
+          type: string
+          description: "The unique ID of the protected query."
+          example: "query-abc12345"
+        membershipId:
+          type: string
+          description: "The ID of the membership."
+        membershipArn:
+          type: string
+          description: "The ARN of the membership."
+        createTime:
+          type: string
+          format: date-time
+          description: "The time when the query was created."
+        status:
+          type: string
+          enum:
+            - SUBMITTED
+            - STARTED
+            - CANCELLED
+            - CANCELLING
+            - FAILED
+            - SUCCESS
+            - TIMED_OUT
+          description: "The status of the protected query."
+
+    ConfiguredTable:
+      type: object
+      description: "Represents a configured table in Clean Rooms."
+      properties:
+        id:
+          type: string
+          description: "The unique ID of the configured table."
+          example: "table-abc12345"
+        arn:
+          type: string
+          description: "The ARN of the configured table."
+        name:
+          type: string
+          description: "A human-readable name for the configured table."
+          example: "Customer Segments Table"
+        description:
+          type: string
+          description: "A description of the configured table."
+        createTime:
+          type: string
+          format: date-time
+          description: "The time when the configured table was created."
+        updateTime:
+          type: string
+          format: date-time
+          description: "The time when the configured table was last updated."
+        analysisMethod:
+          type: string
+          enum:
+            - DIRECT_QUERY
+          description: "The analysis method for the configured table."
+
+    ListCollaborationsResponse:
+      type: object
+      description: "Response for listing collaborations."
+      properties:
+        nextToken:
+          type: string
+          description: "The token value retrieved from a previous paginated request."
+        collaborationList:
+          type: array
+          items:
+            $ref: '#/components/schemas/Collaboration'
+          description: "The list of collaborations."
+
+    CreateCollaborationRequest:
+      type: object
+      description: "Request body for creating a collaboration."
+      required:
+        - name
+        - members
+        - creatorDisplayName
+        - creatorMemberAbilities
+        - queryLogStatus
+      properties:
+        name:
+          type: string
+          description: "The display name for a collaboration."
+          example: "Marketing Analytics Collaboration"
+        description:
+          type: string
+          description: "A description of the collaboration."
+        members:
+          type: array
+          items:
+            type: object
+          description: "A list of initial members for the collaboration."
+        creatorDisplayName:
+          type: string
+          description: "The display name of the collaboration creator."
+        creatorMemberAbilities:
+          type: array
+          items:
+            type: string
+          description: "The abilities granted to the collaboration creator."
+        queryLogStatus:
+          type: string
+          enum:
+            - ENABLED
+            - DISABLED
+          description: "An indicator as to whether query logging has been enabled or disabled."
+
+    CreateCollaborationResponse:
+      type: object
+      description: "Response for creating a collaboration."
+      properties:
+        collaboration:
+          $ref: '#/components/schemas/Collaboration'
+
+    GetCollaborationResponse:
+      type: object
+      description: "Response for getting a collaboration."
+      properties:
+        collaboration:
+          $ref: '#/components/schemas/Collaboration'
+
+    ListMembershipsResponse:
+      type: object
+      description: "Response for listing memberships."
+      properties:
+        nextToken:
+          type: string
+          description: "The token value retrieved from a previous paginated request."
+        membershipList:
+          type: array
+          items:
+            $ref: '#/components/schemas/Membership'
+          description: "The list of memberships."
+
+    CreateMembershipRequest:
+      type: object
+      description: "Request body for creating a membership."
+      required:
+        - collaborationIdentifier
+        - queryLogStatus
+      properties:
+        collaborationIdentifier:
+          type: string
+          description: "The unique ID for the associated collaboration."
+          example: "collab-abc12345"
+        queryLogStatus:
+          type: string
+          enum:
+            - ENABLED
+            - DISABLED
+          description: "An indicator as to whether query logging has been enabled or disabled."
+
+    CreateMembershipResponse:
+      type: object
+      description: "Response for creating a membership."
+      properties:
+        membership:
+          $ref: '#/components/schemas/Membership'
+
+    ListProtectedQueriesResponse:
+      type: object
+      description: "Response for listing protected queries."
+      properties:
+        nextToken:
+          type: string
+          description: "The token value retrieved from a previous paginated request."
+        protectedQueries:
+          type: array
+          items:
+            $ref: '#/components/schemas/ProtectedQuery'
+          description: "The list of protected queries."
+
+    StartProtectedQueryRequest:
+      type: object
+      description: "Request body for starting a protected query."
+      required:
+        - type
+        - resultConfiguration
+      properties:
+        type:
+          type: string
+          enum:
+            - SQL
+          description: "The type of the protected query."
+        sqlParameters:
+          type: object
+          description: "The parameters for the SQL type protected query."
+          properties:
+            queryString:
+              type: string
+              description: "The query string to be submitted."
+        resultConfiguration:
+          type: object
+          description: "Contains configuration details for protected query results."
+
+    StartProtectedQueryResponse:
+      type: object
+      description: "Response for starting a protected query."
+      properties:
+        protectedQuery:
+          $ref: '#/components/schemas/ProtectedQuery'
+
+    ListConfiguredTablesResponse:
+      type: object
+      description: "Response for listing configured tables."
+      properties:
+        nextToken:
+          type: string
+          description: "The token value retrieved from a previous paginated request."
+        configuredTableList:
+          type: array
+          items:
+            $ref: '#/components/schemas/ConfiguredTable'
+          description: "The list of configured tables."
+
+    CreateConfiguredTableRequest:
+      type: object
+      description: "Request body for creating a configured table."
+      required:
+        - name
+        - tableReference
+        - allowedColumns
+        - analysisMethod
+      properties:
+        name:
+          type: string
+          description: "The name of the configured table."
+          example: "Customer Segments Table"
+        description:
+          type: string
+          description: "A description for the configured table."
+        tableReference:
+          type: object
+          description: "A reference to the AWS Glue table being configured."
+        allowedColumns:
+          type: array
+          items:
+            type: string
+          description: "The columns of the underlying AWS Glue table that can be used by collaborators."
+        analysisMethod:
+          type: string
+          enum:
+            - DIRECT_QUERY
+          description: "The analysis method for the configured table."
+
+    CreateConfiguredTableResponse:
+      type: object
+      description: "Response for creating a configured table."
+      properties:
+        configuredTable:
+          $ref: '#/components/schemas/ConfiguredTable'
+
+    ValidationException:
+      type: object
+      description: "The input fails to satisfy the specified constraints."
+      properties:
+        message:
+          type: string
+        fieldList:
+          type: array
+          items:
+            type: object
+
+    AccessDeniedException:
+      type: object
+      description: "Caller does not have sufficient access to perform this action."
+      properties:
+        message:
+          type: string
+
+    ResourceNotFoundException:
+      type: object
+      description: "Request references a resource which does not exist."
+      properties:
+        message:
+          type: string
+        resourceId:
+          type: string
+        resourceType:
+          type: string
+
+    InternalServerException:
+      type: object
+      description: "Unexpected error during processing of request."
+      properties:
+        message:
+          type: string
+
+  securitySchemes:
+    aws_signature:
+      type: apiKey
+      in: header
+      name: Authorization
+      description: AWS Signature Version 4
+
+security:
+  - aws_signature: []

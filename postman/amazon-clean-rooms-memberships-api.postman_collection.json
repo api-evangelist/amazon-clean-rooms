@@ -1,0 +1,606 @@
+{
+  "info": {
+    "_postman_id": "52a7e0ba-0c22-48f2-9f8f-3da49904f286",
+    "name": "Amazon Clean Rooms Collaborations Memberships API",
+    "description": "Amazon Clean Rooms enables organizations to collaborate and analyze shared datasets without exposing underlying raw data to partners. Create secure data clean rooms and collaborate with any company while maintaining data privacy through differential privacy, cryptographic computing, and flexible analytics using SQL, PySpark, or ML models.\n\nContact Support:\n Name: Amazon Web Services",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T00:30:32.000Z",
+    "updatedAt": "2026-07-28T00:30:33.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-52a7e0ba-0c22-48f2-9f8f-3da49904f286"
+  },
+  "item": [
+    {
+      "name": "memberships",
+      "item": [
+        {
+          "name": "Amazon Clean Rooms List Memberships",
+          "id": "9a089d90-0485-4ae2-9585-8dfe38bb5d6c",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/memberships?nextToken=<string>&maxResults=<integer>&status=COLLABORATION_DELETED",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "memberships"
+              ],
+              "query": [
+                {
+                  "description": "The token value retrieved from a previous paginated request.",
+                  "key": "nextToken",
+                  "value": "<string>"
+                },
+                {
+                  "description": "The maximum number of memberships to return.",
+                  "key": "maxResults",
+                  "value": "<integer>"
+                },
+                {
+                  "description": "A filter for membership status.",
+                  "key": "status",
+                  "value": "COLLABORATION_DELETED"
+                }
+              ]
+            },
+            "description": "Lists all memberships resources within the caller's account."
+          },
+          "response": [
+            {
+              "id": "3aaf6058-f70e-4f8b-a04b-aceba505365f",
+              "name": "Successful response",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/memberships?nextToken=<string>&maxResults=<integer>&status=COLLABORATION_DELETED",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "memberships"
+                  ],
+                  "query": [
+                    {
+                      "description": "The token value retrieved from a previous paginated request.",
+                      "key": "nextToken",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The maximum number of memberships to return.",
+                      "key": "maxResults",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "A filter for membership status.",
+                      "key": "status",
+                      "value": "COLLABORATION_DELETED"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"nextToken\": \"<string>\",\n  \"membershipList\": [\n    {\n      \"id\": \"<string>\",\n      \"arn\": \"<string>\",\n      \"collaborationArn\": \"<string>\",\n      \"collaborationId\": \"<string>\",\n      \"collaborationCreatorAccountId\": \"<string>\",\n      \"collaborationName\": \"<string>\",\n      \"status\": \"ACTIVE\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"arn\": \"<string>\",\n      \"collaborationArn\": \"<string>\",\n      \"collaborationId\": \"<string>\",\n      \"collaborationCreatorAccountId\": \"<string>\",\n      \"collaborationName\": \"<string>\",\n      \"status\": \"ACTIVE\"\n    }\n  ]\n}",
+              "createdAt": "2026-07-28T00:30:33.000Z",
+              "updatedAt": "2026-07-28T00:30:33.000Z",
+              "uid": "35240-3aaf6058-f70e-4f8b-a04b-aceba505365f"
+            },
+            {
+              "id": "4292c826-7203-4e57-af36-05d90192d12b",
+              "name": "Bad request",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/memberships?nextToken=<string>&maxResults=<integer>&status=COLLABORATION_DELETED",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "memberships"
+                  ],
+                  "query": [
+                    {
+                      "description": "The token value retrieved from a previous paginated request.",
+                      "key": "nextToken",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The maximum number of memberships to return.",
+                      "key": "maxResults",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "A filter for membership status.",
+                      "key": "status",
+                      "value": "COLLABORATION_DELETED"
+                    }
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"message\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T00:30:33.000Z",
+              "updatedAt": "2026-07-28T00:30:33.000Z",
+              "uid": "35240-4292c826-7203-4e57-af36-05d90192d12b"
+            },
+            {
+              "id": "dfb5eb5f-1df5-444c-b584-b54f57bb132b",
+              "name": "Access denied",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/memberships?nextToken=<string>&maxResults=<integer>&status=COLLABORATION_DELETED",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "memberships"
+                  ],
+                  "query": [
+                    {
+                      "description": "The token value retrieved from a previous paginated request.",
+                      "key": "nextToken",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The maximum number of memberships to return.",
+                      "key": "maxResults",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "A filter for membership status.",
+                      "key": "status",
+                      "value": "COLLABORATION_DELETED"
+                    }
+                  ]
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"message\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T00:30:33.000Z",
+              "updatedAt": "2026-07-28T00:30:33.000Z",
+              "uid": "35240-dfb5eb5f-1df5-444c-b584-b54f57bb132b"
+            },
+            {
+              "id": "61597418-688e-4383-89e9-2117a4ef8058",
+              "name": "Internal server error",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/memberships?nextToken=<string>&maxResults=<integer>&status=COLLABORATION_DELETED",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "memberships"
+                  ],
+                  "query": [
+                    {
+                      "description": "The token value retrieved from a previous paginated request.",
+                      "key": "nextToken",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The maximum number of memberships to return.",
+                      "key": "maxResults",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "A filter for membership status.",
+                      "key": "status",
+                      "value": "COLLABORATION_DELETED"
+                    }
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"message\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T00:30:33.000Z",
+              "updatedAt": "2026-07-28T00:30:33.000Z",
+              "uid": "35240-61597418-688e-4383-89e9-2117a4ef8058"
+            }
+          ],
+          "createdAt": "2026-07-28T00:30:33.000Z",
+          "updatedAt": "2026-07-28T00:30:33.000Z",
+          "uid": "35240-9a089d90-0485-4ae2-9585-8dfe38bb5d6c"
+        },
+        {
+          "name": "Amazon Clean Rooms Create a Membership",
+          "id": "d43ca902-2405-4641-bd2d-a6ff589e959a",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"collaborationIdentifier\": \"<string>\",\n  \"queryLogStatus\": \"ENABLED\"\n}",
+              "options": {
+                "raw": {
+                  "headerFamily": "json",
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/memberships",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "memberships"
+              ]
+            },
+            "description": "Creates a membership for a specific collaboration identifier and joins the collaboration. Membership provides access to collaborate on configured tables."
+          },
+          "response": [
+            {
+              "id": "0a9b6893-de6e-424b-8668-a17a9701abf8",
+              "name": "Membership created",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"collaborationIdentifier\": \"<string>\",\n  \"queryLogStatus\": \"ENABLED\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/memberships",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "memberships"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"membership\": {\n    \"id\": \"<string>\",\n    \"arn\": \"<string>\",\n    \"collaborationArn\": \"<string>\",\n    \"collaborationId\": \"<string>\",\n    \"collaborationCreatorAccountId\": \"<string>\",\n    \"collaborationName\": \"<string>\",\n    \"status\": \"COLLABORATION_DELETED\"\n  }\n}",
+              "createdAt": "2026-07-28T00:30:33.000Z",
+              "updatedAt": "2026-07-28T00:30:33.000Z",
+              "uid": "35240-0a9b6893-de6e-424b-8668-a17a9701abf8"
+            },
+            {
+              "id": "d4ace319-87b0-47a8-8846-92cf845da0ec",
+              "name": "Bad request",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"collaborationIdentifier\": \"<string>\",\n  \"queryLogStatus\": \"ENABLED\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/memberships",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "memberships"
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"message\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T00:30:33.000Z",
+              "updatedAt": "2026-07-28T00:30:33.000Z",
+              "uid": "35240-d4ace319-87b0-47a8-8846-92cf845da0ec"
+            },
+            {
+              "id": "ec4a5e65-2ef0-4366-b03c-559485ea374b",
+              "name": "Access denied",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"collaborationIdentifier\": \"<string>\",\n  \"queryLogStatus\": \"ENABLED\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/memberships",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "memberships"
+                  ]
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"message\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T00:30:33.000Z",
+              "updatedAt": "2026-07-28T00:30:33.000Z",
+              "uid": "35240-ec4a5e65-2ef0-4366-b03c-559485ea374b"
+            },
+            {
+              "id": "3533e8b0-52a2-401f-966d-ccb3cac452ec",
+              "name": "Internal server error",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"collaborationIdentifier\": \"<string>\",\n  \"queryLogStatus\": \"ENABLED\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/memberships",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "memberships"
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"message\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T00:30:33.000Z",
+              "updatedAt": "2026-07-28T00:30:33.000Z",
+              "uid": "35240-3533e8b0-52a2-401f-966d-ccb3cac452ec"
+            }
+          ],
+          "createdAt": "2026-07-28T00:30:33.000Z",
+          "updatedAt": "2026-07-28T00:30:33.000Z",
+          "uid": "35240-d43ca902-2405-4641-bd2d-a6ff589e959a"
+        }
+      ],
+      "id": "f387590a-d45b-4f87-bc02-03089fdf608d",
+      "createdAt": "2026-07-28T00:30:33.000Z",
+      "updatedAt": "2026-07-28T00:30:33.000Z",
+      "uid": "35240-f387590a-d45b-4f87-bc02-03089fdf608d"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "Authorization",
+        "type": "string"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}",
+        "type": "string"
+      },
+      {
+        "key": "in",
+        "value": "header",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "region",
+      "value": "us-east-1"
+    },
+    {
+      "key": "baseUrl",
+      "value": "https://cleanrooms.{{region}}.amazonaws.com"
+    }
+  ]
+}
