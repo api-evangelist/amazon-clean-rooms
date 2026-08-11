@@ -210,6 +210,10 @@ maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
 common:
+- type: MCPServer
+  url: mcp/amazon-clean-rooms-mcp.yml
+- type: Overlay
+  url: overlays/amazon-clean-rooms-openapi-overlay.yaml
 - type: PostmanWorkspace
   url: https://www.postman.com/kinlaneapi/amazon-clean-rooms/overview
 - type: AgenticAccess
