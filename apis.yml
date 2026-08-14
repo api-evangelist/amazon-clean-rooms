@@ -27,8 +27,13 @@ tags:
 url: >-
   https://raw.githubusercontent.com/api-evangelist/amazon-clean-rooms/refs/heads/main/apis.yml
 created: '2026-03-16'
-modified: '2026-06-20'
+modified: '2026-08-13'
 specificationVersion: '0.19'
+x-enrichment:
+  date: '2026-08-13'
+  status: enriched
+  artifacts_added: 17
+  pass: local-v1
 apis:
 - aid: amazon-clean-rooms:amazon-clean-rooms-collaborations-api
   name: Amazon Clean Rooms Collaborations API
@@ -43,7 +48,7 @@ apis:
   - type: Documentation
     url: https://docs.aws.amazon.com/clean-rooms/latest/apireference/
   - type: GettingStarted
-    url: https://aws.amazon.com/clean-rooms/getting-started/
+    url: https://docs.aws.amazon.com/clean-rooms/latest/userguide/getting-started.html
   - type: Pricing
     url: https://aws.amazon.com/clean-rooms/pricing/
   - type: FAQ
@@ -87,7 +92,7 @@ apis:
   - type: Documentation
     url: https://docs.aws.amazon.com/clean-rooms/latest/apireference/
   - type: GettingStarted
-    url: https://aws.amazon.com/clean-rooms/getting-started/
+    url: https://docs.aws.amazon.com/clean-rooms/latest/userguide/getting-started.html
   - type: Pricing
     url: https://aws.amazon.com/clean-rooms/pricing/
   - type: FAQ
@@ -131,7 +136,7 @@ apis:
   - type: Documentation
     url: https://docs.aws.amazon.com/clean-rooms/latest/apireference/
   - type: GettingStarted
-    url: https://aws.amazon.com/clean-rooms/getting-started/
+    url: https://docs.aws.amazon.com/clean-rooms/latest/userguide/getting-started.html
   - type: Pricing
     url: https://aws.amazon.com/clean-rooms/pricing/
   - type: FAQ
@@ -175,7 +180,7 @@ apis:
   - type: Documentation
     url: https://docs.aws.amazon.com/clean-rooms/latest/apireference/
   - type: GettingStarted
-    url: https://aws.amazon.com/clean-rooms/getting-started/
+    url: https://docs.aws.amazon.com/clean-rooms/latest/userguide/getting-started.html
   - type: Pricing
     url: https://aws.amazon.com/clean-rooms/pricing/
   - type: FAQ
@@ -272,6 +277,42 @@ common:
   url: llms/amazon-clean-rooms-llms.txt
 - type: Lifecycle
   url: lifecycle/amazon-clean-rooms-lifecycle.yml
+- type: Deprecation
+  url: lifecycle/amazon-clean-rooms-lifecycle.yml
+- type: SDKs
+  url: packages/amazon-clean-rooms-packages.yml
+- type: Security
+  url: security/amazon-clean-rooms-vulnerability-disclosure.yml
+- type: Plans
+  url: plans/amazon-clean-rooms-plans-pricing.yml
+- type: RateLimits
+  url: rate-limits/amazon-clean-rooms-rate-limits.yml
+- type: ChangeLog
+  url: changelog/amazon-clean-rooms-changelog.yml
+- type: CLI
+  url: cli/amazon-clean-rooms-cli.yml
+- type: Conventions
+  url: conventions/amazon-clean-rooms-conventions.yml
+- type: DataModel
+  url: data-model/amazon-clean-rooms-data-model.yml
+- type: ErrorCatalog
+  url: errors/amazon-clean-rooms-error-codes.yml
+- type: Webhooks
+  url: asyncapi/amazon-clean-rooms-events.yml
+- type: AgentSkill
+  url: skills/_index.yml
+- type: ToolCrosswalk
+  url: mcp/amazon-clean-rooms-tool-crosswalk.yml
+- type: Conformance
+  url: conformance/amazon-clean-rooms-conformance.yml
+- type: Pricing
+  url: https://aws.amazon.com/clean-rooms/pricing/
+- type: APIReference
+  url: https://docs.aws.amazon.com/clean-rooms/latest/apireference/
+- type: GettingStarted
+  url: https://docs.aws.amazon.com/clean-rooms/latest/userguide/getting-started.html
+- type: DeveloperPortal
+  url: https://docs.aws.amazon.com/clean-rooms/
 - type: Features
   data:
   - name: Privacy-Preserving Analytics
