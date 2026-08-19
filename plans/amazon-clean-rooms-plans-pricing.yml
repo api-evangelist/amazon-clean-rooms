@@ -1,0 +1,114 @@
+generated: '2026-08-13'
+method: searched
+source: https://aws.amazon.com/clean-rooms/pricing/
+docs: https://aws.amazon.com/clean-rooms/pricing/
+currency: USD
+model: usage-based
+plan_count: 0
+note: >-
+  AWS Clean Rooms publishes no named subscription tiers — there is no Free /
+  Pro / Enterprise ladder to record. It is priced purely on metered consumption
+  (compute measured in CRPU-hours, plus per-record ML and Entity Resolution
+  charges and per-GB intermediate table storage), billed through the AWS account
+  with no separate signup. plan_count is therefore an honest 0; the metered
+  dimensions the provider actually publishes are captured in dimensions[] below.
+  Prices are the published US East (N. Virginia) rates; AWS varies rates by
+  Region.
+free_tier:
+  available: false
+  note: >-
+    The pricing page states the AWS Free Tier is not available for PySpark in
+    AWS Clean Rooms, AWS Clean Rooms ML, or AWS Entity Resolution.
+dimensions:
+  - id: spark-sql-compute
+    name: Spark SQL compute
+    unit: CRPU-hour
+    price: 2.00
+    currency: USD
+    region: us-east-1
+    billing_granularity: per-second
+    minimum_billing_duration: 60 seconds
+    default_allocation: 32 CRPUs per Spark SQL query
+  - id: pyspark-compute
+    name: PySpark job compute
+    unit: CRPU-hour
+    price: 2.00
+    currency: USD
+    region: us-east-1
+    billing_granularity: per-second
+    minimum_billing_duration: 10 minutes
+    default_allocation: 32 CRPUs per PySpark job
+  - id: differential-privacy
+    name: Differential Privacy surcharge
+    unit: CRPU-hour
+    price: 2.00
+    currency: USD
+    region: us-east-1
+    note: >-
+      Additive to the base Spark SQL compute rate, for a published total of
+      $4.00 per CRPU-hour when differential privacy is applied.
+  - id: ml-custom-model-training
+    name: Clean Rooms ML custom model training
+    unit: 1,000 records
+    price: 0.01
+    currency: USD
+  - id: ml-custom-model-inference
+    name: Clean Rooms ML custom model inference
+    unit: million records
+    price: 10.00
+    currency: USD
+    tiering:
+      - up_to: 1,000 million records
+        price: 10.00
+        unit: million records
+      - above: 1,000 million records
+        price: 0.20
+        unit: million records
+  - id: ml-lookalike-training
+    name: Clean Rooms ML lookalike model training
+    unit: 1,000 profiles
+    price: 0.04
+    currency: USD
+  - id: ml-lookalike-segments
+    name: Clean Rooms ML lookalike segments
+    unit: 1,000 profiles
+    price: 0.25
+    currency: USD
+  - id: synthetic-data-generation
+    name: Synthetic data generation
+    unit: SDGU (Synthetic Data Generation Unit)
+    price: 2.00
+    currency: USD
+  - id: entity-resolution-data-prep
+    name: AWS Entity Resolution data preparation
+    unit: 1,000 records processed
+    price: 0.10
+    currency: USD
+  - id: entity-resolution-rule-based
+    name: AWS Entity Resolution rule-based matching
+    unit: 1,000 records matched
+    price: 0.50
+    currency: USD
+    base_fee: 100.00
+    base_fee_unit: per collaboration
+  - id: entity-resolution-provider-based
+    name: AWS Entity Resolution provider-based matching
+    unit: 1,000 records processed
+    price: 0.10
+    currency: USD
+    note: Excludes third-party data provider subscription costs.
+  - id: intermediate-table-storage
+    name: Intermediate table storage
+    unit: GB-month
+    price_range:
+      min: 0.023
+      max: 0.025
+    currency: USD
+    note: Rate varies by Region.
+payment_configuration:
+  note: >-
+    A collaboration creator can assign which member pays for query compute, job
+    compute, ML training/inference and synthetic data generation via the payment
+    configuration on the collaboration and membership — so the billed party is
+    not always the caller.
+  docs: https://docs.aws.amazon.com/clean-rooms/latest/userguide/what-is.html#billing

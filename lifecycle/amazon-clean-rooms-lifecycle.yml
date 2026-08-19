@@ -1,28 +1,60 @@
-generated: '2026-06-20'
+generated: '2026-08-13'
 method: searched
 source: >-
-  AWS Clean Rooms documentation (API version date, endpoints/regions reference),
-  the AWS Health status dashboard, and openapi/amazon-clean-rooms-openapi.yml.
+  https://docs.aws.amazon.com/clean-rooms/latest/apireference/,
+  https://docs.aws.amazon.com/clean-rooms/latest/userguide/doc-history.html,
+  https://health.aws.amazon.com/health/status, and
+  openapi/_original/amazon-clean-rooms-openapi.yml
 versioning:
   scheme: api-version-date
   current: '2022-02-17'
   note: >-
     AWS services version by API-version date (info.version 2022-02-17); the SDKs
-    pin this automatically. There is no URI-path version segment.
+    pin this automatically. There is no URI-path version segment and no version
+    header a caller sets. The API version has not changed since GA (2023-03-21).
   docs: https://docs.aws.amazon.com/clean-rooms/latest/apireference/
 deprecation:
-  policy_url: https://docs.aws.amazon.com/whitepapers/latest/aws-overview/introduction.html
+  policy_published: true
+  policy_style: dated end-of-support announcements in the User Guide document history
+  policy_url: https://docs.aws.amazon.com/clean-rooms/latest/userguide/doc-history.html
   sunset_header: false
   deprecation_header: false
   note: >-
-    AWS communicates deprecations via service documentation, the AWS Health
-    Dashboard, and account notifications rather than RFC 8594 Sunset/Deprecation
-    HTTP headers.
+    AWS Clean Rooms does not emit RFC 8594 Sunset/Deprecation HTTP headers. It
+    does publish deprecations as dated, staged end-of-support announcements in
+    the User Guide document history, with advance notice and a named cutover
+    path, and mirrors them through the AWS Health Dashboard and account
+    notifications. The SQL analytics engine retirement below is the worked
+    example: announced 2025-05-22, new-collaboration cutoff 2025-07-16, full end
+    of support 2025-12-17 — roughly seven months of notice.
+  announcement_channels:
+    - https://docs.aws.amazon.com/clean-rooms/latest/userguide/doc-history.html
+    - https://health.aws.amazon.com/health/status
+    - https://aws.amazon.com/blogs/big-data/
+deprecations:
+  - id: cleanrooms-sql-analytics-engine
+    name: AWS Clean Rooms SQL analytics engine (legacy)
+    announced: '2025-05-22'
+    restricted: '2025-07-16'
+    restricted_note: >-
+      From 2025-07-17 no new collaborations could be created with the legacy
+      engine; before that, new collaborations on it required a limit increase.
+    end_of_support: '2025-12-17'
+    replacement: Spark SQL analytics engine
+    migration_docs: >-
+      https://docs.aws.amazon.com/clean-rooms/latest/userguide/edit-collaboration.html#change-collab-analytics-engine
+    status: retired
 sla:
   url: https://aws.amazon.com/service-terms/
   note: >-
     No standalone published uptime SLA located for AWS Clean Rooms; covered by
-    the AWS Service Terms and Customer Agreement.
+    the AWS Service Terms and the AWS Customer Agreement.
 status_page: https://health.aws.amazon.com/health/status
 support: https://aws.amazon.com/premiumsupport/
+changelog: changelog/amazon-clean-rooms-changelog.yml
 deprecated_operations: []
+deprecated_operations_note: >-
+  No operation in the captured OpenAPI carries `deprecated: true`. AWS has
+  retired an analytics engine, not an API operation — the operation surface has
+  only grown (analysis log exports, intermediate tables and collaboration change
+  requests all landed as additive families).

@@ -1,0 +1,180 @@
+generated: '2026-08-13'
+method: searched
+source: >-
+  https://docs.aws.amazon.com/clean-rooms/latest/apireference/CommonParameters.html,
+  https://docs.aws.amazon.com/clean-rooms/latest/apireference/CommonErrors.html,
+  https://docs.aws.amazon.com/clean-rooms/latest/userguide/clean-rooms-quotas.html,
+  and derived from openapi/_original/amazon-clean-rooms-openapi.yml
+description: >-
+  Cross-cutting runtime semantics for the AWS Clean Rooms API — how to
+  authenticate, page, trace, retry, and read errors. AWS Clean Rooms is a
+  REST-JSON service in the AWS SigV4 family, so most of these conventions are
+  AWS-platform conventions rather than service-specific ones.
+authentication:
+  style: aws-sigv4
+  scheme: AWS4-HMAC-SHA256
+  header: Authorization
+  service_name: cleanrooms
+  temporary_credentials: >-
+    X-Amz-Security-Token carries an STS session token when using temporary
+    credentials (roles, SSO, instance profiles).
+  query_string_signing:
+    supported: true
+    parameters:
+      - X-Amz-Algorithm
+      - X-Amz-Credential
+      - X-Amz-Date
+      - X-Amz-Signature
+      - X-Amz-SignedHeaders
+      - X-Amz-Security-Token
+  authorization_model: >-
+    IAM identity-based policies on the cleanrooms:* action namespace, plus AWS
+    managed policies (AWSCleanRoomsFullAccess, AWSCleanRoomsFullAccessNoQuerying,
+    AWSCleanRoomsReadOnlyAccess, AWSCleanRoomsMLFullAccess,
+    AWSCleanRoomsMLReadOnlyAccess) and collaboration-level member abilities
+    (CAN_QUERY, CAN_RECEIVE_RESULTS, CAN_RUN_JOB,
+    CAN_EXPORT_QUERY_ANALYSIS_LOG).
+  cross_link: authentication/amazon-clean-rooms-authentication.yml
+  docs: https://docs.aws.amazon.com/clean-rooms/latest/userguide/security-iam.html
+idempotency:
+  supported: false
+  header: null
+  note: >-
+    AWS Clean Rooms defines no idempotency key. Create operations do not accept a
+    clientToken / Idempotency-Key parameter, and identifiers are server-generated,
+    so a retried create can produce a duplicate resource. This is a real gap for
+    agent use: safe retry has to be implemented client-side by listing before
+    creating. Recorded as absent rather than assumed — no Idempotency pointer is
+    emitted in apis.yml for this provider.
+  evidence: >-
+    No idempotency parameter in the API Reference request syntax for
+    CreateCollaboration / CreateMembership / CreateConfiguredTable /
+    StartProtectedQuery, and none in the captured OpenAPI.
+pagination:
+  style: cursor
+  request_params:
+    - name: nextToken
+      in: query
+      description: Token returned by a previous paginated request.
+    - name: maxResults
+      in: query
+      description: Page size.
+      minimum: 1
+      maximum: 100
+  response_fields:
+    - nextToken
+  termination: nextToken absent from the response body.
+  applies_to:
+    - ListCollaborations
+    - ListMemberships
+    - ListConfiguredTables
+    - ListConfiguredTableAssociations
+    - ListProtectedQueries
+    - ListProtectedJobs
+    - ListAnalysisTemplates
+    - ListSchemas
+    - ListMembers
+    - ListPrivacyBudgets
+    - ListIdMappingTables
+    - ListIdNamespaceAssociations
+    - ListIntermediateTables
+    - ListCollaborationChangeRequests
+  sdk_helpers: >-
+    Every AWS SDK exposes an auto-paginator for these operations (boto3
+    get_paginator("list_collaborations"), JS v3 paginateListCollaborations, etc.).
+field_expansion:
+  supported: false
+  note: >-
+    No sparse-fieldset or expand parameter. Summary vs full shapes are separate
+    types (CollaborationSummary vs Collaboration, ProtectedQuerySummary vs
+    ProtectedQuery) — List returns summaries, Get returns the full object.
+batch:
+  supported: true
+  operations:
+    - BatchGetSchema
+    - BatchGetSchemaAnalysisRule
+    - BatchGetCollaborationAnalysisTemplate
+  semantics: >-
+    Partial success — each batch response carries both a results array and an
+    errors array, so a batch call can succeed at the HTTP layer while individual
+    members failed.
+metadata:
+  supported: true
+  mechanism: AWS resource tags
+  operations:
+    - TagResource
+    - UntagResource
+    - ListTagsForResource
+  note: Tags are also usable as cost-allocation tags for billing breakdown.
+tracing:
+  request_id_header: x-amzn-RequestId
+  note: >-
+    AWS services return the request identifier on the response; the AWS SDKs
+    surface it on both success and error objects. Include it when opening a
+    support case.
+  audit: >-
+    Every Clean Rooms API call is recorded in AWS CloudTrail; query-level
+    activity is separately captured by analysis logging when queryLogStatus is
+    ENABLED on the collaboration/membership.
+  metrics: >-
+    Opt-in detailed CloudWatch metrics for collaborations (query performance,
+    resource utilization), available since 2026-01-02.
+versioning:
+  scheme: api-version-date
+  current: '2022-02-17'
+  in_path: false
+  note: >-
+    The API version is baked into the service model the SDKs ship; there is no
+    version segment in the URI and no version header a caller sets. New
+    capability arrives as additive operations.
+  cross_link: lifecycle/amazon-clean-rooms-lifecycle.yml
+errors:
+  envelope: aws-json-exception
+  shape: >-
+    {"message": "..."} with type-specific additions — fieldList[] on
+    ValidationException, resourceId/resourceType on ResourceNotFoundException.
+  problem_json: false
+  type_header: >-
+    The exception type is carried in the x-amzn-ErrorType response header and/or
+    a __type member of the body, per the AWS REST-JSON protocol.
+  cross_link: errors/amazon-clean-rooms-problem-types.yml
+  catalog: errors/amazon-clean-rooms-error-codes.yml
+rate_limits:
+  signalled_in_headers: false
+  exhaustion_status: 400
+  exhaustion_error: ThrottlingException
+  default_rate: 5 requests/second per operation per Region per account
+  cross_link: rate-limits/amazon-clean-rooms-rate-limits.yml
+retries:
+  strategy: exponential backoff with jitter
+  implemented_by: AWS SDK retry modes (legacy | standard | adaptive)
+  retryable:
+    - ThrottlingException
+    - InternalFailure
+    - ServiceUnavailable
+    - RequestTimeoutException
+  caution: >-
+    Because there is no idempotency key (see idempotency above), automatic SDK
+    retries on write operations are NOT inherently safe. Retry reads freely;
+    reconcile writes.
+async_operations:
+  pattern: submit-then-poll
+  note: >-
+    StartProtectedQuery and StartProtectedJob return immediately with a resource
+    in SUBMITTED state. Completion is observed either by polling GetProtectedQuery
+    / GetProtectedJob (quota 20 req/s for GetProtectedQuery, 5 req/s for
+    GetProtectedJob) or by subscribing to the EventBridge terminal events.
+  terminal_states:
+    - SUCCESS
+    - FAILED
+    - CANCELLED
+    - TIMED_OUT
+  event_alternative: asyncapi/amazon-clean-rooms-events.yml
+  max_runtime: 24 hours (query run time quota)
+regions_and_endpoints:
+  pattern: https://cleanrooms.{region}.amazonaws.com
+  docs: https://docs.aws.amazon.com/general/latest/gr/cleanrooms.html
+  note: >-
+    Regional endpoints only — there is no global endpoint. The Region is part of
+    the SigV4 credential scope, so signing and routing must agree.
+content_type: application/json

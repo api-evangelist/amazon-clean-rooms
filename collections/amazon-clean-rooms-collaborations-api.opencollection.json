@@ -1,0 +1,110 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Amazon Clean Rooms Collaborations API",
+    "version": "2022-02-17"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "Authorization",
+      "value": "{{Authorization}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Collaborations",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Amazon Clean Rooms List Collaborations",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://cleanrooms.{region}.amazonaws.com/collaborations",
+            "params": [
+              {
+                "name": "nextToken",
+                "value": "",
+                "type": "query",
+                "description": "The token value retrieved from a previous paginated request."
+              },
+              {
+                "name": "maxResults",
+                "value": "",
+                "type": "query",
+                "description": "The maximum number of collaborations to return."
+              },
+              {
+                "name": "memberStatus",
+                "value": "",
+                "type": "query",
+                "description": "The caller's status in the collaborations."
+              }
+            ]
+          },
+          "docs": "Lists collaborations the caller owns, is active in, or has been invited to."
+        },
+        {
+          "info": {
+            "name": "Amazon Clean Rooms Create a Collaboration",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://cleanrooms.{region}.amazonaws.com/collaborations",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a new collaboration. A collaboration is a shared space where multiple parties can analyze data together without exposing raw data to one another."
+        },
+        {
+          "info": {
+            "name": "Amazon Clean Rooms Get a Collaboration",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://cleanrooms.{region}.amazonaws.com/collaborations/:collaborationIdentifier",
+            "params": [
+              {
+                "name": "collaborationIdentifier",
+                "value": "",
+                "type": "path",
+                "description": "The identifier for the collaboration."
+              }
+            ]
+          },
+          "docs": "Returns metadata about a collaboration, including its ID, ARN, name, description, creator details, and query log status."
+        },
+        {
+          "info": {
+            "name": "Amazon Clean Rooms Delete a Collaboration",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://cleanrooms.{region}.amazonaws.com/collaborations/:collaborationIdentifier",
+            "params": [
+              {
+                "name": "collaborationIdentifier",
+                "value": "",
+                "type": "path",
+                "description": "The identifier for the collaboration to delete."
+              }
+            ]
+          },
+          "docs": "Deletes a collaboration. The collaboration must have no active memberships before it can be deleted."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

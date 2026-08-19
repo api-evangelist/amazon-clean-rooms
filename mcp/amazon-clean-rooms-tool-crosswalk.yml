@@ -1,0 +1,200 @@
+generated: '2026-08-13'
+method: derived
+source: >-
+  Derived by binding each candidate MCP tool in mcp/amazon-clean-rooms-mcp.yml to
+  its backing OpenAPI operationId in openapi/*.yml, and by diffing the captured
+  OpenAPI operation set against the full published operation list in
+  llms/amazon-clean-rooms-llms.txt (harvested verbatim from
+  docs.aws.amazon.com/clean-rooms/latest/apireference/llms.txt).
+caveat: >-
+  AWS ships NO MCP server for Clean Rooms, so the mcp[] side of this crosswalk is
+  a derived candidate, not a live tools/list manifest. Confidence is high only
+  because each candidate tool was minted 1:1 from an operationId — it reflects
+  the mapping we would build, not a mapping AWS published. There is no GraphQL
+  surface.
+surfaces:
+  openapi:
+    files:
+      - openapi/amazon-clean-rooms-collaborations-api-openapi.yml
+      - openapi/amazon-clean-rooms-memberships-api-openapi.yml
+      - openapi/amazon-clean-rooms-configured-tables-api-openapi.yml
+      - openapi/amazon-clean-rooms-protected-queries-api-openapi.yml
+    original: openapi/_original/amazon-clean-rooms-openapi.yml
+    provenance: >-
+      Authored from AWS documentation (x-generated-from: documentation) — AWS
+      publishes no OpenAPI for Clean Rooms. The authoritative machine-readable
+      contract AWS does ship is the Smithy/service model embedded in the SDKs.
+    gated: false
+  graphql:
+    present: false
+  mcp:
+    present: false
+    url: null
+    gated: n/a
+crosswalk:
+  - tool: list_collaborations
+    category: collaboration
+    rest: [ListCollaborations]
+    binding: one-to-one
+    confidence: high
+  - tool: create_collaboration
+    category: collaboration
+    rest: [CreateCollaboration]
+    binding: one-to-one
+    confidence: high
+    note: >-
+      Write with no idempotency key — a tool wrapper should list-then-create, or
+      require human confirmation.
+  - tool: get_collaboration
+    category: collaboration
+    rest: [GetCollaboration]
+    binding: one-to-one
+    confidence: high
+  - tool: delete_collaboration
+    category: collaboration
+    rest: [DeleteCollaboration]
+    binding: one-to-one
+    confidence: high
+    note: Destructive; requires the collaboration to have no active memberships.
+  - tool: list_memberships
+    category: membership
+    rest: [ListMemberships]
+    binding: one-to-one
+    confidence: high
+  - tool: create_membership
+    category: membership
+    rest: [CreateMembership]
+    binding: one-to-one
+    confidence: high
+  - tool: list_configured_tables
+    category: data
+    rest: [ListConfiguredTables]
+    binding: one-to-one
+    confidence: high
+  - tool: create_configured_table
+    category: data
+    rest: [CreateConfiguredTable]
+    binding: one-to-one
+    confidence: high
+  - tool: list_protected_queries
+    category: analysis
+    rest: [ListProtectedQueries]
+    binding: one-to-one
+    confidence: high
+  - tool: start_protected_query
+    category: analysis
+    rest: [StartProtectedQuery]
+    binding: one-to-one
+    confidence: high
+    note: >-
+      Asynchronous and billed. Completion needs GetProtectedQuery (not in the
+      captured spec) or the EventBridge terminal events in
+      asyncapi/amazon-clean-rooms-events.yml.
+mcp_only: []
+rest_only: []
+documented_but_unmapped:
+  note: >-
+    These operations are published in the AWS Clean Rooms API Reference but are
+    absent from the captured OpenAPI, so no tool could be derived for them. This
+    is the real coverage gap in this repo's contract, and it is the single
+    highest-value thing to close for this provider.
+  operations:
+    - GetProtectedQuery
+    - UpdateProtectedQuery
+    - StartProtectedJob
+    - GetProtectedJob
+    - ListProtectedJobs
+    - UpdateProtectedJob
+    - GetMembership
+    - UpdateMembership
+    - DeleteMembership
+    - ListMembers
+    - DeleteMember
+    - UpdateCollaboration
+    - CreateCollaborationChangeRequest
+    - GetCollaborationChangeRequest
+    - ListCollaborationChangeRequests
+    - UpdateCollaborationChangeRequest
+    - GetConfiguredTable
+    - UpdateConfiguredTable
+    - DeleteConfiguredTable
+    - CreateConfiguredTableAnalysisRule
+    - GetConfiguredTableAnalysisRule
+    - UpdateConfiguredTableAnalysisRule
+    - DeleteConfiguredTableAnalysisRule
+    - CreateConfiguredTableAssociation
+    - GetConfiguredTableAssociation
+    - ListConfiguredTableAssociations
+    - UpdateConfiguredTableAssociation
+    - DeleteConfiguredTableAssociation
+    - CreateConfiguredTableAssociationAnalysisRule
+    - GetConfiguredTableAssociationAnalysisRule
+    - UpdateConfiguredTableAssociationAnalysisRule
+    - DeleteConfiguredTableAssociationAnalysisRule
+    - CreateAnalysisTemplate
+    - GetAnalysisTemplate
+    - ListAnalysisTemplates
+    - UpdateAnalysisTemplate
+    - DeleteAnalysisTemplate
+    - GetCollaborationAnalysisTemplate
+    - ListCollaborationAnalysisTemplates
+    - BatchGetCollaborationAnalysisTemplate
+    - GetSchema
+    - ListSchemas
+    - BatchGetSchema
+    - GetSchemaAnalysisRule
+    - BatchGetSchemaAnalysisRule
+    - CreateIntermediateTable
+    - GetIntermediateTable
+    - ListIntermediateTables
+    - ListIntermediateTableVersions
+    - PopulateIntermediateTable
+    - UpdateIntermediateTable
+    - DeleteIntermediateTable
+    - DisallowIntermediateTable
+    - CreateIntermediateTableAnalysisRule
+    - GetIntermediateTableAnalysisRule
+    - UpdateIntermediateTableAnalysisRule
+    - DeleteIntermediateTableAnalysisRule
+    - CreatePrivacyBudgetTemplate
+    - GetPrivacyBudgetTemplate
+    - ListPrivacyBudgetTemplates
+    - UpdatePrivacyBudgetTemplate
+    - DeletePrivacyBudgetTemplate
+    - ListPrivacyBudgets
+    - GetCollaborationPrivacyBudgetTemplate
+    - ListCollaborationPrivacyBudgetTemplates
+    - ListCollaborationPrivacyBudgets
+    - PreviewPrivacyImpact
+    - CreateIdMappingTable
+    - GetIdMappingTable
+    - ListIdMappingTables
+    - PopulateIdMappingTable
+    - UpdateIdMappingTable
+    - DeleteIdMappingTable
+    - CreateIdNamespaceAssociation
+    - GetIdNamespaceAssociation
+    - ListIdNamespaceAssociations
+    - UpdateIdNamespaceAssociation
+    - DeleteIdNamespaceAssociation
+    - GetCollaborationIdNamespaceAssociation
+    - ListCollaborationIdNamespaceAssociations
+    - CreateConfiguredAudienceModelAssociation
+    - GetConfiguredAudienceModelAssociation
+    - ListConfiguredAudienceModelAssociations
+    - UpdateConfiguredAudienceModelAssociation
+    - DeleteConfiguredAudienceModelAssociation
+    - GetCollaborationConfiguredAudienceModelAssociation
+    - ListCollaborationConfiguredAudienceModelAssociations
+    - TagResource
+    - UntagResource
+    - ListTagsForResource
+coverage:
+  mcp_tools: 10
+  rest_operations_in_spec: 10
+  rest_operations_documented: 100
+  mapped: 10
+  mcp_only: 0
+  rest_only: 0
+  documented_but_unmapped: 90
+  spec_coverage_pct: 10

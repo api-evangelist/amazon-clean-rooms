@@ -1,0 +1,113 @@
+generated: '2026-08-13'
+method: searched
+source: https://docs.aws.amazon.com/clean-rooms/latest/userguide/clean-rooms-quotas.html
+docs: https://docs.aws.amazon.com/clean-rooms/latest/userguide/quotas.html
+console: https://console.aws.amazon.com/servicequotas/home/services/cleanrooms/quotas
+limit_count: 6
+note: >-
+  AWS Clean Rooms publishes a per-operation request-rate quota for every API
+  action through AWS Service Quotas. The overwhelming default is 5 requests per
+  second per Region per account; two poll-heavy read operations get 20/sec. Every
+  rate quota is adjustable via Service Quotas. Because the surface is one quota
+  per operation (roughly 100 rows), the entries below record the DISTINCT rate
+  tiers plus the resource limits an agent has to plan around, and point at the
+  full published table rather than mirroring 100 identical rows.
+signalling:
+  response_headers: []
+  header_note: >-
+    AWS Clean Rooms returns no RateLimit-* / X-RateLimit-* / Retry-After headers.
+    There is no runtime budget signal on a successful response — the only
+    exhaustion signal is the error itself, which is a meaningful agent-readiness
+    gap: a client cannot see how close it is to the ceiling before it hits it.
+  exhaustion_status: 400
+  exhaustion_error: ThrottlingException
+  exhaustion_message: >-
+    "Your request rate is too high. The AWS SDKs automatically retry requests
+    that receive this exception. Reduce the frequency of requests."
+  retry_strategy: >-
+    Client-side exponential backoff with jitter, implemented automatically by
+    every AWS SDK (adaptive/standard retry mode). No server-supplied retry hint.
+  source: https://docs.aws.amazon.com/clean-rooms/latest/apireference/CommonErrors.html
+rate_limits:
+  - id: default-api-rate
+    scope: per-account-per-region-per-operation
+    window: 1s
+    limit: 5
+    unit: requests
+    adjustable: true
+    applies_to: >-
+      The default for essentially every cleanrooms API action — Create*, Delete*,
+      Update*, Get*, List*, BatchGet*, StartProtectedQuery, StartProtectedJob,
+      PopulateIdMappingTable, PreviewPrivacyImpact, TagResource, UntagResource.
+  - id: get-configured-table-rate
+    scope: per-account-per-region-per-operation
+    window: 1s
+    limit: 20
+    unit: requests
+    adjustable: true
+    applies_to: GetConfiguredTable
+  - id: get-protected-query-rate
+    scope: per-account-per-region-per-operation
+    window: 1s
+    limit: 20
+    unit: requests
+    adjustable: true
+    applies_to: GetProtectedQuery
+    note: >-
+      The higher ceiling here matters: GetProtectedQuery is the polling call an
+      agent uses to await an asynchronous protected query result.
+  - id: concurrent-sql-queries
+    scope: per-account-per-region
+    window: concurrent
+    limit: 5
+    unit: running SQL queries
+    adjustable: true
+    note: 'us-east-1: 5; each other supported Region: 2.'
+  - id: concurrent-pyspark-jobs
+    scope: per-account-per-region
+    window: concurrent
+    limit: 5
+    unit: running PySpark jobs
+    adjustable: true
+    note: 'us-east-1: 5; each other supported Region: 2.'
+  - id: concurrent-queries-per-membership
+    scope: per-membership
+    window: concurrent
+    limit: 5
+    unit: ongoing queries
+    adjustable: false
+resource_limits:
+  - name: Query run time
+    limit: 24 hours
+    note: Maximum duration a query runs before timeout.
+  - name: Query text length
+    limit: 90 KB
+  - name: Query text length (differential privacy)
+    limit: 90 KB
+    note: >-
+      The quotas table also lists an 8 KB figure for differential-privacy query
+      text; the resource-parameter table and the 2025-07-16 doc-history entry
+      both state 90 KB. Recorded as published; the two tables disagree.
+  - name: Query text length on Spark analytics engine
+    limit: 500 KB
+  - name: Collaborations created per account
+    limit: 500
+    adjustable: true
+  - name: Memberships per account
+    limit: 500
+    adjustable: true
+  - name: Configured tables per account
+    limit: 250
+    adjustable: true
+  - name: Configured tables per protected query
+    limit: 15
+    adjustable: true
+  - name: Members invited per collaboration
+    limit: 5
+    adjustable: true
+  - name: Analysis rule size
+    limit: 100 KB
+    adjustable: false
+  - name: Columns per configured table allowlist
+    limit: 100
+    adjustable: true

@@ -1,16 +1,106 @@
-generated: '2026-07-11'
-method: derived
-source: openapi/amazon-clean-rooms-openapi.yml
+generated: '2026-08-13'
+method: searched
+source: >-
+  https://docs.aws.amazon.com/clean-rooms/latest/apireference/CommonParameters.html
+  and https://docs.aws.amazon.com/clean-rooms/latest/userguide/security-iam.html,
+  reconciled against the securitySchemes derived from openapi/*.yml.
+docs: https://docs.aws.amazon.com/clean-rooms/latest/apireference/CommonParameters.html
 summary:
   types:
-  - apiKey
+  - aws-sigv4
   api_key_in:
   - header
+  oauth2: false
+  openid_connect: false
+  mutual_tls: false
+  note: >-
+    The captured OpenAPI models AWS SigV4 as an apiKey-in-header scheme because
+    OpenAPI 3.1 has no native SigV4 type. That is a spec-shape artifact, not the
+    real model: SigV4 is a request-signing scheme over the whole canonical
+    request, not a static key placed in a header. Recorded here as aws-sigv4 so
+    downstream consumers are not told to paste a bearer token.
 schemes:
 - name: aws_signature
-  type: apiKey
+  type: aws-sigv4
+  spec_type: apiKey
   in: header
   parameter: Authorization
-  description: AWS Signature Version 4
+  algorithm: AWS4-HMAC-SHA256
+  service_name: cleanrooms
+  region_scoped: true
+  description: >-
+    AWS Signature Version 4. The Authorization header carries the credential
+    scope (access key / date / region / service / aws4_request), the signed
+    header list, and the hex signature.
   sources:
-  - openapi/amazon-clean-rooms-openapi.yml
+  - openapi/amazon-clean-rooms-collaborations-api-openapi.yml
+  - openapi/amazon-clean-rooms-configured-tables-api-openapi.yml
+  - openapi/amazon-clean-rooms-memberships-api-openapi.yml
+  - openapi/amazon-clean-rooms-protected-queries-api-openapi.yml
+  - https://docs.aws.amazon.com/clean-rooms/latest/apireference/CommonParameters.html
+query_string_signing:
+  supported: true
+  note: >-
+    Authentication information may be placed in the query string instead of the
+    Authorization header (presigned-style), using the parameters below.
+  parameters:
+  - name: X-Amz-Algorithm
+    values: [AWS4-HMAC-SHA256]
+    required: conditional
+  - name: X-Amz-Credential
+    format: access_key/YYYYMMDD/region/service/aws4_request
+    required: conditional
+  - name: X-Amz-Date
+    format: ISO 8601 basic (YYYYMMDD'T'HHMMSS'Z')
+    required: conditional
+  - name: X-Amz-Signature
+    required: conditional
+  - name: X-Amz-SignedHeaders
+    required: conditional
+  - name: X-Amz-Security-Token
+    required: conditional
+    note: Required when using temporary credentials from AWS STS.
+temporary_credentials:
+  supported: true
+  issuer: AWS Security Token Service (STS)
+  header: X-Amz-Security-Token
+authorization:
+  model: AWS IAM + collaboration member abilities
+  action_namespace: cleanrooms:*
+  managed_policies:
+  - AWSCleanRoomsFullAccess
+  - AWSCleanRoomsFullAccessNoQuerying
+  - AWSCleanRoomsReadOnlyAccess
+  - AWSCleanRoomsMLFullAccess
+  - AWSCleanRoomsMLReadOnlyAccess
+  member_abilities:
+  - CAN_QUERY
+  - CAN_RECEIVE_RESULTS
+  - CAN_RUN_JOB
+  - CAN_EXPORT_QUERY_ANALYSIS_LOG
+  note: >-
+    Two independent authorization layers. IAM decides whether the calling
+    principal may invoke the API at all; the collaboration's member abilities
+    decide what that member may do inside a given collaboration. A principal with
+    full IAM access still cannot query if its membership lacks CAN_QUERY.
+  docs: https://docs.aws.amazon.com/clean-rooms/latest/userguide/security-iam.html
+  service_roles: https://docs.aws.amazon.com/clean-rooms/latest/userguide/setting-up-roles.html
+scopes:
+  applicable: false
+  note: >-
+    No OAuth 2.0 surface, therefore no scope registry. Access is expressed as IAM
+    actions and member abilities, not scopes — scopes/ is intentionally absent
+    rather than empty.
+errors:
+- code: IncompleteSignature
+  status: 403
+- code: UnrecognizedClientException
+  status: 403
+- code: ExpiredTokenException
+  status: 403
+- code: AccessDeniedException
+  status: 403
+- code: NotAuthorized
+  status: 401
+catalog: errors/amazon-clean-rooms-error-codes.yml
+conventions: conventions/amazon-clean-rooms-conventions.yml

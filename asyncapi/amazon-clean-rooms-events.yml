@@ -1,0 +1,176 @@
+generated: '2026-08-13'
+method: searched
+source: https://docs.aws.amazon.com/clean-rooms/latest/userguide/eventbridge-integration-full.html
+docs: https://docs.aws.amazon.com/clean-rooms/latest/userguide/eventbridge-integration-full.html
+reference: https://docs.aws.amazon.com/eventbridge/latest/ref/welcome.html
+description: >-
+  AWS Clean Rooms publishes a real event surface. It is NOT webhooks in the
+  HTTP-callback sense and there is NO AsyncAPI document: Clean Rooms emits events
+  onto the Amazon EventBridge default event bus, and a consumer subscribes by
+  creating an EventBridge rule with an event pattern, then routing to any
+  EventBridge target (Lambda, SQS, SNS, Step Functions, an HTTPS API destination,
+  or a SaaS partner). The catalog below is the provider's published detail-type
+  list, captured verbatim.
+spec:
+  asyncapi_published: false
+  note: >-
+    AWS publishes no AsyncAPI document for Clean Rooms events. Not fabricated —
+    recorded as absent. The event schemas are discoverable at runtime through the
+    Amazon EventBridge Schema Registry for the aws.events schema namespace.
+transport:
+  mechanism: amazon-eventbridge
+  bus: default event bus
+  source: aws.cleanrooms
+  delivery: push to EventBridge targets via rules
+  http_callbacks: false
+  subscription_model: >-
+    Create an EventBridge rule whose event pattern matches
+    {"source": ["aws.cleanrooms"], "detail-type": [...]} and attach one or more
+    targets.
+event_pattern_example: |
+  {
+    "source": ["aws.cleanrooms"],
+    "detail-type": ["Id Namespace Association Updated"],
+    "detail": {
+      "status": ["COLLABORATION_DELETED"]
+    }
+  }
+event_count: 37
+events:
+  - detail_type: Analysis Template Created
+    resource: AnalysisTemplate
+    audience: Template owner and all active collaboration members.
+  - detail_type: Analysis Template Updated
+    resource: AnalysisTemplate
+    audience: Template owner and members with visibility into the update.
+  - detail_type: Analysis Template Deleted
+    resource: AnalysisTemplate
+    audience: Template owner and all active collaboration members.
+  - detail_type: Collaboration Created
+    resource: Collaboration
+    audience: Collaboration owner.
+  - detail_type: Collaboration Updated
+    resource: Collaboration
+    audience: Owner and members with visibility into the update.
+  - detail_type: Collaboration Change Request Created
+    resource: CollaborationChangeRequest
+    audience: Owner and all active members.
+  - detail_type: Collaboration Change Request Approved
+    resource: CollaborationChangeRequest
+    audience: Owner and all active members.
+  - detail_type: Collaboration Change Request Cancelled
+    resource: CollaborationChangeRequest
+    audience: Owner and all active members.
+  - detail_type: Collaboration Change Request Committed
+    resource: CollaborationChangeRequest
+    audience: Owner and all active members.
+  - detail_type: Configured Table Association Created
+    resource: ConfiguredTableAssociation
+    audience: Association owner and all active members.
+  - detail_type: Configured Table Association Updated
+    resource: ConfiguredTableAssociation
+    audience: Owner and members with visibility into the update.
+  - detail_type: Configured Table Association Deleted
+    resource: ConfiguredTableAssociation
+    audience: Owner and all active members.
+  - detail_type: Configured Table Association Analysis Rule Created
+    resource: ConfiguredTableAssociationAnalysisRule
+    audience: Rule owner and all active members.
+  - detail_type: Configured Table Association Analysis Rule Updated
+    resource: ConfiguredTableAssociationAnalysisRule
+    audience: Owner and members with visibility into the update.
+  - detail_type: Configured Table Association Analysis Rule Deleted
+    resource: ConfiguredTableAssociationAnalysisRule
+    audience: Owner and all active members.
+  - detail_type: Id Mapping Table Created
+    resource: IdMappingTable
+    audience: Table owner and all active members.
+  - detail_type: Id Mapping Table Updated
+    resource: IdMappingTable
+    audience: Owner and members with visibility into the update.
+  - detail_type: Id Mapping Table Deleted
+    resource: IdMappingTable
+    audience: Owner and all active members.
+  - detail_type: Id Namespace Association Created
+    resource: IdNamespaceAssociation
+    audience: Association owner and all active members.
+  - detail_type: Id Namespace Association Updated
+    resource: IdNamespaceAssociation
+    audience: Owner and members with visibility into the update.
+  - detail_type: Id Namespace Association Deleted
+    resource: IdNamespaceAssociation
+    audience: Owner and all active members.
+  - detail_type: Invited To Collaboration
+    resource: Collaboration
+    audience: The invited member.
+  - detail_type: Membership Created
+    resource: Membership
+    audience: Membership owner and all active members.
+  - detail_type: Membership Updated
+    resource: Membership
+    audience: >-
+      Membership owner; all active members when the membership was removed from
+      the collaboration.
+  - detail_type: Membership Deleted
+    resource: Membership
+    audience: Membership owner and all active members.
+  - detail_type: Protected Job Submitted
+    resource: ProtectedJob
+    audience: Job runner, job payer, results receiver.
+  - detail_type: Protected Job Started
+    resource: ProtectedJob
+    audience: Job runner, job payer, results receiver.
+  - detail_type: Protected Job Cancelling
+    resource: ProtectedJob
+    audience: Job runner, job payer, results receiver.
+  - detail_type: Protected Job Cancelled
+    resource: ProtectedJob
+    audience: Job runner, job payer, results receiver.
+    terminal: true
+  - detail_type: Protected Job Succeeded
+    resource: ProtectedJob
+    audience: Job runner, job payer, results receiver.
+    terminal: true
+  - detail_type: Protected Job Failed
+    resource: ProtectedJob
+    audience: Job runner, job payer, results receiver.
+    terminal: true
+  - detail_type: Protected Query Submitted
+    resource: ProtectedQuery
+    audience: Query runner, query payer, results receiver(s).
+  - detail_type: Protected Query Started
+    resource: ProtectedQuery
+    audience: Query runner, query payer, results receiver(s).
+  - detail_type: Protected Query Cancelling
+    resource: ProtectedQuery
+    audience: Query runner, query payer, results receiver(s).
+  - detail_type: Protected Query Cancelled
+    resource: ProtectedQuery
+    audience: Query runner, query payer, results receiver(s).
+    terminal: true
+  - detail_type: Protected Query Succeeded
+    resource: ProtectedQuery
+    audience: Query runner, query payer, results receiver(s).
+    terminal: true
+  - detail_type: Protected Query Failed
+    resource: ProtectedQuery
+    audience: Query runner, query payer, results receiver(s).
+    terminal: true
+  - detail_type: Protected Query Timed Out
+    resource: ProtectedQuery
+    audience: Query runner, query payer, results receiver(s).
+    terminal: true
+agent_note: >-
+  The seven terminal Protected Query / Protected Job events are the event-driven
+  alternative to polling GetProtectedQuery, and they are what an agent should
+  bind to for long-running analysis (queries can run up to the 24-hour timeout).
+history:
+  - date: '2025-07-31'
+    change: Initial EventBridge support for AWS Clean Rooms.
+  - date: '2025-12-15'
+    change: >-
+      Added events for Analysis Template, Configured Table Association,
+      Configured Table Association Analysis Rule, Id Mapping Table, Id Namespace
+      Association, Protected Job and Protected Query.
+  - date: '2025-12-19'
+    change: Added Collaboration Change Request lifecycle events.

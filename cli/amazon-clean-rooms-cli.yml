@@ -1,0 +1,188 @@
+generated: '2026-08-13'
+method: searched
+source: https://docs.aws.amazon.com/cli/latest/reference/cleanrooms/
+docs: https://docs.aws.amazon.com/cli/latest/reference/cleanrooms/
+name: aws cleanrooms
+description: >-
+  AWS Clean Rooms has no dedicated CLI binary. It is a service namespace inside
+  the AWS CLI — every Clean Rooms API action is exposed as
+  `aws cleanrooms <kebab-case-operation>`, generated from the same service model
+  as the SDKs, so the command surface tracks the API 1:1.
+binary: aws
+namespace: cleanrooms
+official: true
+install:
+  - method: installer
+    platform: macos
+    command: >-
+      curl "https://awscli.amazonaws.com/AWSCLIV2.pkg" -o "AWSCLIV2.pkg" &&
+      sudo installer -pkg AWSCLIV2.pkg -target /
+  - method: installer
+    platform: linux
+    command: >-
+      curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o
+      "awscliv2.zip" && unzip awscliv2.zip && sudo ./aws/install
+  - method: installer
+    platform: windows
+    command: msiexec.exe /i https://awscli.amazonaws.com/AWSCLIV2.msi
+  - method: package
+    registry: pypi
+    command: pip install awscli
+auth:
+  model: AWS SigV4 via configured credentials
+  configure: aws configure
+  note: >-
+    Uses the standard AWS credential chain (profiles, environment variables,
+    SSO, instance/role credentials). No Clean Rooms-specific credential.
+command_groups:
+  - name: Collaborations
+    commands:
+      - create-collaboration
+      - get-collaboration
+      - list-collaborations
+      - update-collaboration
+      - delete-collaboration
+  - name: Collaboration change requests
+    commands:
+      - create-collaboration-change-request
+      - get-collaboration-change-request
+      - list-collaboration-change-requests
+      - update-collaboration-change-request
+  - name: Members and memberships
+    commands:
+      - create-membership
+      - get-membership
+      - list-memberships
+      - update-membership
+      - delete-membership
+      - list-members
+      - delete-member
+  - name: Configured tables
+    commands:
+      - create-configured-table
+      - get-configured-table
+      - list-configured-tables
+      - update-configured-table
+      - delete-configured-table
+      - create-configured-table-analysis-rule
+      - get-configured-table-analysis-rule
+      - update-configured-table-analysis-rule
+      - delete-configured-table-analysis-rule
+  - name: Configured table associations
+    commands:
+      - create-configured-table-association
+      - get-configured-table-association
+      - list-configured-table-associations
+      - update-configured-table-association
+      - delete-configured-table-association
+      - create-configured-table-association-analysis-rule
+      - get-configured-table-association-analysis-rule
+      - update-configured-table-association-analysis-rule
+      - delete-configured-table-association-analysis-rule
+  - name: Analysis templates
+    commands:
+      - create-analysis-template
+      - get-analysis-template
+      - list-analysis-templates
+      - update-analysis-template
+      - delete-analysis-template
+      - get-collaboration-analysis-template
+      - list-collaboration-analysis-templates
+      - batch-get-collaboration-analysis-template
+  - name: Protected queries and jobs
+    commands:
+      - start-protected-query
+      - get-protected-query
+      - list-protected-queries
+      - update-protected-query
+      - start-protected-job
+      - get-protected-job
+      - list-protected-jobs
+      - update-protected-job
+  - name: Analysis log exports
+    commands:
+      - start-analysis-log-export
+      - get-analysis-log-export
+      - list-analysis-log-exports
+  - name: Intermediate tables
+    commands:
+      - create-intermediate-table
+      - get-intermediate-table
+      - list-intermediate-tables
+      - list-intermediate-table-versions
+      - populate-intermediate-table
+      - update-intermediate-table
+      - delete-intermediate-table
+      - disallow-intermediate-table
+      - create-intermediate-table-analysis-rule
+      - get-intermediate-table-analysis-rule
+      - update-intermediate-table-analysis-rule
+      - delete-intermediate-table-analysis-rule
+  - name: Identity resolution
+    commands:
+      - create-id-mapping-table
+      - get-id-mapping-table
+      - list-id-mapping-tables
+      - populate-id-mapping-table
+      - update-id-mapping-table
+      - delete-id-mapping-table
+      - create-id-namespace-association
+      - get-id-namespace-association
+      - list-id-namespace-associations
+      - update-id-namespace-association
+      - delete-id-namespace-association
+      - get-collaboration-id-namespace-association
+      - list-collaboration-id-namespace-associations
+  - name: Privacy budgets
+    commands:
+      - create-privacy-budget-template
+      - get-privacy-budget-template
+      - list-privacy-budget-templates
+      - update-privacy-budget-template
+      - delete-privacy-budget-template
+      - list-privacy-budgets
+      - get-collaboration-privacy-budget-template
+      - list-collaboration-privacy-budget-templates
+      - list-collaboration-privacy-budgets
+      - preview-privacy-impact
+  - name: ML audience models
+    commands:
+      - create-configured-audience-model-association
+      - get-configured-audience-model-association
+      - list-configured-audience-model-associations
+      - update-configured-audience-model-association
+      - delete-configured-audience-model-association
+      - get-collaboration-configured-audience-model-association
+      - list-collaboration-configured-audience-model-associations
+  - name: Schemas
+    commands:
+      - get-schema
+      - get-schema-analysis-rule
+      - list-schemas
+      - batch-get-schema
+      - batch-get-schema-analysis-rule
+  - name: Tags
+    commands:
+      - tag-resource
+      - untag-resource
+      - list-tags-for-resource
+key_flows:
+  - name: Create a collaboration and join it
+    commands:
+      - aws cleanrooms create-collaboration
+      - aws cleanrooms create-membership
+  - name: Configure and associate a table
+    commands:
+      - aws cleanrooms create-configured-table
+      - aws cleanrooms create-configured-table-analysis-rule
+      - aws cleanrooms create-configured-table-association
+  - name: Run and await a protected query
+    commands:
+      - aws cleanrooms start-protected-query
+      - aws cleanrooms get-protected-query
+related_namespaces:
+  - name: aws cleanrooms-ml
+    url: https://docs.aws.amazon.com/cli/latest/reference/cleanroomsml/
+    note: >-
+      AWS Clean Rooms ML is a separate service namespace (cleanroomsml) with its
+      own endpoint and command set.

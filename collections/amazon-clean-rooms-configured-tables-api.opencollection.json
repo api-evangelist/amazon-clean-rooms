@@ -1,0 +1,66 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Amazon Clean Rooms Collaborations Configured Tables API",
+    "version": "2022-02-17"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "Authorization",
+      "value": "{{Authorization}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Configured Tables",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Amazon Clean Rooms List Configured Tables",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://cleanrooms.{region}.amazonaws.com/configuredTables",
+            "params": [
+              {
+                "name": "nextToken",
+                "value": "",
+                "type": "query",
+                "description": "The token value retrieved from a previous paginated request."
+              },
+              {
+                "name": "maxResults",
+                "value": "",
+                "type": "query",
+                "description": "The maximum number of configured tables to return."
+              }
+            ]
+          },
+          "docs": "Lists configured tables in the caller's account."
+        },
+        {
+          "info": {
+            "name": "Amazon Clean Rooms Create a Configured Table",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://cleanrooms.{region}.amazonaws.com/configuredTables",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a new configured table resource. A configured table represents an AWS Glue table that is configured for Clean Rooms collaboration with specific analysis rules governing how it may be queried."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

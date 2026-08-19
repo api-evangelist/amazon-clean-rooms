@@ -1,0 +1,72 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Amazon Clean Rooms Collaborations Memberships API",
+    "version": "2022-02-17"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "Authorization",
+      "value": "{{Authorization}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Memberships",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Amazon Clean Rooms List Memberships",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://cleanrooms.{region}.amazonaws.com/memberships",
+            "params": [
+              {
+                "name": "nextToken",
+                "value": "",
+                "type": "query",
+                "description": "The token value retrieved from a previous paginated request."
+              },
+              {
+                "name": "maxResults",
+                "value": "",
+                "type": "query",
+                "description": "The maximum number of memberships to return."
+              },
+              {
+                "name": "status",
+                "value": "",
+                "type": "query",
+                "description": "A filter for membership status."
+              }
+            ]
+          },
+          "docs": "Lists all memberships resources within the caller's account."
+        },
+        {
+          "info": {
+            "name": "Amazon Clean Rooms Create a Membership",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://cleanrooms.{region}.amazonaws.com/memberships",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a membership for a specific collaboration identifier and joins the collaboration. Membership provides access to collaborate on configured tables."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

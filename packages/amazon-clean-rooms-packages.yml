@@ -1,8 +1,19 @@
-generated: '2026-06-20'
+generated: '2026-08-13'
 method: searched
 source: >-
-  Registry lookups against npm, RubyGems, Maven Central, NuGet, pkg.go.dev,
-  Packagist, and PyPI for the first-party AWS SDK Clean Rooms clients.
+  Registry metadata endpoints queried unauthenticated on 2026-08-13:
+  registry.npmjs.org, pypi.org/pypi/<pkg>/json, rubygems.org/api/v1/gems,
+  api.nuget.org + azuresearch-usnc.nuget.org, repo1.maven.org maven-metadata.xml,
+  proxy.golang.org/@latest, repo.packagist.org/p2. Package identities confirmed
+  against the AWS Clean Rooms API Reference and the AWS SDK docs.
+note: >-
+  AWS Clean Rooms ships no standalone SDK. It is a service client inside the
+  unified AWS SDKs, so the "package" for each language is either a per-service
+  artifact split out of the AWS SDK (JavaScript v3, Java v2, .NET, Go v2, Ruby)
+  or the whole SDK distribution (Python/boto3, PHP). Versions below are the
+  latest published release of the artifact a Clean Rooms consumer actually
+  installs, with the date that release was published.
+checked: '2026-08-13'
 packages:
   - language: javascript
     registry: npm
@@ -10,45 +21,75 @@ packages:
     url: https://www.npmjs.com/package/@aws-sdk/client-cleanrooms
     install: npm install @aws-sdk/client-cleanrooms
     official: true
+    version: 3.1110.0
+    published: '2026-08-13'
   - language: python
     registry: pypi
     name: boto3
     url: https://pypi.org/project/boto3/
     install: pip install boto3
     official: true
+    version: 1.43.71
+    published: '2026-08-13'
     notes: >-
       AWS Clean Rooms is exposed as the "cleanrooms" client within the unified
-      boto3 SDK; there is no standalone Clean Rooms PyPI distribution.
+      boto3 SDK; there is no standalone Clean Rooms PyPI distribution, so the
+      version recorded is boto3's.
   - language: java
     registry: maven
     name: software.amazon.awssdk:cleanrooms
     url: https://central.sonatype.com/artifact/software.amazon.awssdk/cleanrooms
     install: "implementation 'software.amazon.awssdk:cleanrooms'"
     official: true
+    version: 2.53.0
+    published: '2026-08-13'
+    notes: >-
+      Version and date read from
+      https://repo1.maven.org/maven2/software/amazon/awssdk/cleanrooms/maven-metadata.xml
+      (<latest> + <lastUpdated>).
   - language: csharp
     registry: nuget
     name: AWSSDK.CleanRooms
     url: https://www.nuget.org/packages/AWSSDK.CleanRooms
     install: dotnet add package AWSSDK.CleanRooms
     official: true
+    version: 4.0.104
+    published: '2026-08-13'
+    notes: >-
+      695 published versions on nuget.org; publish date read from the
+      Last-Modified header on the 4.0.104 .nupkg on api.nuget.org flat container.
   - language: go
     registry: go
     name: github.com/aws/aws-sdk-go-v2/service/cleanrooms
     url: https://pkg.go.dev/github.com/aws/aws-sdk-go-v2/service/cleanrooms
     install: go get github.com/aws/aws-sdk-go-v2/service/cleanrooms
     official: true
+    version: v1.51.0
+    published: '2026-08-13'
   - language: ruby
     registry: rubygems
     name: aws-sdk-cleanrooms
     url: https://rubygems.org/gems/aws-sdk-cleanrooms
     install: gem install aws-sdk-cleanrooms
     official: true
+    version: 1.79.0
+    published: '2026-08-13'
   - language: php
     registry: packagist
     name: aws/aws-sdk-php
     url: https://packagist.org/packages/aws/aws-sdk-php
     install: composer require aws/aws-sdk-php
     official: true
+    version: 3.392.2
+    published: '2026-08-13'
     notes: >-
       AWS Clean Rooms is accessed via the CleanRoomsClient inside the unified
       AWS SDK for PHP; there is no standalone Clean Rooms Packagist package.
+currency:
+  finding: >-
+    Every first-party client library a Clean Rooms consumer can install published
+    a release on 2026-08-13 — the same day this pass ran. There is no SDK decay
+    signal here: the service client is regenerated with the daily AWS SDK release
+    train across all seven ecosystems.
+  stale_packages: 0
+  oldest_release: '2026-08-13'

@@ -1,0 +1,217 @@
+generated: '2026-08-13'
+method: derived
+source: >-
+  openapi/_original/amazon-clean-rooms-openapi.yml ($ref graph and id-reference
+  fields), enriched from the AWS Clean Rooms API Reference data-type index
+  captured verbatim in llms/amazon-clean-rooms-llms.txt.
+docs: https://docs.aws.amazon.com/clean-rooms/latest/apireference/API_Types.html
+description: >-
+  Entity-relationship graph for AWS Clean Rooms. Relationships are derived from
+  the id-reference fields in the captured OpenAPI schemas (collaborationId,
+  collaborationArn, membershipId, membershipArn) and from the operation path
+  nesting. Entities present in the API Reference but not in the captured OpenAPI
+  are marked spec_coverage: docs-only so the gap is visible rather than implied.
+identifiers:
+  style: opaque-string + ARN
+  arn_pattern: 'arn:aws:cleanrooms:{region}:{accountId}:{resourceType}/{resourceId}'
+  resource_types:
+    - collaboration
+    - membership
+    - configuredtable
+    - configuredtableassociation
+    - analysistemplate
+    - idmappingtable
+    - idnamespaceassociation
+    - privacybudgettemplate
+  note: >-
+    Every entity carries both a short `id` and a full `arn`. Cross-account
+    references inside a collaboration use the ARN, never the short id.
+entities:
+  - name: Collaboration
+    description: The multi-party data share environment; the root aggregate.
+    spec_coverage: openapi
+    key_fields: [id, arn, name, description, creatorAccountId, creatorDisplayName, createTime, updateTime, queryLogStatus]
+    operations: [CreateCollaboration, GetCollaboration, ListCollaborations, UpdateCollaboration, DeleteCollaboration]
+  - name: Member
+    description: An AWS account invited into a collaboration, with member abilities.
+    spec_coverage: docs-only
+    operations: [ListMembers, DeleteMember]
+  - name: Membership
+    description: >-
+      A member account's own resource representing its participation in one
+      collaboration. All per-member work (queries, jobs, budgets, associations)
+      hangs off a membership, not off the collaboration.
+    spec_coverage: openapi
+    key_fields: [id, arn, collaborationArn, collaborationId, collaborationCreatorAccountId, collaborationName, status]
+    operations: [CreateMembership, GetMembership, ListMemberships, UpdateMembership, DeleteMembership]
+  - name: CollaborationChangeRequest
+    description: >-
+      A proposed change to a collaboration (add members, update abilities, change
+      payer configuration) that all members must approve before it commits.
+    spec_coverage: docs-only
+    operations: [CreateCollaborationChangeRequest, GetCollaborationChangeRequest, ListCollaborationChangeRequests, UpdateCollaborationChangeRequest]
+  - name: ConfiguredTable
+    description: >-
+      An account-owned wrapper over an underlying data source (AWS Glue, Athena,
+      Snowflake) declaring which columns may be used.
+    spec_coverage: openapi
+    key_fields: [id, arn, name, description, createTime, updateTime, analysisMethod, allowedColumns, tableReference]
+    operations: [CreateConfiguredTable, GetConfiguredTable, ListConfiguredTables, UpdateConfiguredTable, DeleteConfiguredTable]
+  - name: ConfiguredTableAnalysisRule
+    description: >-
+      The owner's policy on a configured table (AGGREGATION, LIST, CUSTOM) that
+      constrains how it can be queried.
+    spec_coverage: docs-only
+    operations: [CreateConfiguredTableAnalysisRule, GetConfiguredTableAnalysisRule, UpdateConfiguredTableAnalysisRule, DeleteConfiguredTableAnalysisRule]
+  - name: ConfiguredTableAssociation
+    description: The link that brings a configured table into a specific collaboration.
+    spec_coverage: docs-only
+    operations: [CreateConfiguredTableAssociation, GetConfiguredTableAssociation, ListConfiguredTableAssociations, UpdateConfiguredTableAssociation, DeleteConfiguredTableAssociation]
+  - name: AnalysisTemplate
+    description: A reusable, approvable SQL or PySpark analysis definition.
+    spec_coverage: docs-only
+    operations: [CreateAnalysisTemplate, GetAnalysisTemplate, ListAnalysisTemplates, UpdateAnalysisTemplate, DeleteAnalysisTemplate, GetCollaborationAnalysisTemplate, ListCollaborationAnalysisTemplates, BatchGetCollaborationAnalysisTemplate]
+  - name: Schema
+    description: >-
+      The collaboration-visible relation projected from an associated configured
+      table — what other members can see and query.
+    spec_coverage: docs-only
+    operations: [GetSchema, ListSchemas, BatchGetSchema, GetSchemaAnalysisRule, BatchGetSchemaAnalysisRule]
+  - name: ProtectedQuery
+    description: >-
+      An asynchronous, privacy-constrained SQL execution against associated
+      tables, run under a membership.
+    spec_coverage: openapi
+    key_fields: [id, membershipId, membershipArn, createTime, status, sqlParameters, resultConfiguration, receiverConfigurations, statistics]
+    states: [SUBMITTED, STARTED, CANCELLING, CANCELLED, SUCCESS, FAILED, TIMED_OUT]
+    operations: [StartProtectedQuery, GetProtectedQuery, ListProtectedQueries, UpdateProtectedQuery]
+  - name: ProtectedJob
+    description: The PySpark counterpart to a protected query.
+    spec_coverage: docs-only
+    operations: [StartProtectedJob, GetProtectedJob, ListProtectedJobs, UpdateProtectedJob]
+  - name: IntermediateTable
+    description: >-
+      A membership-scoped materialized result of a stored query, reusable as an
+      input to later analyses, carrying inherited privacy constraints.
+    spec_coverage: docs-only
+    operations: [CreateIntermediateTable, GetIntermediateTable, ListIntermediateTables, ListIntermediateTableVersions, PopulateIntermediateTable, UpdateIntermediateTable, DeleteIntermediateTable, DisallowIntermediateTable]
+  - name: PrivacyBudgetTemplate
+    description: >-
+      The differential-privacy epsilon/noise configuration, or an access-budget
+      configuration, applied across a collaboration.
+    spec_coverage: docs-only
+    operations: [CreatePrivacyBudgetTemplate, GetPrivacyBudgetTemplate, ListPrivacyBudgetTemplates, UpdatePrivacyBudgetTemplate, DeletePrivacyBudgetTemplate, GetCollaborationPrivacyBudgetTemplate, ListCollaborationPrivacyBudgetTemplates]
+  - name: PrivacyBudget
+    description: The remaining budget consumed by queries under a template.
+    spec_coverage: docs-only
+    operations: [ListPrivacyBudgets, ListCollaborationPrivacyBudgets, PreviewPrivacyImpact]
+  - name: IdNamespaceAssociation
+    description: An AWS Entity Resolution ID namespace brought into a collaboration.
+    spec_coverage: docs-only
+    operations: [CreateIdNamespaceAssociation, GetIdNamespaceAssociation, ListIdNamespaceAssociations, UpdateIdNamespaceAssociation, DeleteIdNamespaceAssociation, GetCollaborationIdNamespaceAssociation, ListCollaborationIdNamespaceAssociations]
+  - name: IdMappingTable
+    description: The resolved mapping between two ID namespaces.
+    spec_coverage: docs-only
+    operations: [CreateIdMappingTable, GetIdMappingTable, ListIdMappingTables, PopulateIdMappingTable, UpdateIdMappingTable, DeleteIdMappingTable]
+  - name: ConfiguredAudienceModelAssociation
+    description: A Clean Rooms ML configured audience model brought into a collaboration.
+    spec_coverage: docs-only
+    operations: [CreateConfiguredAudienceModelAssociation, GetConfiguredAudienceModelAssociation, ListConfiguredAudienceModelAssociations, UpdateConfiguredAudienceModelAssociation, DeleteConfiguredAudienceModelAssociation, GetCollaborationConfiguredAudienceModelAssociation, ListCollaborationConfiguredAudienceModelAssociations]
+relationships:
+  - from: Collaboration
+    type: has_many
+    to: Member
+    via: members
+  - from: Collaboration
+    type: has_many
+    to: Membership
+    via: collaborationId
+  - from: Collaboration
+    type: has_many
+    to: CollaborationChangeRequest
+    via: collaborationIdentifier
+  - from: Collaboration
+    type: has_many
+    to: Schema
+    via: collaborationIdentifier
+  - from: Collaboration
+    type: has_many
+    to: PrivacyBudgetTemplate
+    via: collaborationIdentifier
+  - from: Membership
+    type: belongs_to
+    to: Collaboration
+    via: collaborationId / collaborationArn
+  - from: Membership
+    type: has_many
+    to: ProtectedQuery
+    via: membershipIdentifier
+  - from: Membership
+    type: has_many
+    to: ProtectedJob
+    via: membershipIdentifier
+  - from: Membership
+    type: has_many
+    to: ConfiguredTableAssociation
+    via: membershipIdentifier
+  - from: Membership
+    type: has_many
+    to: IntermediateTable
+    via: membershipIdentifier
+  - from: Membership
+    type: has_many
+    to: IdMappingTable
+    via: membershipIdentifier
+  - from: Membership
+    type: has_many
+    to: IdNamespaceAssociation
+    via: membershipIdentifier
+  - from: Membership
+    type: has_many
+    to: ConfiguredAudienceModelAssociation
+    via: membershipIdentifier
+  - from: Membership
+    type: has_many
+    to: PrivacyBudget
+    via: membershipIdentifier
+  - from: ConfiguredTable
+    type: has_one
+    to: ConfiguredTableAnalysisRule
+    via: configuredTableIdentifier
+  - from: ConfiguredTableAssociation
+    type: belongs_to
+    to: ConfiguredTable
+    via: configuredTableIdentifier
+  - from: ConfiguredTableAssociation
+    type: has_one
+    to: Schema
+    via: name
+  - from: ProtectedQuery
+    type: belongs_to
+    to: Membership
+    via: membershipId / membershipArn
+  - from: ProtectedQuery
+    type: has_one
+    to: AnalysisTemplate
+    via: sqlParameters.analysisTemplateArn
+  - from: IntermediateTable
+    type: belongs_to
+    to: ProtectedQuery
+    via: populationAnalysisConfiguration
+  - from: IdMappingTable
+    type: belongs_to
+    to: IdNamespaceAssociation
+    via: inputReferenceConfig
+  - from: PrivacyBudget
+    type: belongs_to
+    to: PrivacyBudgetTemplate
+    via: privacyBudgetTemplateId
+coverage:
+  entities_total: 17
+  entities_in_openapi: 5
+  note: >-
+    The captured OpenAPI covers 5 of the 17 entities the API Reference documents.
+    That is the honest state of the contract in this repo, not a claim about the
+    service: AWS publishes no OpenAPI for Clean Rooms, so the spec here was built
+    from documentation and covers the collaboration/membership/configured-table/
+    protected-query core only.

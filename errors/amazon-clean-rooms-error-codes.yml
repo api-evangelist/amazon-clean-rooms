@@ -1,0 +1,115 @@
+generated: '2026-08-13'
+method: searched
+source: https://docs.aws.amazon.com/clean-rooms/latest/apireference/CommonErrors.html
+docs: https://docs.aws.amazon.com/clean-rooms/latest/apireference/CommonErrors.html
+format: aws-json-exception
+description: >-
+  The published common-error registry for the AWS Clean Rooms API — the
+  non-payments sibling of a decline-code table. Every entry below is quoted from
+  the provider's Common Error Types reference. Service-specific exceptions raised
+  by individual operations (ValidationException, ResourceNotFoundException,
+  ConflictException, ServiceQuotaExceededException) are catalogued in
+  errors/amazon-clean-rooms-problem-types.yml.
+envelope:
+  body: '{"message": "<human readable message>"}'
+  type_discriminator: x-amzn-ErrorType response header (AWS REST-JSON protocol)
+  problem_json: false
+errors:
+  - code: AccessDeniedException
+    status: 403
+    meaning: You don't have permission to perform this action.
+    action: Verify that your IAM policy includes the required cleanrooms:* permissions.
+    retryable: false
+  - code: ExpiredTokenException
+    status: 403
+    meaning: The security token included in the request has expired.
+    action: Request a new security token and try again.
+    retryable: false
+  - code: IncompleteSignature
+    status: 403
+    meaning: The request signature doesn't conform to AWS standards.
+    action: >-
+      Verify valid AWS credentials and correct SigV4 request formatting; if using
+      an SDK, ensure it is up to date.
+    retryable: false
+  - code: InternalFailure
+    status: 500
+    meaning: The request can't be processed right now because of an internal server issue.
+    action: Try again later; contact AWS Support if it persists.
+    retryable: true
+  - code: MalformedHttpRequestException
+    status: 400
+    meaning: The request body can't be processed.
+    action: >-
+      Typically a content-encoding mismatch — verify the content encoding header
+      matches the compression format used.
+    retryable: false
+  - code: NotAuthorized
+    status: 401
+    meaning: You don't have permissions to perform this action.
+    action: Verify that your IAM policy includes the required permissions.
+    retryable: false
+  - code: OptInRequired
+    status: 403
+    meaning: Your AWS account needs a subscription for this service.
+    action: Verify that you've enabled the service in your account.
+    retryable: false
+  - code: RequestAbortedException
+    status: 400
+    meaning: The request was aborted before a response could be returned.
+    action: Usually the client closed the connection; reissue the request.
+    retryable: true
+  - code: RequestEntityTooLargeException
+    status: 413
+    meaning: The request entity is too large.
+    action: >-
+      Reduce the size of the request body — see the query-text-length and
+      analysis-rule-size quotas.
+    retryable: false
+  - code: RequestTimeoutException
+    status: 408
+    meaning: The server didn't receive the complete request within the expected time frame.
+    action: Try again.
+    retryable: true
+  - code: ServiceUnavailable
+    status: 503
+    meaning: The service is temporarily unavailable.
+    action: Try again later with backoff.
+    retryable: true
+  - code: ThrottlingException
+    status: 400
+    meaning: Your request rate is too high.
+    action: >-
+      Reduce request frequency. The AWS SDKs automatically retry this exception
+      with exponential backoff. Note the non-standard status — AWS Clean Rooms
+      signals throttling with 400, not 429, and returns no Retry-After header.
+    retryable: true
+  - code: UnknownOperationException
+    status: 404
+    meaning: The action or operation isn't recognized.
+    action: >-
+      Verify the action name and that it is supported by the API version in use.
+    retryable: false
+  - code: UnrecognizedClientException
+    status: 403
+    meaning: >-
+      The X.509 certificate or AWS access key ID you provided doesn't exist in
+      our records.
+    action: Verify credentials exist and have not expired.
+    retryable: false
+  - code: ValidationError
+    status: 400
+    meaning: The input doesn't meet the required format or constraints.
+    action: >-
+      Check that all required parameters are included and values are valid;
+      operation-level ValidationException returns a fieldList[] naming the
+      offending fields.
+    retryable: false
+notes:
+  - >-
+    Throttling is returned as HTTP 400 with ThrottlingException, not 429. A
+    generic HTTP client that only retries on 429/503 will treat Clean Rooms
+    throttling as a permanent client error.
+  - >-
+    Both 401 (NotAuthorized) and 403 (AccessDeniedException) are used for
+    permission failures, so authorization handling cannot key on status alone.

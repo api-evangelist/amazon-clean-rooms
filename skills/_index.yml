@@ -1,0 +1,63 @@
+generated: '2026-08-13'
+method: searched
+source: >-
+  FIRST-PARTY HIT — AWS publishes an official Agent Skill for AWS Clean Rooms in
+  the Agent Toolkit for AWS
+  (https://github.com/aws/agent-toolkit-for-aws, path
+  skills/specialized-skills/analytics-skills/aws-cleanrooms/). SKILL.md and both
+  reference procedures were fetched verbatim on 2026-08-13 (HTTP 200 each) and
+  saved unmodified. The three flow skills below are generated from the OpenAPI
+  definitions in ../openapi/ and cover the build path the AWS skill does not
+  (it is a troubleshooting skill, not a task skill).
+note: >-
+  Every generated step is grounded in an operationId verified verbatim in
+  ../openapi/*.yml. Operations documented in the AWS Clean Rooms API Reference
+  but absent from the captured spec are named as documentation inside each skill
+  and marked as such, never asserted as spec operations. Cross-cutting rules cite
+  ../conventions/, ../errors/, ../rate-limits/, ../plans/, ../asyncapi/ and
+  ../authentication/.
+skills:
+  - file: amazon-clean-rooms-aws-official-SKILL.md
+    name: aws-cleanrooms (official AWS skill)
+    method: searched
+    official: true
+    version: 1
+    description: >-
+      Troubleshoots and debugs AWS Clean Rooms collaboration issues related to
+      IAM roles, S3 bucket policies, KMS keys, Lake Formation permissions, and
+      CloudWatch logging for custom ML model training and inference jobs.
+    source: >-
+      https://raw.githubusercontent.com/aws/agent-toolkit-for-aws/main/skills/specialized-skills/analytics-skills/aws-cleanrooms/SKILL.md
+    upstream: https://github.com/aws/agent-toolkit-for-aws
+    license: >-
+      See the LICENSE and NOTICE files in aws/agent-toolkit-for-aws; saved
+      verbatim for reference, unmodified.
+    fetched: '2026-08-13'
+    http_status: 200
+    references:
+      - file: references/amazon-clean-rooms-aws-official-permission-debugging.md
+        source: >-
+          https://raw.githubusercontent.com/aws/agent-toolkit-for-aws/main/skills/specialized-skills/analytics-skills/aws-cleanrooms/references/permission-debugging.md
+        http_status: 200
+      - file: references/amazon-clean-rooms-aws-official-custom-model-logging-debugging.md
+        source: >-
+          https://raw.githubusercontent.com/aws/agent-toolkit-for-aws/main/skills/specialized-skills/analytics-skills/aws-cleanrooms/references/custom-model-logging-debugging.md
+        http_status: 200
+  - file: amazon-clean-rooms-create-collaboration-and-join.md
+    name: Create a Clean Rooms collaboration and join it
+    method: generated
+    official: false
+    api: openapi/amazon-clean-rooms-collaborations-api-openapi.yml
+    operations: [CreateCollaboration, GetCollaboration, ListCollaborations, CreateMembership, ListMemberships]
+  - file: amazon-clean-rooms-configure-table-for-collaboration.md
+    name: Configure a table for a Clean Rooms collaboration
+    method: generated
+    official: false
+    api: openapi/amazon-clean-rooms-configured-tables-api-openapi.yml
+    operations: [CreateConfiguredTable, ListConfiguredTables]
+  - file: amazon-clean-rooms-run-protected-query.md
+    name: Run a protected query and collect the results
+    method: generated
+    official: false
+    api: openapi/amazon-clean-rooms-protected-queries-api-openapi.yml
+    operations: [StartProtectedQuery, ListProtectedQueries]

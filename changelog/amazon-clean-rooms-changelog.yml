@@ -1,0 +1,96 @@
+generated: '2026-08-13'
+method: searched
+source: https://docs.aws.amazon.com/clean-rooms/latest/userguide/doc-history.html
+docs: https://docs.aws.amazon.com/clean-rooms/latest/userguide/doc-history.html
+feed: https://docs.aws.amazon.com/clean-rooms/latest/userguide/user-guide.rss
+feed_status: 200
+feed_checked: '2026-08-13'
+scheme: dated-document-history
+current_api_version: '2022-02-17'
+note: >-
+  AWS Clean Rooms does not publish a semver product changelog. The dated
+  Document history for the AWS Clean Rooms User Guide is the canonical change
+  record and is RSS-subscribable. Entries below are the recent window, verbatim
+  titles with published dates. The API itself is versioned by API-version date
+  (2022-02-17) and has never had a breaking version bump; capability changes
+  arrive as additive operations and fields.
+entries:
+  - date: '2026-08-13'
+    title: >-
+      Support for minimum aggregation thresholds and comparison controls in
+      custom analysis rules
+    type: addition
+    breaking: false
+  - date: '2026-08-11'
+    title: Export query analysis logs
+    type: addition
+    breaking: false
+    highlights: >-
+      Adds the CAN_EXPORT_QUERY_ANALYSIS_LOG member ability and the
+      StartAnalysisLogExport / GetAnalysisLogExport / ListAnalysisLogExports
+      operations; all collaboration members must approve the change request.
+  - date: '2026-08-11'
+    title: Corrected lookalike segment generation and export durations
+    type: documentation
+    breaking: false
+  - date: '2026-08-04'
+    title: Updated supported Spark properties for SQL queries and PySpark jobs
+    type: documentation
+    breaking: false
+  - date: '2026-07-23'
+    title: Clarified complex data type limitation for Amazon Athena data sources
+    type: documentation
+    breaking: false
+  - date: '2026-07-11'
+    title: Added CR.8X worker compute type for SQL queries
+    type: addition
+    breaking: false
+  - date: '2026-06-30'
+    title: User guide update for intermediate tables launch
+    type: addition
+    breaking: false
+    highlights: >-
+      Intermediate tables ship a full operation family — CreateIntermediateTable,
+      PopulateIntermediateTable, ListIntermediateTableVersions,
+      DisallowIntermediateTable and the intermediate-table analysis rules.
+  - date: '2026-05-21'
+    title: Added mutable payer configuration support
+    type: addition
+    breaking: false
+    highlights: >-
+      New change-request types for updating payer configurations and ML member
+      abilities, plus UpdateMembership.
+  - date: '2026-04-17'
+    title: Updated Spark properties documentation
+    type: documentation
+    breaking: false
+  - date: '2026-02-20'
+    title: Updated documentation for cost allocation tagging section
+    type: documentation
+    breaking: false
+  - date: '2026-01-05'
+    title: Support for cleanrooms-ml Spark compute configuration
+    type: addition
+    breaking: false
+  - date: '2026-01-02'
+    title: Support for detailed monitoring with CloudWatch
+    type: addition
+    breaking: false
+  - date: '2025-12-19'
+    title: Support for Collaboration Change Request EventBridge notification events
+    type: addition
+    breaking: false
+  - date: '2025-12-18'
+    title: >-
+      Support for change requests to manage collaboration membership and settings
+    type: addition
+    breaking: false
+  - date: '2025-12-17'
+    title: End of support for the AWS Clean Rooms SQL analytics engine
+    type: removal
+    breaking: true
+    highlights: >-
+      The legacy Clean Rooms SQL analytics engine reached end of support on
+      2025-12-17; Spark SQL is now the only analytics engine. This is the one
+      genuinely breaking change in the service's published history — see
+      lifecycle/amazon-clean-rooms-lifecycle.yml.

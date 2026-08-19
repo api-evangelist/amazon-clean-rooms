@@ -1,0 +1,86 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Amazon Clean Rooms Collaborations Protected Queries API",
+    "version": "2022-02-17"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "Authorization",
+      "value": "{{Authorization}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Protected Queries",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Amazon Clean Rooms List Protected Queries",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://cleanrooms.{region}.amazonaws.com/memberships/:membershipIdentifier/protectedQueries",
+            "params": [
+              {
+                "name": "membershipIdentifier",
+                "value": "",
+                "type": "path",
+                "description": "The identifier for a membership resource."
+              },
+              {
+                "name": "nextToken",
+                "value": "",
+                "type": "query",
+                "description": "The token value retrieved from a previous paginated request."
+              },
+              {
+                "name": "maxResults",
+                "value": "",
+                "type": "query",
+                "description": "The maximum number of protected queries to return."
+              },
+              {
+                "name": "status",
+                "value": "",
+                "type": "query",
+                "description": "A filter for the status of the protected query."
+              }
+            ]
+          },
+          "docs": "Lists protected queries, sorted by the most recent query."
+        },
+        {
+          "info": {
+            "name": "Amazon Clean Rooms Start a Protected Query",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://cleanrooms.{region}.amazonaws.com/memberships/:membershipIdentifier/protectedQueries",
+            "params": [
+              {
+                "name": "membershipIdentifier",
+                "value": "",
+                "type": "path",
+                "description": "A unique identifier for the membership to run the protected query."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a protected query that is started by AWS Clean Rooms. A protected query enables analysis on configured tables without exposing underlying raw data."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
