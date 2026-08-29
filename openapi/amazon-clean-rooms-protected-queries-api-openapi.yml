@@ -1,4 +1,4 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
   title: Amazon Clean Rooms Collaborations Protected Queries API
   description: Amazon Clean Rooms enables organizations to collaborate and analyze shared datasets without exposing underlying raw data to partners. Create secure data clean rooms and collaborate with any company while maintaining data privacy through differential privacy, cryptographic computing, and flexible analytics using SQL, PySpark, or ML models.
@@ -179,24 +179,28 @@ components:
       properties:
         protectedQuery:
           $ref: '#/components/schemas/ProtectedQuery'
-    AccessDeniedException:
+    StartProtectedQueryRequest:
       type: object
-      description: Caller does not have sufficient access to perform this action.
+      description: Request body for starting a protected query.
+      required:
+      - type
+      - resultConfiguration
       properties:
-        message:
+        type:
           type: string
-    ListProtectedQueriesResponse:
-      type: object
-      description: Response for listing protected queries.
-      properties:
-        nextToken:
-          type: string
-          description: The token value retrieved from a previous paginated request.
-        protectedQueries:
-          type: array
-          items:
-            $ref: '#/components/schemas/ProtectedQuery'
-          description: The list of protected queries.
+          enum:
+          - SQL
+          description: The type of the protected query.
+        sqlParameters:
+          type: object
+          description: The parameters for the SQL type protected query.
+          properties:
+            queryString:
+              type: string
+              description: The query string to be submitted.
+        resultConfiguration:
+          type: object
+          description: Contains configuration details for protected query results.
     ValidationException:
       type: object
       description: The input fails to satisfy the specified constraints.
@@ -207,6 +211,12 @@ components:
           type: array
           items:
             type: object
+    AccessDeniedException:
+      type: object
+      description: Caller does not have sufficient access to perform this action.
+      properties:
+        message:
+          type: string
     InternalServerException:
       type: object
       description: Unexpected error during processing of request.
@@ -242,28 +252,18 @@ components:
           - SUCCESS
           - TIMED_OUT
           description: The status of the protected query.
-    StartProtectedQueryRequest:
+    ListProtectedQueriesResponse:
       type: object
-      description: Request body for starting a protected query.
-      required:
-      - type
-      - resultConfiguration
+      description: Response for listing protected queries.
       properties:
-        type:
+        nextToken:
           type: string
-          enum:
-          - SQL
-          description: The type of the protected query.
-        sqlParameters:
-          type: object
-          description: The parameters for the SQL type protected query.
-          properties:
-            queryString:
-              type: string
-              description: The query string to be submitted.
-        resultConfiguration:
-          type: object
-          description: Contains configuration details for protected query results.
+          description: The token value retrieved from a previous paginated request.
+        protectedQueries:
+          type: array
+          items:
+            $ref: '#/components/schemas/ProtectedQuery'
+          description: The list of protected queries.
   securitySchemes:
     aws_signature:
       type: apiKey

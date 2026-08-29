@@ -1,4 +1,4 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
   title: Amazon Clean Rooms Collaborations Configured Tables API
   description: Amazon Clean Rooms enables organizations to collaborate and analyze shared datasets without exposing underlying raw data to partners. Create secure data clean rooms and collaborate with any company while maintaining data privacy through differential privacy, cryptographic computing, and flexible analytics using SQL, PySpark, or ML models.
@@ -151,30 +151,12 @@ paths:
         dispatcher: FALLBACK
 components:
   schemas:
-    ListConfiguredTablesResponse:
-      type: object
-      description: Response for listing configured tables.
-      properties:
-        nextToken:
-          type: string
-          description: The token value retrieved from a previous paginated request.
-        configuredTableList:
-          type: array
-          items:
-            $ref: '#/components/schemas/ConfiguredTable'
-          description: The list of configured tables.
     CreateConfiguredTableResponse:
       type: object
       description: Response for creating a configured table.
       properties:
         configuredTable:
           $ref: '#/components/schemas/ConfiguredTable'
-    AccessDeniedException:
-      type: object
-      description: Caller does not have sufficient access to perform this action.
-      properties:
-        message:
-          type: string
     CreateConfiguredTableRequest:
       type: object
       description: Request body for creating a configured table.
@@ -204,6 +186,40 @@ components:
           enum:
           - DIRECT_QUERY
           description: The analysis method for the configured table.
+    ValidationException:
+      type: object
+      description: The input fails to satisfy the specified constraints.
+      properties:
+        message:
+          type: string
+        fieldList:
+          type: array
+          items:
+            type: object
+    AccessDeniedException:
+      type: object
+      description: Caller does not have sufficient access to perform this action.
+      properties:
+        message:
+          type: string
+    InternalServerException:
+      type: object
+      description: Unexpected error during processing of request.
+      properties:
+        message:
+          type: string
+    ListConfiguredTablesResponse:
+      type: object
+      description: Response for listing configured tables.
+      properties:
+        nextToken:
+          type: string
+          description: The token value retrieved from a previous paginated request.
+        configuredTableList:
+          type: array
+          items:
+            $ref: '#/components/schemas/ConfiguredTable'
+          description: The list of configured tables.
     ConfiguredTable:
       type: object
       description: Represents a configured table in Clean Rooms.
@@ -235,22 +251,6 @@ components:
           enum:
           - DIRECT_QUERY
           description: The analysis method for the configured table.
-    ValidationException:
-      type: object
-      description: The input fails to satisfy the specified constraints.
-      properties:
-        message:
-          type: string
-        fieldList:
-          type: array
-          items:
-            type: object
-    InternalServerException:
-      type: object
-      description: Unexpected error during processing of request.
-      properties:
-        message:
-          type: string
   securitySchemes:
     aws_signature:
       type: apiKey

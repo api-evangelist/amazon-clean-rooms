@@ -1,4 +1,4 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
   title: Amazon Clean Rooms Collaborations API
   description: Amazon Clean Rooms enables organizations to collaborate and analyze shared datasets without exposing underlying raw data to partners. Create secure data clean rooms and collaborate with any company while maintaining data privacy through differential privacy, cryptographic computing, and flexible analytics using SQL, PySpark, or ML models.
@@ -264,6 +264,34 @@ paths:
         dispatcher: FALLBACK
 components:
   schemas:
+    ListCollaborationsResponse:
+      type: object
+      description: Response for listing collaborations.
+      properties:
+        nextToken:
+          type: string
+          description: The token value retrieved from a previous paginated request.
+        collaborationList:
+          type: array
+          items:
+            $ref: '#/components/schemas/Collaboration'
+          description: The list of collaborations.
+    AccessDeniedException:
+      type: object
+      description: Caller does not have sufficient access to perform this action.
+      properties:
+        message:
+          type: string
+    ValidationException:
+      type: object
+      description: The input fails to satisfy the specified constraints.
+      properties:
+        message:
+          type: string
+        fieldList:
+          type: array
+          items:
+            type: object
     Collaboration:
       type: object
       description: Represents an AWS Clean Rooms collaboration workspace.
@@ -306,21 +334,9 @@ components:
           - ENABLED
           - DISABLED
           description: Whether query logs are enabled.
-    CreateCollaborationResponse:
+    InternalServerException:
       type: object
-      description: Response for creating a collaboration.
-      properties:
-        collaboration:
-          $ref: '#/components/schemas/Collaboration'
-    GetCollaborationResponse:
-      type: object
-      description: Response for getting a collaboration.
-      properties:
-        collaboration:
-          $ref: '#/components/schemas/Collaboration'
-    AccessDeniedException:
-      type: object
-      description: Caller does not have sufficient access to perform this action.
+      description: Unexpected error during processing of request.
       properties:
         message:
           type: string
@@ -370,34 +386,18 @@ components:
           type: string
         resourceType:
           type: string
-    InternalServerException:
+    GetCollaborationResponse:
       type: object
-      description: Unexpected error during processing of request.
+      description: Response for getting a collaboration.
       properties:
-        message:
-          type: string
-    ValidationException:
+        collaboration:
+          $ref: '#/components/schemas/Collaboration'
+    CreateCollaborationResponse:
       type: object
-      description: The input fails to satisfy the specified constraints.
+      description: Response for creating a collaboration.
       properties:
-        message:
-          type: string
-        fieldList:
-          type: array
-          items:
-            type: object
-    ListCollaborationsResponse:
-      type: object
-      description: Response for listing collaborations.
-      properties:
-        nextToken:
-          type: string
-          description: The token value retrieved from a previous paginated request.
-        collaborationList:
-          type: array
-          items:
-            $ref: '#/components/schemas/Collaboration'
-          description: The list of collaborations.
+        collaboration:
+          $ref: '#/components/schemas/Collaboration'
   securitySchemes:
     aws_signature:
       type: apiKey
