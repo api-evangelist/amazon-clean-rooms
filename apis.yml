@@ -32,6 +32,13 @@ accessModel:
 image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/amazon-clean-rooms.png
 tags:
   - AWS
+  - Cleanrooms
+  - Data Collaboration
+  - Privacy
+  - Analytics
+  - Marketing
+tags_raw:
+  - AWS
   - Clean Rooms
   - Data Collaboration
   - Privacy
