@@ -374,3 +374,5 @@ common:
         description: Control access to Clean Rooms resources with IAM policies.
       - name: AWS CloudTrail
         description: Audit all Clean Rooms API calls via CloudTrail.
+x-parent: aws
+x-relationship: product
