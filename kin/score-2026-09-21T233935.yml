@@ -1,32 +1,29 @@
-# Kin Score artifact — amazon-clean-rooms — 2026-08-20T191845
+# Kin Score artifact — amazon-clean-rooms — 2026-09-21T233935
 # The API Evangelist rating (https://github.com/api-evangelist/kin-score). Generated; do not edit.
 ---
 kin_score:
   slug: amazon-clean-rooms
-  schema_version: 0.12.0
-  scored_at: '2026-08-20'
-  run_ts: 2026-08-20T191845
-  composite: 66.2
+  schema_version: 0.22.0
+  scored_at: '2026-09-21'
+  run_ts: 2026-09-21T233935
+  composite: 62.9
   band: strong
   facets:
-    discoverability: 92.6
-    contract_quality: 38.9
-    governance: 41.7
+    discoverability: 81.5
+    contract_quality: 40.1
+    contract_governance: 33.3
     operational_transparency: 92.1
-    developer_ergonomics: 90.5
-    commercial_clarity: 60.5
-    contract_governance: 41.7
+    developer_ergonomics: 86.9
     access_clarity: 60.5
   agent_readiness:
-    score: 53.8
+    score: 38.5
     band: agent-ready
-    band_gated_from: agent-native
     dimensions:
       spec_presence: true
       agentic_access: derived
       reversibility_documented: false
       mcp_server: false
-      auth_clarity: true
+      auth_clarity: bearer
       idempotency: false
       error_semantics: verified
       openapi_examples: verified
@@ -34,16 +31,20 @@ kin_score:
       event_surface_described: true
       agent_skills: true
       well_known_catalog: false
-      consent_identity: true
+      consent_identity: false
       agent_card: false
       dry_run_mode: false
+      delegated_identity: false
+      protected_resource_metadata: false
+      dynamic_client_registration: false
+      agentic_commerce: false
   provenance:
     mcp: derived
     skills: first-party
     agentic_access: derived
     conformance: derived
     contracts:
-      total: 4
-      derived: 4
+      total: 5
+      derived: 5
       coverage: 100.0
       callable: 100.0
