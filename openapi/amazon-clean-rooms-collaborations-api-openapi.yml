@@ -264,34 +264,6 @@ paths:
         dispatcher: FALLBACK
 components:
   schemas:
-    ListCollaborationsResponse:
-      type: object
-      description: Response for listing collaborations.
-      properties:
-        nextToken:
-          type: string
-          description: The token value retrieved from a previous paginated request.
-        collaborationList:
-          type: array
-          items:
-            $ref: '#/components/schemas/Collaboration'
-          description: The list of collaborations.
-    AccessDeniedException:
-      type: object
-      description: Caller does not have sufficient access to perform this action.
-      properties:
-        message:
-          type: string
-    ValidationException:
-      type: object
-      description: The input fails to satisfy the specified constraints.
-      properties:
-        message:
-          type: string
-        fieldList:
-          type: array
-          items:
-            type: object
     Collaboration:
       type: object
       description: Represents an AWS Clean Rooms collaboration workspace.
@@ -334,12 +306,6 @@ components:
           - ENABLED
           - DISABLED
           description: Whether query logs are enabled.
-    InternalServerException:
-      type: object
-      description: Unexpected error during processing of request.
-      properties:
-        message:
-          type: string
     CreateCollaborationRequest:
       type: object
       description: Request body for creating a collaboration.
@@ -392,12 +358,46 @@ components:
       properties:
         collaboration:
           $ref: '#/components/schemas/Collaboration'
+    AccessDeniedException:
+      type: object
+      description: Caller does not have sufficient access to perform this action.
+      properties:
+        message:
+          type: string
+    ValidationException:
+      type: object
+      description: The input fails to satisfy the specified constraints.
+      properties:
+        message:
+          type: string
+        fieldList:
+          type: array
+          items:
+            type: object
     CreateCollaborationResponse:
       type: object
       description: Response for creating a collaboration.
       properties:
         collaboration:
           $ref: '#/components/schemas/Collaboration'
+    ListCollaborationsResponse:
+      type: object
+      description: Response for listing collaborations.
+      properties:
+        nextToken:
+          type: string
+          description: The token value retrieved from a previous paginated request.
+        collaborationList:
+          type: array
+          items:
+            $ref: '#/components/schemas/Collaboration'
+          description: The list of collaborations.
+    InternalServerException:
+      type: object
+      description: Unexpected error during processing of request.
+      properties:
+        message:
+          type: string
   securitySchemes:
     aws_signature:
       type: apiKey

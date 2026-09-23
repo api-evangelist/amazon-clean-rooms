@@ -1,6 +1,6 @@
 openapi: 3.2.0
 info:
-  title: Amazon Clean Rooms Collaborations Configured Tables API
+  title: Amazon Clean Rooms Configured Tables API
   description: Amazon Clean Rooms enables organizations to collaborate and analyze shared datasets without exposing underlying raw data to partners. Create secure data clean rooms and collaborate with any company while maintaining data privacy through differential privacy, cryptographic computing, and flexible analytics using SQL, PySpark, or ML models.
   version: '2022-02-17'
   contact:
@@ -151,6 +151,37 @@ paths:
         dispatcher: FALLBACK
 components:
   schemas:
+    ConfiguredTable:
+      type: object
+      description: Represents a configured table in Clean Rooms.
+      properties:
+        id:
+          type: string
+          description: The unique ID of the configured table.
+          example: table-abc12345
+        arn:
+          type: string
+          description: The ARN of the configured table.
+        name:
+          type: string
+          description: A human-readable name for the configured table.
+          example: Customer Segments Table
+        description:
+          type: string
+          description: A description of the configured table.
+        createTime:
+          type: string
+          format: date-time
+          description: The time when the configured table was created.
+        updateTime:
+          type: string
+          format: date-time
+          description: The time when the configured table was last updated.
+        analysisMethod:
+          type: string
+          enum:
+          - DIRECT_QUERY
+          description: The analysis method for the configured table.
     CreateConfiguredTableResponse:
       type: object
       description: Response for creating a configured table.
@@ -186,28 +217,6 @@ components:
           enum:
           - DIRECT_QUERY
           description: The analysis method for the configured table.
-    ValidationException:
-      type: object
-      description: The input fails to satisfy the specified constraints.
-      properties:
-        message:
-          type: string
-        fieldList:
-          type: array
-          items:
-            type: object
-    AccessDeniedException:
-      type: object
-      description: Caller does not have sufficient access to perform this action.
-      properties:
-        message:
-          type: string
-    InternalServerException:
-      type: object
-      description: Unexpected error during processing of request.
-      properties:
-        message:
-          type: string
     ListConfiguredTablesResponse:
       type: object
       description: Response for listing configured tables.
@@ -220,37 +229,28 @@ components:
           items:
             $ref: '#/components/schemas/ConfiguredTable'
           description: The list of configured tables.
-    ConfiguredTable:
+    AccessDeniedException:
       type: object
-      description: Represents a configured table in Clean Rooms.
+      description: Caller does not have sufficient access to perform this action.
       properties:
-        id:
+        message:
           type: string
-          description: The unique ID of the configured table.
-          example: table-abc12345
-        arn:
+    ValidationException:
+      type: object
+      description: The input fails to satisfy the specified constraints.
+      properties:
+        message:
           type: string
-          description: The ARN of the configured table.
-        name:
+        fieldList:
+          type: array
+          items:
+            type: object
+    InternalServerException:
+      type: object
+      description: Unexpected error during processing of request.
+      properties:
+        message:
           type: string
-          description: A human-readable name for the configured table.
-          example: Customer Segments Table
-        description:
-          type: string
-          description: A description of the configured table.
-        createTime:
-          type: string
-          format: date-time
-          description: The time when the configured table was created.
-        updateTime:
-          type: string
-          format: date-time
-          description: The time when the configured table was last updated.
-        analysisMethod:
-          type: string
-          enum:
-          - DIRECT_QUERY
-          description: The analysis method for the configured table.
   securitySchemes:
     aws_signature:
       type: apiKey

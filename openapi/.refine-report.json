@@ -1,10 +1,7 @@
 {
   "provider": "amazon-clean-rooms",
   "sources": [
-    "amazon-clean-rooms-collaborations-api-openapi.yml",
-    "amazon-clean-rooms-configured-tables-api-openapi.yml",
-    "amazon-clean-rooms-memberships-api-openapi.yml",
-    "amazon-clean-rooms-protected-queries-api-openapi.yml"
+    "_ae-authored/amazon-clean-rooms-openapi.yml"
   ],
   "outputs": [
     "amazon-clean-rooms-collaborations-api-openapi.yml",
@@ -16,7 +13,14 @@
   "errors": [],
   "warnings": [],
   "notes": [
+    "sourced from openapi/_original/ (0 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "amazon-clean-rooms-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
     "apis.yml register: already-registered"
   ],
-  "skipped": []
+  "skipped": [
+    "amazon-clean-rooms-collaborations-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "amazon-clean-rooms-configured-tables-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "amazon-clean-rooms-memberships-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "amazon-clean-rooms-protected-queries-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+  ]
 }

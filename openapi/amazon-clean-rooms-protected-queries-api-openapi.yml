@@ -1,6 +1,6 @@
 openapi: 3.2.0
 info:
-  title: Amazon Clean Rooms Collaborations Protected Queries API
+  title: Amazon Clean Rooms Protected Queries API
   description: Amazon Clean Rooms enables organizations to collaborate and analyze shared datasets without exposing underlying raw data to partners. Create secure data clean rooms and collaborate with any company while maintaining data privacy through differential privacy, cryptographic computing, and flexible analytics using SQL, PySpark, or ML models.
   version: '2022-02-17'
   contact:
@@ -173,56 +173,6 @@ paths:
         dispatcher: FALLBACK
 components:
   schemas:
-    StartProtectedQueryResponse:
-      type: object
-      description: Response for starting a protected query.
-      properties:
-        protectedQuery:
-          $ref: '#/components/schemas/ProtectedQuery'
-    StartProtectedQueryRequest:
-      type: object
-      description: Request body for starting a protected query.
-      required:
-      - type
-      - resultConfiguration
-      properties:
-        type:
-          type: string
-          enum:
-          - SQL
-          description: The type of the protected query.
-        sqlParameters:
-          type: object
-          description: The parameters for the SQL type protected query.
-          properties:
-            queryString:
-              type: string
-              description: The query string to be submitted.
-        resultConfiguration:
-          type: object
-          description: Contains configuration details for protected query results.
-    ValidationException:
-      type: object
-      description: The input fails to satisfy the specified constraints.
-      properties:
-        message:
-          type: string
-        fieldList:
-          type: array
-          items:
-            type: object
-    AccessDeniedException:
-      type: object
-      description: Caller does not have sufficient access to perform this action.
-      properties:
-        message:
-          type: string
-    InternalServerException:
-      type: object
-      description: Unexpected error during processing of request.
-      properties:
-        message:
-          type: string
     ProtectedQuery:
       type: object
       description: Represents a protected query executed within a Clean Rooms collaboration.
@@ -264,6 +214,56 @@ components:
           items:
             $ref: '#/components/schemas/ProtectedQuery'
           description: The list of protected queries.
+    AccessDeniedException:
+      type: object
+      description: Caller does not have sufficient access to perform this action.
+      properties:
+        message:
+          type: string
+    ValidationException:
+      type: object
+      description: The input fails to satisfy the specified constraints.
+      properties:
+        message:
+          type: string
+        fieldList:
+          type: array
+          items:
+            type: object
+    StartProtectedQueryResponse:
+      type: object
+      description: Response for starting a protected query.
+      properties:
+        protectedQuery:
+          $ref: '#/components/schemas/ProtectedQuery'
+    StartProtectedQueryRequest:
+      type: object
+      description: Request body for starting a protected query.
+      required:
+      - type
+      - resultConfiguration
+      properties:
+        type:
+          type: string
+          enum:
+          - SQL
+          description: The type of the protected query.
+        sqlParameters:
+          type: object
+          description: The parameters for the SQL type protected query.
+          properties:
+            queryString:
+              type: string
+              description: The query string to be submitted.
+        resultConfiguration:
+          type: object
+          description: Contains configuration details for protected query results.
+    InternalServerException:
+      type: object
+      description: Unexpected error during processing of request.
+      properties:
+        message:
+          type: string
   securitySchemes:
     aws_signature:
       type: apiKey

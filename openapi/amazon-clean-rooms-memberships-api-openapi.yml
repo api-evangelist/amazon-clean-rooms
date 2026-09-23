@@ -1,6 +1,6 @@
 openapi: 3.2.0
 info:
-  title: Amazon Clean Rooms Collaborations Memberships API
+  title: Amazon Clean Rooms Memberships API
   description: Amazon Clean Rooms enables organizations to collaborate and analyze shared datasets without exposing underlying raw data to partners. Create secure data clean rooms and collaborate with any company while maintaining data privacy through differential privacy, cryptographic computing, and flexible analytics using SQL, PySpark, or ML models.
   version: '2022-02-17'
   contact:
@@ -151,34 +151,6 @@ paths:
         dispatcher: FALLBACK
 components:
   schemas:
-    ValidationException:
-      type: object
-      description: The input fails to satisfy the specified constraints.
-      properties:
-        message:
-          type: string
-        fieldList:
-          type: array
-          items:
-            type: object
-    AccessDeniedException:
-      type: object
-      description: Caller does not have sufficient access to perform this action.
-      properties:
-        message:
-          type: string
-    InternalServerException:
-      type: object
-      description: Unexpected error during processing of request.
-      properties:
-        message:
-          type: string
-    CreateMembershipResponse:
-      type: object
-      description: Response for creating a membership.
-      properties:
-        membership:
-          $ref: '#/components/schemas/Membership'
     CreateMembershipRequest:
       type: object
       description: Request body for creating a membership.
@@ -196,6 +168,12 @@ components:
           - ENABLED
           - DISABLED
           description: An indicator as to whether query logging has been enabled or disabled.
+    CreateMembershipResponse:
+      type: object
+      description: Response for creating a membership.
+      properties:
+        membership:
+          $ref: '#/components/schemas/Membership'
     Membership:
       type: object
       description: Represents a member's participation in a Clean Rooms collaboration.
@@ -226,6 +204,22 @@ components:
           - COLLABORATION_DELETED
           - REMOVED
           description: The status of the membership.
+    AccessDeniedException:
+      type: object
+      description: Caller does not have sufficient access to perform this action.
+      properties:
+        message:
+          type: string
+    ValidationException:
+      type: object
+      description: The input fails to satisfy the specified constraints.
+      properties:
+        message:
+          type: string
+        fieldList:
+          type: array
+          items:
+            type: object
     ListMembershipsResponse:
       type: object
       description: Response for listing memberships.
@@ -238,6 +232,12 @@ components:
           items:
             $ref: '#/components/schemas/Membership'
           description: The list of memberships.
+    InternalServerException:
+      type: object
+      description: Unexpected error during processing of request.
+      properties:
+        message:
+          type: string
   securitySchemes:
     aws_signature:
       type: apiKey
