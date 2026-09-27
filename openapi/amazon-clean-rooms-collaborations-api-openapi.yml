@@ -264,6 +264,44 @@ paths:
         dispatcher: FALLBACK
 components:
   schemas:
+    ResourceNotFoundException:
+      type: object
+      description: Request references a resource which does not exist.
+      properties:
+        message:
+          type: string
+        resourceId:
+          type: string
+        resourceType:
+          type: string
+    ListCollaborationsResponse:
+      type: object
+      description: Response for listing collaborations.
+      properties:
+        nextToken:
+          type: string
+          description: The token value retrieved from a previous paginated request.
+        collaborationList:
+          type: array
+          items:
+            $ref: '#/components/schemas/Collaboration'
+          description: The list of collaborations.
+    ValidationException:
+      type: object
+      description: The input fails to satisfy the specified constraints.
+      properties:
+        message:
+          type: string
+        fieldList:
+          type: array
+          items:
+            type: object
+    CreateCollaborationResponse:
+      type: object
+      description: Response for creating a collaboration.
+      properties:
+        collaboration:
+          $ref: '#/components/schemas/Collaboration'
     Collaboration:
       type: object
       description: Represents an AWS Clean Rooms collaboration workspace.
@@ -306,6 +344,24 @@ components:
           - ENABLED
           - DISABLED
           description: Whether query logs are enabled.
+    AccessDeniedException:
+      type: object
+      description: Caller does not have sufficient access to perform this action.
+      properties:
+        message:
+          type: string
+    InternalServerException:
+      type: object
+      description: Unexpected error during processing of request.
+      properties:
+        message:
+          type: string
+    GetCollaborationResponse:
+      type: object
+      description: Response for getting a collaboration.
+      properties:
+        collaboration:
+          $ref: '#/components/schemas/Collaboration'
     CreateCollaborationRequest:
       type: object
       description: Request body for creating a collaboration.
@@ -342,62 +398,6 @@ components:
           - ENABLED
           - DISABLED
           description: An indicator as to whether query logging has been enabled or disabled.
-    ResourceNotFoundException:
-      type: object
-      description: Request references a resource which does not exist.
-      properties:
-        message:
-          type: string
-        resourceId:
-          type: string
-        resourceType:
-          type: string
-    GetCollaborationResponse:
-      type: object
-      description: Response for getting a collaboration.
-      properties:
-        collaboration:
-          $ref: '#/components/schemas/Collaboration'
-    AccessDeniedException:
-      type: object
-      description: Caller does not have sufficient access to perform this action.
-      properties:
-        message:
-          type: string
-    ValidationException:
-      type: object
-      description: The input fails to satisfy the specified constraints.
-      properties:
-        message:
-          type: string
-        fieldList:
-          type: array
-          items:
-            type: object
-    CreateCollaborationResponse:
-      type: object
-      description: Response for creating a collaboration.
-      properties:
-        collaboration:
-          $ref: '#/components/schemas/Collaboration'
-    ListCollaborationsResponse:
-      type: object
-      description: Response for listing collaborations.
-      properties:
-        nextToken:
-          type: string
-          description: The token value retrieved from a previous paginated request.
-        collaborationList:
-          type: array
-          items:
-            $ref: '#/components/schemas/Collaboration'
-          description: The list of collaborations.
-    InternalServerException:
-      type: object
-      description: Unexpected error during processing of request.
-      properties:
-        message:
-          type: string
   securitySchemes:
     aws_signature:
       type: apiKey

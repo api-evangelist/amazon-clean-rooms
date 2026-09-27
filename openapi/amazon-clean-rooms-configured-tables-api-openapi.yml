@@ -151,37 +151,16 @@ paths:
         dispatcher: FALLBACK
 components:
   schemas:
-    ConfiguredTable:
+    ValidationException:
       type: object
-      description: Represents a configured table in Clean Rooms.
+      description: The input fails to satisfy the specified constraints.
       properties:
-        id:
+        message:
           type: string
-          description: The unique ID of the configured table.
-          example: table-abc12345
-        arn:
-          type: string
-          description: The ARN of the configured table.
-        name:
-          type: string
-          description: A human-readable name for the configured table.
-          example: Customer Segments Table
-        description:
-          type: string
-          description: A description of the configured table.
-        createTime:
-          type: string
-          format: date-time
-          description: The time when the configured table was created.
-        updateTime:
-          type: string
-          format: date-time
-          description: The time when the configured table was last updated.
-        analysisMethod:
-          type: string
-          enum:
-          - DIRECT_QUERY
-          description: The analysis method for the configured table.
+        fieldList:
+          type: array
+          items:
+            type: object
     CreateConfiguredTableResponse:
       type: object
       description: Response for creating a configured table.
@@ -217,6 +196,49 @@ components:
           enum:
           - DIRECT_QUERY
           description: The analysis method for the configured table.
+    AccessDeniedException:
+      type: object
+      description: Caller does not have sufficient access to perform this action.
+      properties:
+        message:
+          type: string
+    InternalServerException:
+      type: object
+      description: Unexpected error during processing of request.
+      properties:
+        message:
+          type: string
+    ConfiguredTable:
+      type: object
+      description: Represents a configured table in Clean Rooms.
+      properties:
+        id:
+          type: string
+          description: The unique ID of the configured table.
+          example: table-abc12345
+        arn:
+          type: string
+          description: The ARN of the configured table.
+        name:
+          type: string
+          description: A human-readable name for the configured table.
+          example: Customer Segments Table
+        description:
+          type: string
+          description: A description of the configured table.
+        createTime:
+          type: string
+          format: date-time
+          description: The time when the configured table was created.
+        updateTime:
+          type: string
+          format: date-time
+          description: The time when the configured table was last updated.
+        analysisMethod:
+          type: string
+          enum:
+          - DIRECT_QUERY
+          description: The analysis method for the configured table.
     ListConfiguredTablesResponse:
       type: object
       description: Response for listing configured tables.
@@ -229,28 +251,6 @@ components:
           items:
             $ref: '#/components/schemas/ConfiguredTable'
           description: The list of configured tables.
-    AccessDeniedException:
-      type: object
-      description: Caller does not have sufficient access to perform this action.
-      properties:
-        message:
-          type: string
-    ValidationException:
-      type: object
-      description: The input fails to satisfy the specified constraints.
-      properties:
-        message:
-          type: string
-        fieldList:
-          type: array
-          items:
-            type: object
-    InternalServerException:
-      type: object
-      description: Unexpected error during processing of request.
-      properties:
-        message:
-          type: string
   securitySchemes:
     aws_signature:
       type: apiKey

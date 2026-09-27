@@ -151,29 +151,16 @@ paths:
         dispatcher: FALLBACK
 components:
   schemas:
-    CreateMembershipRequest:
+    ValidationException:
       type: object
-      description: Request body for creating a membership.
-      required:
-      - collaborationIdentifier
-      - queryLogStatus
+      description: The input fails to satisfy the specified constraints.
       properties:
-        collaborationIdentifier:
+        message:
           type: string
-          description: The unique ID for the associated collaboration.
-          example: collab-abc12345
-        queryLogStatus:
-          type: string
-          enum:
-          - ENABLED
-          - DISABLED
-          description: An indicator as to whether query logging has been enabled or disabled.
-    CreateMembershipResponse:
-      type: object
-      description: Response for creating a membership.
-      properties:
-        membership:
-          $ref: '#/components/schemas/Membership'
+        fieldList:
+          type: array
+          items:
+            type: object
     Membership:
       type: object
       description: Represents a member's participation in a Clean Rooms collaboration.
@@ -204,22 +191,23 @@ components:
           - COLLABORATION_DELETED
           - REMOVED
           description: The status of the membership.
-    AccessDeniedException:
+    CreateMembershipRequest:
       type: object
-      description: Caller does not have sufficient access to perform this action.
+      description: Request body for creating a membership.
+      required:
+      - collaborationIdentifier
+      - queryLogStatus
       properties:
-        message:
+        collaborationIdentifier:
           type: string
-    ValidationException:
-      type: object
-      description: The input fails to satisfy the specified constraints.
-      properties:
-        message:
+          description: The unique ID for the associated collaboration.
+          example: collab-abc12345
+        queryLogStatus:
           type: string
-        fieldList:
-          type: array
-          items:
-            type: object
+          enum:
+          - ENABLED
+          - DISABLED
+          description: An indicator as to whether query logging has been enabled or disabled.
     ListMembershipsResponse:
       type: object
       description: Response for listing memberships.
@@ -232,6 +220,18 @@ components:
           items:
             $ref: '#/components/schemas/Membership'
           description: The list of memberships.
+    AccessDeniedException:
+      type: object
+      description: Caller does not have sufficient access to perform this action.
+      properties:
+        message:
+          type: string
+    CreateMembershipResponse:
+      type: object
+      description: Response for creating a membership.
+      properties:
+        membership:
+          $ref: '#/components/schemas/Membership'
     InternalServerException:
       type: object
       description: Unexpected error during processing of request.
