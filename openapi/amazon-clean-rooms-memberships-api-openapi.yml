@@ -151,6 +151,29 @@ paths:
         dispatcher: FALLBACK
 components:
   schemas:
+    AccessDeniedException:
+      type: object
+      description: Caller does not have sufficient access to perform this action.
+      properties:
+        message:
+          type: string
+    CreateMembershipRequest:
+      type: object
+      description: Request body for creating a membership.
+      required:
+      - collaborationIdentifier
+      - queryLogStatus
+      properties:
+        collaborationIdentifier:
+          type: string
+          description: The unique ID for the associated collaboration.
+          example: collab-abc12345
+        queryLogStatus:
+          type: string
+          enum:
+          - ENABLED
+          - DISABLED
+          description: An indicator as to whether query logging has been enabled or disabled.
     ValidationException:
       type: object
       description: The input fails to satisfy the specified constraints.
@@ -191,23 +214,12 @@ components:
           - COLLABORATION_DELETED
           - REMOVED
           description: The status of the membership.
-    CreateMembershipRequest:
+    InternalServerException:
       type: object
-      description: Request body for creating a membership.
-      required:
-      - collaborationIdentifier
-      - queryLogStatus
+      description: Unexpected error during processing of request.
       properties:
-        collaborationIdentifier:
+        message:
           type: string
-          description: The unique ID for the associated collaboration.
-          example: collab-abc12345
-        queryLogStatus:
-          type: string
-          enum:
-          - ENABLED
-          - DISABLED
-          description: An indicator as to whether query logging has been enabled or disabled.
     ListMembershipsResponse:
       type: object
       description: Response for listing memberships.
@@ -220,24 +232,12 @@ components:
           items:
             $ref: '#/components/schemas/Membership'
           description: The list of memberships.
-    AccessDeniedException:
-      type: object
-      description: Caller does not have sufficient access to perform this action.
-      properties:
-        message:
-          type: string
     CreateMembershipResponse:
       type: object
       description: Response for creating a membership.
       properties:
         membership:
           $ref: '#/components/schemas/Membership'
-    InternalServerException:
-      type: object
-      description: Unexpected error during processing of request.
-      properties:
-        message:
-          type: string
   securitySchemes:
     aws_signature:
       type: apiKey

@@ -151,63 +151,6 @@ paths:
         dispatcher: FALLBACK
 components:
   schemas:
-    ValidationException:
-      type: object
-      description: The input fails to satisfy the specified constraints.
-      properties:
-        message:
-          type: string
-        fieldList:
-          type: array
-          items:
-            type: object
-    CreateConfiguredTableResponse:
-      type: object
-      description: Response for creating a configured table.
-      properties:
-        configuredTable:
-          $ref: '#/components/schemas/ConfiguredTable'
-    CreateConfiguredTableRequest:
-      type: object
-      description: Request body for creating a configured table.
-      required:
-      - name
-      - tableReference
-      - allowedColumns
-      - analysisMethod
-      properties:
-        name:
-          type: string
-          description: The name of the configured table.
-          example: Customer Segments Table
-        description:
-          type: string
-          description: A description for the configured table.
-        tableReference:
-          type: object
-          description: A reference to the AWS Glue table being configured.
-        allowedColumns:
-          type: array
-          items:
-            type: string
-          description: The columns of the underlying AWS Glue table that can be used by collaborators.
-        analysisMethod:
-          type: string
-          enum:
-          - DIRECT_QUERY
-          description: The analysis method for the configured table.
-    AccessDeniedException:
-      type: object
-      description: Caller does not have sufficient access to perform this action.
-      properties:
-        message:
-          type: string
-    InternalServerException:
-      type: object
-      description: Unexpected error during processing of request.
-      properties:
-        message:
-          type: string
     ConfiguredTable:
       type: object
       description: Represents a configured table in Clean Rooms.
@@ -239,6 +182,12 @@ components:
           enum:
           - DIRECT_QUERY
           description: The analysis method for the configured table.
+    AccessDeniedException:
+      type: object
+      description: Caller does not have sufficient access to perform this action.
+      properties:
+        message:
+          type: string
     ListConfiguredTablesResponse:
       type: object
       description: Response for listing configured tables.
@@ -251,6 +200,57 @@ components:
           items:
             $ref: '#/components/schemas/ConfiguredTable'
           description: The list of configured tables.
+    CreateConfiguredTableRequest:
+      type: object
+      description: Request body for creating a configured table.
+      required:
+      - name
+      - tableReference
+      - allowedColumns
+      - analysisMethod
+      properties:
+        name:
+          type: string
+          description: The name of the configured table.
+          example: Customer Segments Table
+        description:
+          type: string
+          description: A description for the configured table.
+        tableReference:
+          type: object
+          description: A reference to the AWS Glue table being configured.
+        allowedColumns:
+          type: array
+          items:
+            type: string
+          description: The columns of the underlying AWS Glue table that can be used by collaborators.
+        analysisMethod:
+          type: string
+          enum:
+          - DIRECT_QUERY
+          description: The analysis method for the configured table.
+    ValidationException:
+      type: object
+      description: The input fails to satisfy the specified constraints.
+      properties:
+        message:
+          type: string
+        fieldList:
+          type: array
+          items:
+            type: object
+    InternalServerException:
+      type: object
+      description: Unexpected error during processing of request.
+      properties:
+        message:
+          type: string
+    CreateConfiguredTableResponse:
+      type: object
+      description: Response for creating a configured table.
+      properties:
+        configuredTable:
+          $ref: '#/components/schemas/ConfiguredTable'
   securitySchemes:
     aws_signature:
       type: apiKey

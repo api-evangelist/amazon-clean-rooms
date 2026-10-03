@@ -264,15 +264,11 @@ paths:
         dispatcher: FALLBACK
 components:
   schemas:
-    ResourceNotFoundException:
+    AccessDeniedException:
       type: object
-      description: Request references a resource which does not exist.
+      description: Caller does not have sufficient access to perform this action.
       properties:
         message:
-          type: string
-        resourceId:
-          type: string
-        resourceType:
           type: string
     ListCollaborationsResponse:
       type: object
@@ -302,6 +298,48 @@ components:
       properties:
         collaboration:
           $ref: '#/components/schemas/Collaboration'
+    CreateCollaborationRequest:
+      type: object
+      description: Request body for creating a collaboration.
+      required:
+      - name
+      - members
+      - creatorDisplayName
+      - creatorMemberAbilities
+      - queryLogStatus
+      properties:
+        name:
+          type: string
+          description: The display name for a collaboration.
+          example: Marketing Analytics Collaboration
+        description:
+          type: string
+          description: A description of the collaboration.
+        members:
+          type: array
+          items:
+            type: object
+          description: A list of initial members for the collaboration.
+        creatorDisplayName:
+          type: string
+          description: The display name of the collaboration creator.
+        creatorMemberAbilities:
+          type: array
+          items:
+            type: string
+          description: The abilities granted to the collaboration creator.
+        queryLogStatus:
+          type: string
+          enum:
+          - ENABLED
+          - DISABLED
+          description: An indicator as to whether query logging has been enabled or disabled.
+    InternalServerException:
+      type: object
+      description: Unexpected error during processing of request.
+      properties:
+        message:
+          type: string
     Collaboration:
       type: object
       description: Represents an AWS Clean Rooms collaboration workspace.
@@ -344,17 +382,15 @@ components:
           - ENABLED
           - DISABLED
           description: Whether query logs are enabled.
-    AccessDeniedException:
+    ResourceNotFoundException:
       type: object
-      description: Caller does not have sufficient access to perform this action.
+      description: Request references a resource which does not exist.
       properties:
         message:
           type: string
-    InternalServerException:
-      type: object
-      description: Unexpected error during processing of request.
-      properties:
-        message:
+        resourceId:
+          type: string
+        resourceType:
           type: string
     GetCollaborationResponse:
       type: object
@@ -362,42 +398,6 @@ components:
       properties:
         collaboration:
           $ref: '#/components/schemas/Collaboration'
-    CreateCollaborationRequest:
-      type: object
-      description: Request body for creating a collaboration.
-      required:
-      - name
-      - members
-      - creatorDisplayName
-      - creatorMemberAbilities
-      - queryLogStatus
-      properties:
-        name:
-          type: string
-          description: The display name for a collaboration.
-          example: Marketing Analytics Collaboration
-        description:
-          type: string
-          description: A description of the collaboration.
-        members:
-          type: array
-          items:
-            type: object
-          description: A list of initial members for the collaboration.
-        creatorDisplayName:
-          type: string
-          description: The display name of the collaboration creator.
-        creatorMemberAbilities:
-          type: array
-          items:
-            type: string
-          description: The abilities granted to the collaboration creator.
-        queryLogStatus:
-          type: string
-          enum:
-          - ENABLED
-          - DISABLED
-          description: An indicator as to whether query logging has been enabled or disabled.
   securitySchemes:
     aws_signature:
       type: apiKey

@@ -173,18 +173,6 @@ paths:
         dispatcher: FALLBACK
 components:
   schemas:
-    ListProtectedQueriesResponse:
-      type: object
-      description: Response for listing protected queries.
-      properties:
-        nextToken:
-          type: string
-          description: The token value retrieved from a previous paginated request.
-        protectedQueries:
-          type: array
-          items:
-            $ref: '#/components/schemas/ProtectedQuery'
-          description: The list of protected queries.
     StartProtectedQueryRequest:
       type: object
       description: Request body for starting a protected query.
@@ -207,31 +195,9 @@ components:
         resultConfiguration:
           type: object
           description: Contains configuration details for protected query results.
-    ValidationException:
-      type: object
-      description: The input fails to satisfy the specified constraints.
-      properties:
-        message:
-          type: string
-        fieldList:
-          type: array
-          items:
-            type: object
     AccessDeniedException:
       type: object
       description: Caller does not have sufficient access to perform this action.
-      properties:
-        message:
-          type: string
-    StartProtectedQueryResponse:
-      type: object
-      description: Response for starting a protected query.
-      properties:
-        protectedQuery:
-          $ref: '#/components/schemas/ProtectedQuery'
-    InternalServerException:
-      type: object
-      description: Unexpected error during processing of request.
       properties:
         message:
           type: string
@@ -264,6 +230,40 @@ components:
           - SUCCESS
           - TIMED_OUT
           description: The status of the protected query.
+    ValidationException:
+      type: object
+      description: The input fails to satisfy the specified constraints.
+      properties:
+        message:
+          type: string
+        fieldList:
+          type: array
+          items:
+            type: object
+    StartProtectedQueryResponse:
+      type: object
+      description: Response for starting a protected query.
+      properties:
+        protectedQuery:
+          $ref: '#/components/schemas/ProtectedQuery'
+    InternalServerException:
+      type: object
+      description: Unexpected error during processing of request.
+      properties:
+        message:
+          type: string
+    ListProtectedQueriesResponse:
+      type: object
+      description: Response for listing protected queries.
+      properties:
+        nextToken:
+          type: string
+          description: The token value retrieved from a previous paginated request.
+        protectedQueries:
+          type: array
+          items:
+            $ref: '#/components/schemas/ProtectedQuery'
+          description: The list of protected queries.
   securitySchemes:
     aws_signature:
       type: apiKey
