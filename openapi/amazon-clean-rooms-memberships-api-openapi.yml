@@ -151,12 +151,36 @@ paths:
         dispatcher: FALLBACK
 components:
   schemas:
+    InternalServerException:
+      type: object
+      description: Unexpected error during processing of request.
+      properties:
+        message:
+          type: string
     AccessDeniedException:
       type: object
       description: Caller does not have sufficient access to perform this action.
       properties:
         message:
           type: string
+    ListMembershipsResponse:
+      type: object
+      description: Response for listing memberships.
+      properties:
+        nextToken:
+          type: string
+          description: The token value retrieved from a previous paginated request.
+        membershipList:
+          type: array
+          items:
+            $ref: '#/components/schemas/Membership'
+          description: The list of memberships.
+    CreateMembershipResponse:
+      type: object
+      description: Response for creating a membership.
+      properties:
+        membership:
+          $ref: '#/components/schemas/Membership'
     CreateMembershipRequest:
       type: object
       description: Request body for creating a membership.
@@ -214,30 +238,6 @@ components:
           - COLLABORATION_DELETED
           - REMOVED
           description: The status of the membership.
-    InternalServerException:
-      type: object
-      description: Unexpected error during processing of request.
-      properties:
-        message:
-          type: string
-    ListMembershipsResponse:
-      type: object
-      description: Response for listing memberships.
-      properties:
-        nextToken:
-          type: string
-          description: The token value retrieved from a previous paginated request.
-        membershipList:
-          type: array
-          items:
-            $ref: '#/components/schemas/Membership'
-          description: The list of memberships.
-    CreateMembershipResponse:
-      type: object
-      description: Response for creating a membership.
-      properties:
-        membership:
-          $ref: '#/components/schemas/Membership'
   securitySchemes:
     aws_signature:
       type: apiKey
