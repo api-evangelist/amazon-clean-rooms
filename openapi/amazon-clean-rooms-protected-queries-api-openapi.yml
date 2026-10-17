@@ -173,6 +173,34 @@ paths:
         dispatcher: FALLBACK
 components:
   schemas:
+    InternalServerException:
+      type: object
+      description: Unexpected error during processing of request.
+      properties:
+        message:
+          type: string
+    ValidationException:
+      type: object
+      description: The input fails to satisfy the specified constraints.
+      properties:
+        message:
+          type: string
+        fieldList:
+          type: array
+          items:
+            type: object
+    ListProtectedQueriesResponse:
+      type: object
+      description: Response for listing protected queries.
+      properties:
+        nextToken:
+          type: string
+          description: The token value retrieved from a previous paginated request.
+        protectedQueries:
+          type: array
+          items:
+            $ref: '#/components/schemas/ProtectedQuery'
+          description: The list of protected queries.
     ProtectedQuery:
       type: object
       description: Represents a protected query executed within a Clean Rooms collaboration.
@@ -202,12 +230,6 @@ components:
           - SUCCESS
           - TIMED_OUT
           description: The status of the protected query.
-    InternalServerException:
-      type: object
-      description: Unexpected error during processing of request.
-      properties:
-        message:
-          type: string
     AccessDeniedException:
       type: object
       description: Caller does not have sufficient access to perform this action.
@@ -236,28 +258,6 @@ components:
         resultConfiguration:
           type: object
           description: Contains configuration details for protected query results.
-    ListProtectedQueriesResponse:
-      type: object
-      description: Response for listing protected queries.
-      properties:
-        nextToken:
-          type: string
-          description: The token value retrieved from a previous paginated request.
-        protectedQueries:
-          type: array
-          items:
-            $ref: '#/components/schemas/ProtectedQuery'
-          description: The list of protected queries.
-    ValidationException:
-      type: object
-      description: The input fails to satisfy the specified constraints.
-      properties:
-        message:
-          type: string
-        fieldList:
-          type: array
-          items:
-            type: object
     StartProtectedQueryResponse:
       type: object
       description: Response for starting a protected query.

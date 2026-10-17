@@ -157,12 +157,6 @@ components:
       properties:
         message:
           type: string
-    AccessDeniedException:
-      type: object
-      description: Caller does not have sufficient access to perform this action.
-      properties:
-        message:
-          type: string
     ListMembershipsResponse:
       type: object
       description: Response for listing memberships.
@@ -175,29 +169,6 @@ components:
           items:
             $ref: '#/components/schemas/Membership'
           description: The list of memberships.
-    CreateMembershipResponse:
-      type: object
-      description: Response for creating a membership.
-      properties:
-        membership:
-          $ref: '#/components/schemas/Membership'
-    CreateMembershipRequest:
-      type: object
-      description: Request body for creating a membership.
-      required:
-      - collaborationIdentifier
-      - queryLogStatus
-      properties:
-        collaborationIdentifier:
-          type: string
-          description: The unique ID for the associated collaboration.
-          example: collab-abc12345
-        queryLogStatus:
-          type: string
-          enum:
-          - ENABLED
-          - DISABLED
-          description: An indicator as to whether query logging has been enabled or disabled.
     ValidationException:
       type: object
       description: The input fails to satisfy the specified constraints.
@@ -238,6 +209,35 @@ components:
           - COLLABORATION_DELETED
           - REMOVED
           description: The status of the membership.
+    CreateMembershipResponse:
+      type: object
+      description: Response for creating a membership.
+      properties:
+        membership:
+          $ref: '#/components/schemas/Membership'
+    CreateMembershipRequest:
+      type: object
+      description: Request body for creating a membership.
+      required:
+      - collaborationIdentifier
+      - queryLogStatus
+      properties:
+        collaborationIdentifier:
+          type: string
+          description: The unique ID for the associated collaboration.
+          example: collab-abc12345
+        queryLogStatus:
+          type: string
+          enum:
+          - ENABLED
+          - DISABLED
+          description: An indicator as to whether query logging has been enabled or disabled.
+    AccessDeniedException:
+      type: object
+      description: Caller does not have sufficient access to perform this action.
+      properties:
+        message:
+          type: string
   securitySchemes:
     aws_signature:
       type: apiKey
