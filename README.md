@@ -1,4 +1,4 @@
-# Amazon Clean Rooms (amazon-clean-rooms)
+# Amazon Clean Rooms
 
 <!-- API-EVANGELIST-PROVENANCE:BEGIN -->
 > ### About this repository
@@ -66,112 +66,248 @@
 
 Amazon Clean Rooms enables organizations to collaborate and analyze shared datasets without exposing underlying raw data to partners. Create secure data clean rooms in minutes and collaborate with any company while maintaining data privacy through differential privacy, cryptographic computing, and flexible analytics.
 
-**URL:** [Visit APIs.json URL](https://raw.githubusercontent.com/api-evangelist/amazon-clean-rooms/refs/heads/main/apis.yml)
+**Areas:** AWS · Cleanroom · Data Collaboration · Privacy · Analytics · Marketing
 
-**Run:** [Capabilities Using Naftiko](https://github.com/naftiko/fleet?utm_source=api-evangelist&utm_medium=readme&utm_campaign=company-api-evangelist&utm_content=repo)
+## Amazon Clean Rooms on APIs.io
 
-## Tags:
+Everything profiled for Amazon Clean Rooms is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/amazon-clean-rooms/](https://apis.io/providers/amazon-clean-rooms/)** — or go straight to one of the APIs or properties below.
 
- - AWS, Clean Rooms, Data Collaboration, Privacy, Analytics, Marketing
+### APIs (17)
 
-## Timestamps
+- [Amazon Clean Rooms Collaborations API](https://apis.io/apis/amazon-clean-rooms/amazon-clean-rooms-collaborations-api/) — Operations for managing Clean Rooms collaborations
+- [Amazon Clean Rooms Configured Tables API](https://apis.io/apis/amazon-clean-rooms/amazon-clean-rooms-configured-tables-api/) — Operations for managing configured tables
+- [Amazon Clean Rooms Memberships API](https://apis.io/apis/amazon-clean-rooms/amazon-clean-rooms-memberships-api/) — Operations for managing collaboration memberships
+- [Amazon Clean Rooms Protected Queries API](https://apis.io/apis/amazon-clean-rooms/amazon-clean-rooms-protected-queries-api/) — Operations for executing and managing protected queries
+- [Amazon Clean Rooms Clean Rooms Analysislogexports API](https://apis.io/apis/amazon-clean-rooms/amazon-clean-rooms-analysislogexports-api/) — The Clean Rooms Analysislogexports API from Amazon Clean Rooms — 2 operation(s) for clean rooms analysislogexports.
+- [Amazon Clean Rooms Clean Rooms Analysisrule API](https://apis.io/apis/amazon-clean-rooms/amazon-clean-rooms-analysisrule-api/) — The Clean Rooms Analysisrule API from Amazon Clean Rooms — 7 operation(s) for clean rooms analysisrule.
+- [Amazon Clean Rooms Clean Rooms Analysistemplates API](https://apis.io/apis/amazon-clean-rooms/amazon-clean-rooms-analysistemplates-api/) — The Clean Rooms Analysistemplates API from Amazon Clean Rooms — 4 operation(s) for clean rooms analysistemplates.
+- [Amazon Clean Rooms Clean Rooms Changerequests API](https://apis.io/apis/amazon-clean-rooms/amazon-clean-rooms-changerequests-api/) — The Clean Rooms Changerequests API from Amazon Clean Rooms — 2 operation(s) for clean rooms changerequests.
+- [Amazon Clean Rooms Clean Rooms Configuredaudiencemodelassociations API](https://apis.io/apis/amazon-clean-rooms/amazon-clean-rooms-configuredaudiencemodelassociations-api/) — The Clean Rooms Configuredaudiencemodelassociations API from Amazon Clean Rooms — 4 operation(s) for clean rooms configuredaudiencemodelassociations.
+- [Amazon Clean Rooms Clean Rooms Configuredtableassociations API](https://apis.io/apis/amazon-clean-rooms/amazon-clean-rooms-configuredtableassociations-api/) — The Clean Rooms Configuredtableassociations API from Amazon Clean Rooms — 2 operation(s) for clean rooms configuredtableassociations.
+- [Amazon Clean Rooms Clean Rooms Idmappingtables API](https://apis.io/apis/amazon-clean-rooms/amazon-clean-rooms-idmappingtables-api/) — The Clean Rooms Idmappingtables API from Amazon Clean Rooms — 2 operation(s) for clean rooms idmappingtables.
+- [Amazon Clean Rooms Clean Rooms Idnamespaceassociations API](https://apis.io/apis/amazon-clean-rooms/amazon-clean-rooms-idnamespaceassociations-api/) — The Clean Rooms Idnamespaceassociations API from Amazon Clean Rooms — 4 operation(s) for clean rooms idnamespaceassociations.
+- [Amazon Clean Rooms Clean Rooms Intermediatetables API](https://apis.io/apis/amazon-clean-rooms/amazon-clean-rooms-intermediatetables-api/) — The Clean Rooms Intermediatetables API from Amazon Clean Rooms — 2 operation(s) for clean rooms intermediatetables.
+- [Amazon Clean Rooms Clean Rooms Operations API](https://apis.io/apis/amazon-clean-rooms/amazon-clean-rooms-operations-api/) — The Clean Rooms Operations API from Amazon Clean Rooms — 14 operation(s) for clean rooms operations.
+- [Amazon Clean Rooms Clean Rooms Privacybudgettemplates API](https://apis.io/apis/amazon-clean-rooms/amazon-clean-rooms-privacybudgettemplates-api/) — The Clean Rooms Privacybudgettemplates API from Amazon Clean Rooms — 4 operation(s) for clean rooms privacybudgettemplates.
+- [Amazon Clean Rooms Clean Rooms Protectedjobs API](https://apis.io/apis/amazon-clean-rooms/amazon-clean-rooms-protectedjobs-api/) — The Clean Rooms Protectedjobs API from Amazon Clean Rooms — 2 operation(s) for clean rooms protectedjobs.
+- [Amazon Clean Rooms Clean Rooms Tags API](https://apis.io/apis/amazon-clean-rooms/amazon-clean-rooms-tags-api/) — The Clean Rooms Tags API from Amazon Clean Rooms — 1 operation(s) for clean rooms tags.
 
-- **Created:** 2026-03-16
-- **Modified:** 2026-04-19
+### Published properties
 
-## APIs
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
 
-### Amazon Clean Rooms API
-API for creating and managing secure collaboration workspaces, memberships, configured tables, analysis templates, and executing privacy-preserving protected queries and jobs.
+#### AsyncAPI (1)
 
-**Human URL:** [https://aws.amazon.com/clean-rooms/](https://aws.amazon.com/clean-rooms/)
+Event-driven and webhook contracts.
 
-#### Tags:
+- [Amazon Clean Rooms Events](https://apis.io/asyncapis/amazon-clean-rooms/amazon-clean-rooms-events/)
 
- - AWS, Clean Rooms, Data Collaboration, Privacy, Analytics
+#### MCP servers (1)
 
-#### Properties
+Model Context Protocol servers that expose the API to agents.
 
-- [Documentation](https://docs.aws.amazon.com/clean-rooms/latest/apireference/)
-- [OpenAPI](openapi/amazon-clean-rooms-openapi.yml)
-- [GettingStarted](https://aws.amazon.com/clean-rooms/getting-started/)
-- [Pricing](https://aws.amazon.com/clean-rooms/pricing/)
-- [FAQ](https://aws.amazon.com/clean-rooms/faqs/)
-- [APIReference](https://docs.aws.amazon.com/clean-rooms/latest/apireference/)
-- [CLI](https://docs.aws.amazon.com/cli/latest/reference/cleanrooms/)
-- [JSONSchema](json-schema/clean-rooms-collaboration-schema.json)
-- [JSONLD](json-ld/amazon-clean-rooms-context.jsonld)
+- [amazon-clean-rooms](https://apis.io/servers/amazon-clean-rooms/amazon-clean-rooms/)
 
-## Common Properties
+#### Agentic access (1)
 
-- [Portal](https://aws.amazon.com/)
+Which operations an agent can call, which act, and which need a human in the loop.
+
+- [Amazon Clean Rooms Agentic Access](https://apis.io/agentic-access/amazon-clean-rooms/amazon-clean-rooms-agentic-access/)
+
+#### JSON Schema (17)
+
+The data models the API reads and writes.
+
+- [Collaboration](https://apis.io/schemas/amazon-clean-rooms/clean-rooms-collaboration/)
+- [ConfiguredTable](https://apis.io/schemas/amazon-clean-rooms/clean-rooms-configured-table/)
+- [CreateCollaborationRequest](https://apis.io/schemas/amazon-clean-rooms/clean-rooms-create-collaboration-request/)
+- [CreateCollaborationResponse](https://apis.io/schemas/amazon-clean-rooms/clean-rooms-create-collaboration-response/)
+- [CreateConfiguredTableRequest](https://apis.io/schemas/amazon-clean-rooms/clean-rooms-create-configured-table-request/)
+- [CreateConfiguredTableResponse](https://apis.io/schemas/amazon-clean-rooms/clean-rooms-create-configured-table-response/)
+- [CreateMembershipRequest](https://apis.io/schemas/amazon-clean-rooms/clean-rooms-create-membership-request/)
+- [CreateMembershipResponse](https://apis.io/schemas/amazon-clean-rooms/clean-rooms-create-membership-response/)
+- [GetCollaborationResponse](https://apis.io/schemas/amazon-clean-rooms/clean-rooms-get-collaboration-response/)
+- [ListCollaborationsResponse](https://apis.io/schemas/amazon-clean-rooms/clean-rooms-list-collaborations-response/)
+- [ListConfiguredTablesResponse](https://apis.io/schemas/amazon-clean-rooms/clean-rooms-list-configured-tables-response/)
+- [ListMembershipsResponse](https://apis.io/schemas/amazon-clean-rooms/clean-rooms-list-memberships-response/)
+- [ListProtectedQueriesResponse](https://apis.io/schemas/amazon-clean-rooms/clean-rooms-list-protected-queries-response/)
+- [Membership](https://apis.io/schemas/amazon-clean-rooms/clean-rooms-membership/)
+- [ProtectedQuery](https://apis.io/schemas/amazon-clean-rooms/clean-rooms-protected-query/)
+- [StartProtectedQueryRequest](https://apis.io/schemas/amazon-clean-rooms/clean-rooms-start-protected-query-request/)
+- [StartProtectedQueryResponse](https://apis.io/schemas/amazon-clean-rooms/clean-rooms-start-protected-query-response/)
+
+#### JSON Structure (17)
+
+Data models expressed in JSON Structure.
+
+- [Clean Rooms Collaboration Structure](https://apis.io/json-structure/amazon-clean-rooms/clean-rooms-collaboration-structure/)
+- [Clean Rooms Configured Table Structure](https://apis.io/json-structure/amazon-clean-rooms/clean-rooms-configured-table-structure/)
+- [Clean Rooms Create Collaboration Request Structure](https://apis.io/json-structure/amazon-clean-rooms/clean-rooms-create-collaboration-request-structure/)
+- [Clean Rooms Create Collaboration Response Structure](https://apis.io/json-structure/amazon-clean-rooms/clean-rooms-create-collaboration-response-structure/)
+- [Clean Rooms Create Configured Table Request Structure](https://apis.io/json-structure/amazon-clean-rooms/clean-rooms-create-configured-table-request-structure/)
+- [Clean Rooms Create Configured Table Response Structure](https://apis.io/json-structure/amazon-clean-rooms/clean-rooms-create-configured-table-response-structure/)
+- [Clean Rooms Create Membership Request Structure](https://apis.io/json-structure/amazon-clean-rooms/clean-rooms-create-membership-request-structure/)
+- [Clean Rooms Create Membership Response Structure](https://apis.io/json-structure/amazon-clean-rooms/clean-rooms-create-membership-response-structure/)
+- [Clean Rooms Get Collaboration Response Structure](https://apis.io/json-structure/amazon-clean-rooms/clean-rooms-get-collaboration-response-structure/)
+- [Clean Rooms List Collaborations Response Structure](https://apis.io/json-structure/amazon-clean-rooms/clean-rooms-list-collaborations-response-structure/)
+- [Clean Rooms List Configured Tables Response Structure](https://apis.io/json-structure/amazon-clean-rooms/clean-rooms-list-configured-tables-response-structure/)
+- [Clean Rooms List Memberships Response Structure](https://apis.io/json-structure/amazon-clean-rooms/clean-rooms-list-memberships-response-structure/)
+- [Clean Rooms List Protected Queries Response Structure](https://apis.io/json-structure/amazon-clean-rooms/clean-rooms-list-protected-queries-response-structure/)
+- [Clean Rooms Membership Structure](https://apis.io/json-structure/amazon-clean-rooms/clean-rooms-membership-structure/)
+- [Clean Rooms Protected Query Structure](https://apis.io/json-structure/amazon-clean-rooms/clean-rooms-protected-query-structure/)
+- [Clean Rooms Start Protected Query Request Structure](https://apis.io/json-structure/amazon-clean-rooms/clean-rooms-start-protected-query-request-structure/)
+- [Clean Rooms Start Protected Query Response Structure](https://apis.io/json-structure/amazon-clean-rooms/clean-rooms-start-protected-query-response-structure/)
+
+#### JSON-LD (1)
+
+Linked-data contexts for the provider's vocabulary.
+
+- [Amazon Clean Rooms Context](https://apis.io/jsonld/amazon-clean-rooms/amazon-clean-rooms-context/)
+
+#### Vocabulary (1)
+
+The provider's domain terms, defined.
+
+- [Amazon Clean Rooms Vocabulary](https://apis.io/vocabularies/amazon-clean-rooms/amazon-clean-rooms-vocabulary/)
+
+#### Examples (17)
+
+Example requests and responses.
+
+- [Clean Rooms Collaboration Example](https://apis.io/examples/amazon-clean-rooms/clean-rooms-collaboration-example/)
+- [Clean Rooms Configured Table Example](https://apis.io/examples/amazon-clean-rooms/clean-rooms-configured-table-example/)
+- [Clean Rooms Create Collaboration Request Example](https://apis.io/examples/amazon-clean-rooms/clean-rooms-create-collaboration-request-example/)
+- [Clean Rooms Create Collaboration Response Example](https://apis.io/examples/amazon-clean-rooms/clean-rooms-create-collaboration-response-example/)
+- [Clean Rooms Create Configured Table Request Example](https://apis.io/examples/amazon-clean-rooms/clean-rooms-create-configured-table-request-example/)
+- [Clean Rooms Create Configured Table Response Example](https://apis.io/examples/amazon-clean-rooms/clean-rooms-create-configured-table-response-example/)
+- [Clean Rooms Create Membership Request Example](https://apis.io/examples/amazon-clean-rooms/clean-rooms-create-membership-request-example/)
+- [Clean Rooms Create Membership Response Example](https://apis.io/examples/amazon-clean-rooms/clean-rooms-create-membership-response-example/)
+- [Clean Rooms Get Collaboration Response Example](https://apis.io/examples/amazon-clean-rooms/clean-rooms-get-collaboration-response-example/)
+- [Clean Rooms List Collaborations Response Example](https://apis.io/examples/amazon-clean-rooms/clean-rooms-list-collaborations-response-example/)
+- [Clean Rooms List Configured Tables Response Example](https://apis.io/examples/amazon-clean-rooms/clean-rooms-list-configured-tables-response-example/)
+- [Clean Rooms List Memberships Response Example](https://apis.io/examples/amazon-clean-rooms/clean-rooms-list-memberships-response-example/)
+- [Clean Rooms List Protected Queries Response Example](https://apis.io/examples/amazon-clean-rooms/clean-rooms-list-protected-queries-response-example/)
+- [Clean Rooms Membership Example](https://apis.io/examples/amazon-clean-rooms/clean-rooms-membership-example/)
+- [Clean Rooms Protected Query Example](https://apis.io/examples/amazon-clean-rooms/clean-rooms-protected-query-example/)
+- [Clean Rooms Start Protected Query Request Example](https://apis.io/examples/amazon-clean-rooms/clean-rooms-start-protected-query-request-example/)
+- [Clean Rooms Start Protected Query Response Example](https://apis.io/examples/amazon-clean-rooms/clean-rooms-start-protected-query-response-example/)
+
+#### Collections (8)
+
+Postman and Open Collection request collections.
+
+- [Amazon Clean Rooms Collaborations API](https://apis.io/collections/amazon-clean-rooms/open-amazon-clean-rooms-collaborations-api/)
+- [Amazon Clean Rooms Collaborations Configured Tables API](https://apis.io/collections/amazon-clean-rooms/open-amazon-clean-rooms-configured-tables-api/)
+- [Amazon Clean Rooms Collaborations Memberships API](https://apis.io/collections/amazon-clean-rooms/open-amazon-clean-rooms-memberships-api/)
+- [Amazon Clean Rooms Collaborations Protected Queries API](https://apis.io/collections/amazon-clean-rooms/open-amazon-clean-rooms-protected-queries-api/)
+- [Amazon Clean Rooms Collaborations API](https://apis.io/collections/amazon-clean-rooms/postman-amazon-clean-rooms-collaborations-api/)
+- [Amazon Clean Rooms Collaborations Configured Tables API](https://apis.io/collections/amazon-clean-rooms/postman-amazon-clean-rooms-configured-tables-api/)
+- [Amazon Clean Rooms Collaborations Memberships API](https://apis.io/collections/amazon-clean-rooms/postman-amazon-clean-rooms-memberships-api/)
+- [Amazon Clean Rooms Collaborations Protected Queries API](https://apis.io/collections/amazon-clean-rooms/postman-amazon-clean-rooms-protected-queries-api/)
+
+#### Overlays (1)
+
+OpenAPI overlays, including conversational phrasing for each operation.
+
+- [Amazon Clean Rooms Openapi Overlay](https://apis.io/overlays/amazon-clean-rooms/amazon-clean-rooms-openapi-overlay/)
+
+#### Governance rules (2)
+
+Spectral rulesets for the provider's contracts.
+
+- [Amazon Clean Rooms — jsonschema rules](https://apis.io/rules/amazon-clean-rooms/amazon-clean-rooms-jsonschema-spectral-rules/)
+- [Amazon Clean Rooms API Rules](https://apis.io/rules/amazon-clean-rooms/amazon-clean-rooms-spectral-rules/)
+
+#### Security (4)
+
+Authentication, trust centre, and vulnerability disclosure.
+
+- [Amazon Clean Rooms Authentication](https://apis.io/security/amazon-clean-rooms/amazon-clean-rooms-authentication/)
+- [Amazon Clean Rooms Domain Security](https://apis.io/security/amazon-clean-rooms/amazon-clean-rooms-domain-security/)
+- [Amazon Clean Rooms Trust Center](https://apis.io/security/amazon-clean-rooms/amazon-clean-rooms-trust-center/)
+- [Amazon Clean Rooms Vulnerability Disclosure](https://apis.io/security/amazon-clean-rooms/amazon-clean-rooms-vulnerability-disclosure/)
+
+#### Plans and pricing (1)
+
+Published plans, tiers and prices.
+
+- [Amazon Clean Rooms Plans Pricing](https://apis.io/plans/amazon-clean-rooms/amazon-clean-rooms-plans-pricing/)
+
+#### Rate limits (1)
+
+Published request limits.
+
+- [Amazon Clean Rooms Rate Limits](https://apis.io/rate-limits/amazon-clean-rooms/amazon-clean-rooms-rate-limits/)
+
+## Where to find this API
+
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
+
 - [Website](https://aws.amazon.com/clean-rooms/)
-- [SpectralRules](rules/amazon-clean-rooms-spectral-rules.yml)
-- [Vocabulary](vocabulary/amazon-clean-rooms-vocabulary.yaml)
-- [NaftikoCapability](capabilities/secure-data-collaboration.yaml)
+- [Documentation](https://docs.aws.amazon.com/clean-rooms/)
+- [Getting started](https://docs.aws.amazon.com/clean-rooms/latest/userguide/getting-started.html)
+- [API reference](https://docs.aws.amazon.com/clean-rooms/latest/apireference/)
+- [Pricing](https://aws.amazon.com/clean-rooms/pricing/)
+- [Sign up](https://signin.aws.amazon.com/signup?request_type=register)
+- [Support](https://aws.amazon.com/premiumsupport/)
+- [Blog](https://aws.amazon.com/blogs/big-data/)
+- [Compliance](https://aws.amazon.com/compliance/)
+- [Terms of service](https://aws.amazon.com/service-terms/)
+- [Privacy policy](https://aws.amazon.com/privacy/)
+- [GitHub](https://github.com/aws)
+- [Status](https://health.aws.amazon.com/health/status)
 
-## Features
+## API Evangelist rating
 
-| Name | Description |
-|------|-------------|
-| Privacy-Preserving Analytics | Analyze shared datasets without exposing underlying raw data using differential privacy and cryptographic computing. |
-| Zero-ETL Integration | Collaborate with Snowflake and AWS datasets without data movement or ETL pipelines. |
-| Protected Queries | Execute SQL, PySpark, or ML model queries on partner data with configurable privacy controls. |
+**Kin Score 65.3** — strong · rubric 0.25.0 · scored 2026-10-23
 
-## Use Cases
+| Facet | Score |
+|---|---|
+| Discoverability | 78.6 |
+| Contract quality | 39.4 |
+| Contract governance | 31.8 |
+| Operational transparency | 92.1 |
+| Developer ergonomics | 86.9 |
+| Access clarity | 60.5 |
 
-| Name | Description |
-|------|-------------|
-| Marketing Measurement | Measure campaign effectiveness by combining advertiser and publisher data in a privacy-safe environment. |
-| Customer Insights | Build comprehensive customer views by combining data from multiple channels and partners. |
+**Agent readiness 39.8** — agent-ready (gated down from agent-native)
 
-## Integrations
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | derived (partial credit) |
+| Reversibility Documented | — |
+| MCP Server | — |
+| Auth Clarity | bearer (partial credit) |
+| Idempotency | — |
+| Error Semantics | verified |
+| OpenAPI Examples | verified |
+| Rate Limit Signal | documented (partial credit) |
+| Event Surface Described | yes |
+| Agent Skills | yes |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | — |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+| Pagination Ratio | na |
+| Operation Distinctiveness | distinct |
 
-| Name | Description |
-|------|-------------|
-| Amazon S3 | Store and retrieve collaboration data and query results in S3. |
-| Snowflake | Zero-ETL integration with Snowflake datasets for cross-platform collaboration. |
-| AWS Glue | Configure Glue tables as data sources for Clean Rooms configured tables. |
+**Regulatory alignment 35.3** — Horizontal (data, software, accessibility, platform)
 
-## Artifacts
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/amazon-clean-rooms/](https://apis.io/providers/amazon-clean-rooms/).
 
-### OpenAPI
+## How this profile is made
 
-- [Amazon Clean Rooms API](openapi/amazon-clean-rooms-openapi.yml)
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
 
-### JSON Schema
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for Amazon Clean Rooms: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
 
-- [Collaboration](json-schema/clean-rooms-collaboration-schema.json)
-- [Membership](json-schema/clean-rooms-membership-schema.json)
-- [Protected Query](json-schema/clean-rooms-protected-query-schema.json)
-- [Configured Table](json-schema/clean-rooms-configured-table-schema.json)
+## Open an issue
 
-### JSON-LD
-
-- [Amazon Clean Rooms Context](json-ld/amazon-clean-rooms-context.jsonld)
-
-## Capabilities
-
-### Shared Per-API Definitions
-
-- [Amazon Clean Rooms](capabilities/shared/clean-rooms.yaml) — 10 operations for secure data collaboration management
-
-### Workflow Capabilities
-
-| Workflow | APIs Combined | Tools | Persona |
-|----------|--------------|-------|---------|
-| [Secure Data Collaboration](capabilities/secure-data-collaboration.yaml) | Clean Rooms | 9 | Data Analyst, Marketing Analyst |
-
-## Vocabulary
-
-- [Amazon Clean Rooms Vocabulary](vocabulary/amazon-clean-rooms-vocabulary.yaml) — Unified taxonomy mapping 4 resources, 5 actions, 1 workflow, and 2 personas
-
-## Rules
-
-- [Amazon Clean Rooms Spectral Rules](rules/amazon-clean-rooms-spectral-rules.yml) — 27 rules across 10 categories enforcing Amazon Clean Rooms API conventions
-
-## Maintainers
-
-**FN:** Kin Lane
-
-**Email:** kin@apievangelist.com
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/amazon-clean-rooms/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
